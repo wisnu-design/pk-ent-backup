@@ -27,17 +27,7 @@ import Stage from "@/components/organisms/Stage";
 import PlayButton from "@/components/atoms/PlayButton";
 import ArtistInfo from "@/components/organisms/ArtistInfo";
 
-export async function getStaticPaths() {
-  const { concerts }: any = await api.request(SLUGLIST);
-  return {
-    paths: concerts.map((concert: any) => ({
-      params: { slug: concert.slug },
-    })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   const slug: string = params.slug;
   const data: any = await api.request(CONCERT, { slug });
   const concert: string = data.concert;
