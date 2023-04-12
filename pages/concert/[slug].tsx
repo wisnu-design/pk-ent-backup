@@ -42,10 +42,12 @@ export async function getStaticProps({ params }: any) {
   const data: any = await api.request(CONCERT, { slug });
   const concert: string = data.concert;
   const { concerts }: any = await api.request(QUERY);
+
   return {
     props: {
       concerts,
       concert,
+      revalidate: 0,
     },
   };
 }

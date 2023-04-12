@@ -2,7 +2,7 @@ import { gql } from "graphql-request";
 
 export const QUERY = gql`
   query Concert {
-    concerts(last: 4, orderBy: publishedAt_DESC) {
+    concerts(first: 4, orderBy: publishedAt_DESC) {
       id
       thumbnail {
         url
