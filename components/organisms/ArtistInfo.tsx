@@ -10,7 +10,7 @@ const ArtistInfo = ({ concert }: SingleEvent) => {
         <div className=" md:w-[80%]  mx-auto h-auto rounded-[50px] overflow-hidden bg-zinc-400/30 backdrop-blur-xl">
           <div className="flex lg:flex-row flex-col gap-6 p-8 w-full items-center">
             <div className="w-4/12 h-auto flex justify-center self-end">
-              <figure className="w-64 h-64 rounded-full bg-zinc-400/10 backdrop-blur-xl overflow-hidden relative">
+              <figure className="w-64 h-64 rounded-full bg-zinc-400/10 backdrop-blur-lg overflow-hidden relative">
                 <Image
                   src=""
                   alt="Profile Band/Artis Picture"
