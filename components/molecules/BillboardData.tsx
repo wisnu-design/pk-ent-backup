@@ -56,7 +56,7 @@ const BillboardData = ({ concert }: SingleEvent) => {
             transition={{ duration: 0.5, delay: 0.7 }}
             viewport={{ once: true }}
           >
-            <PlayButton link={`${concert.slug}`} />
+            <PlayButton link={`/concert/${concert.slug}`} />
           </motion.div>
 
           <Link href={`/concert/${concert.slug}`}>
