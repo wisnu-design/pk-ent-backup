@@ -40,6 +40,11 @@ export const CONCERT = gql`
       thumbnail {
         url
       }
+      tickets {
+        type
+        price
+        ticketLink
+      }
       city
       eventStage
       date

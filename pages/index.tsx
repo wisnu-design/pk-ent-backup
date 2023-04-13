@@ -11,15 +11,15 @@ import Highlight from "@/components/organisms/Highlight";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { concerts, brands }: any = await api.request(QUERY);
 
   return {
     props: {
       concerts,
       brands,
+      revalidate: 1,
     },
-    revalidate: 10,
   };
 }
 

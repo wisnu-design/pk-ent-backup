@@ -15,6 +15,7 @@ interface EventData {
   city?: string;
   slug?: string;
   stageLayout?: any;
+  tickets?: any;
 }
 
 export type SingleEvent = {
@@ -60,42 +61,41 @@ const Stage = ({ concert }: SingleEvent) => {
             </div>
           </div>
           <div className="p-6 flex flex-col gap-7">
-            <div className="flex flex-row items-center justify-between ">
-              <div className="flex gap-10">
-                <div className="flex flex-col">
-                  <p className="text-white font-semibold">{concert.date}</p>
-                  <p className="text-zinc-300 font-light">{concert.city}</p>
+            {concert.tickets.map((ticket: any) => {
+              return (
+                <div
+                  key={ticket.id}
+                  className="flex w-full flex-row items-start justify-between "
+                >
+                  <div className="w-8/12 flex gap-10">
+                    <div className=" flex flex-col">
+                      <p className="text-white font-semibold">{concert.date}</p>
+                      <p className="text-zinc-300 font-light">{concert.city}</p>
+                    </div>
+
+                    <div className="w-6/12 flex flex-col">
+                      <p className="text-white font-semibold">{ticket.type}</p>
+                      <p className="text-zinc-300 font-light text-sm">
+                        Price includes Government Tax 15% & Ticketing Admin Fee
+                        5%
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-4/12 flex items-center">
+                    <Link
+                      target="_blank"
+                      className="flex "
+                      href={ticket.ticketLink}
+                    >
+                      <p className="text-white font-semibold text-[20px]">
+                        IDR {ticket.price}
+                      </p>
+                      <BsChevronCompactRight className="text-white" size={30} />
+                    </Link>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-white font-semibold">Tribune</p>
-                  <p className="text-zinc-300 font-light">Aisle Seat</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <p className="text-white font-semibold text-[20px]">
-                  Rp 750.000
-                </p>
-                <BsChevronCompactRight className="text-white" size={30} />
-              </div>
-            </div>
-            <div className="flex flex-row items-center justify-between ">
-              <div className="flex gap-10">
-                <div className="flex flex-col">
-                  <p className="text-white font-semibold">{concert.date}</p>
-                  <p className="text-zinc-300 font-light">{concert.city}</p>
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-white font-semibold">Festival</p>
-                  <p className="text-zinc-300 font-light">Aisle Seat</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <p className="text-white font-semibold text-[20px]">
-                  Rp 1.500.000
-                </p>
-                <BsChevronCompactRight className="text-white" size={30} />
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -22,8 +22,8 @@ import "swiper/css/scrollbar";
 
 import { api } from "@/lib/graphql/api";
 import { CONCERT, QUERY, SLUGLIST } from "@/lib/graphql/query";
-import SlugHeading, { SingleEvent } from "@/components/molecules/SlugHeading";
-import Stage from "@/components/organisms/Stage";
+import SlugHeading from "@/components/molecules/SlugHeading";
+import Stage, { SingleEvent } from "@/components/organisms/Stage";
 import PlayButton from "@/components/atoms/PlayButton";
 import ArtistInfo from "@/components/organisms/ArtistInfo";
 
@@ -48,7 +48,7 @@ const Concert = ({ concert }: SingleEvent) => {
     <>
       <Seo
         metaTitle={`PK Entertainment | ${concert.title}`}
-        metaDesc="PK Entertainment"
+        metaDesc={`${concert.description}`}
         metaKey="Event Organizer Promotor"
       />
       <Header />
@@ -95,6 +95,7 @@ const Concert = ({ concert }: SingleEvent) => {
           stageLayout: concert.stageLayout,
           date: concert.date,
           city: concert.city,
+          tickets: concert.tickets,
         }}
       />
     </>
