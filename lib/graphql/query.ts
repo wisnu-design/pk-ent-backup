@@ -14,6 +14,7 @@ export const QUERY = gql`
       date
       description
       upcoming
+      soldOut
     }
     brands {
       id
@@ -50,6 +51,7 @@ export const CONCERT = gql`
       date
       description
       upcoming
+      soldOut
       stageLayout {
         url
       }

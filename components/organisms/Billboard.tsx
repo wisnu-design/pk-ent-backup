@@ -22,7 +22,7 @@ export interface Events {
   data: EventData[];
 }
 
-const Billboard = ({ data }: Events) => {
+const Billboard = ({ data }: any) => {
   SwiperCore.use([Autoplay, Navigation, Pagination, Scrollbar, A11y]);
   return (
     <>
@@ -38,7 +38,7 @@ const Billboard = ({ data }: Events) => {
           dynamicMainBullets: 1,
         }}
       >
-        {data.map((v, i) => {
+        {data.map((v: any, i: any) => {
           return (
             <div key={i}>
               {v.upcoming == true ? (
@@ -49,6 +49,7 @@ const Billboard = ({ data }: Events) => {
                       thumbnail: v.thumbnail,
                       description: v.description,
                       slug: v.slug,
+                      tickets: v.tickets,
                     }}
                   />
                 </SwiperSlide>

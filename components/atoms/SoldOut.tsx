@@ -1,16 +1,18 @@
 import React from "react";
 import { BsFillTicketPerforatedFill } from "react-icons/bs";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import { SingleEvent } from "../organisms/Stage";
 
-const PlayButton = ({ link }: any) => {
+interface PlayButtonProps {
+  movieId: string;
+}
+
+const SoldOut = () => {
   const router = useRouter();
 
   return (
-    <Link href={link}>
-      <button
-        className="
+    <button
+      disabled
+      className="
         bg-white 
         rounded-md 
         py-1 md:py-2 
@@ -26,12 +28,11 @@ const PlayButton = ({ link }: any) => {
         gap-2
         backdrop-blur-sm
         "
-      >
-        <BsFillTicketPerforatedFill className="mt-[1px]" />
-        Buy Ticket
-      </button>
-    </Link>
+    >
+      <BsFillTicketPerforatedFill className="mt-[1px]" />
+      SOLD OUT
+    </button>
   );
 };
 
-export default PlayButton;
+export default SoldOut;

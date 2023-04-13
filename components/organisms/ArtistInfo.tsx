@@ -1,7 +1,10 @@
 import React from "react";
 import { SingleEvent } from "./Stage";
 import PlayButton from "../atoms/PlayButton";
+import { BsFillTicketPerforatedFill } from "react-icons/bs";
 import Image from "next/image";
+import Link from "next/link";
+import SoldOut from "../atoms/SoldOut";
 
 const ArtistInfo = ({ concert }: SingleEvent) => {
   return (
@@ -40,7 +43,11 @@ const ArtistInfo = ({ concert }: SingleEvent) => {
                 </p>
               </div>
               <div className="text-black mt-3">
-                <PlayButton movieId="test" />
+                {concert.soldOut === false ? (
+                  <SoldOut />
+                ) : (
+                  <PlayButton link={concert.tickets[0].ticketLink} />
+                )}
               </div>
             </div>
           </div>

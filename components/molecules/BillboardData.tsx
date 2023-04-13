@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import PlayButton from "../atoms/PlayButton";
 import Link from "next/link";
+import { SingleEvent } from "../organisms/Stage";
 
 interface EventData {
   title: string;
@@ -21,7 +22,7 @@ type Props = {
   concert: EventData;
 };
 
-const BillboardData = ({ concert }: Props) => {
+const BillboardData = ({ concert }: SingleEvent) => {
   return (
     <div className="relative h-[56.25vw]">
       <video
@@ -49,14 +50,16 @@ const BillboardData = ({ concert }: Props) => {
           {concert.description}
         </motion.p>
         <div className="flex flex-row items-center mt-3 md:mt-4 gap-3">
+          {/*
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
             viewport={{ once: true }}
           >
-            <PlayButton movieId="test" />
+            <PlayButton link={concert.tickets[0].ticketLink} />
           </motion.div>
+           */}
           <Link href={`/concert/${concert.slug}`}>
             <motion.button
               initial={{ opacity: 0 }}

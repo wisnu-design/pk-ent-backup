@@ -16,6 +16,7 @@ interface EventData {
   slug?: string;
   stageLayout?: any;
   tickets?: any;
+  soldOut?: boolean;
 }
 
 export type SingleEvent = {
@@ -61,10 +62,10 @@ const Stage = ({ concert }: SingleEvent) => {
             </div>
           </div>
           <div className="p-6 flex flex-col gap-7">
-            {concert.tickets.map((ticket: any) => {
+            {concert.tickets.map((ticket: any, index: any) => {
               return (
                 <div
-                  key={ticket.id}
+                  key={index}
                   className="flex w-full flex-row items-start justify-between "
                 >
                   <div className="w-8/12 flex gap-10">
