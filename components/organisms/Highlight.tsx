@@ -13,7 +13,7 @@ const Highlight = (props: Props) => {
           <div className="flex gap-2">
             <div className="w-[1px] h-[25px] md:h-[30px] lg:h-[40px] bg-white/30 backdrop-blur-md"></div>
             <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
-              Hightlight
+              Highlights
             </p>
           </div>
           <Link className="flex gap-2" href="#">
@@ -25,7 +25,14 @@ const Highlight = (props: Props) => {
         </div>
       </div>
 
-      <div>Content Disini</div>
+      <div className="flex lg:flex-row flex-col bg-white w-full h-[56.25vw]">
+        <div className="flex flex-col w-3/12 h-auto bg-cyan-400">
+          <div className="w-full bg-slate-300">aa</div>
+          <div className="w-full bg-slate-300">aa</div>
+        </div>
+        <div className="flex flex-col w-6/12 bg-cyan-500">aaa</div>
+        <div className="flex flex-col w-3/12 bg-cyan-400">aaa</div>
+      </div>
     </div>
   );
 };

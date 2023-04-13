@@ -38,7 +38,7 @@ export default function Home({ concerts, brands }: any) {
       <div className="lg:pb-20 pb-10 pt-10">
         <EventList title="Events" data={concerts} />
       </div>
-      <div className="lg:pb-20 pb-10 ">
+      <div className="lg:pb-20 md:pb-0 pb-0 ">
         <BrandActivation title="Brand Activation" data={brands} />
       </div>
       <div className="pb-40">

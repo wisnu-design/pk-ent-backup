@@ -50,16 +50,15 @@ const BillboardData = ({ concert }: SingleEvent) => {
           {concert.description}
         </motion.p>
         <div className="flex flex-row items-center mt-3 md:mt-4 gap-3">
-          {/*
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
             viewport={{ once: true }}
           >
-            <PlayButton link={concert.tickets[0].ticketLink} />
+            <PlayButton link={`${concert.slug}`} />
           </motion.div>
-           */}
+
           <Link href={`/concert/${concert.slug}`}>
             <motion.button
               initial={{ opacity: 0 }}
