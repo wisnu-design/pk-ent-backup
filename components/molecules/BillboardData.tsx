@@ -35,7 +35,6 @@ const BillboardData = ({ concert }: SingleEvent) => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
-          viewport={{ once: true }}
           className="text-white text-1xl md:text-5xl h-full w-[40%] lg:text-6xl font-bold drop-shadow-lg"
         >
           {concert.title}
