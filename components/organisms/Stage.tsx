@@ -54,9 +54,11 @@ const Stage = ({ concert }: SingleEvent) => {
         </div>
         <div className="lg:w-6/12 w-full h-auto flex flex-col gap-6 bg-zinc-800  rounded-xl overflow-hidden shadow-xl">
           <div className="flex justify-between w-full">
-            <div className="bg-zinc-700 p-4 rounded-bl-lg cursor-pointer hover:bg-zinc-500 transition w-full">
-              <p className="text-white text-center">Tickets</p>
-            </div>
+            {concert.upcoming === true ? (
+              <div className="bg-zinc-700 p-4 rounded-bl-lg cursor-pointer hover:bg-zinc-500 transition w-full">
+                <p className="text-white text-center">Tickets</p>
+              </div>
+            ) : null}
             <div className="bg-zinc-700 py-4 px-4 rounded-br-lg cursor-pointer hover:bg-zinc-500 transition w-full">
               <p className="text-white text-center">Information</p>
             </div>
@@ -68,32 +70,45 @@ const Stage = ({ concert }: SingleEvent) => {
                   key={index}
                   className="flex w-full flex-row items-start justify-between "
                 >
-                  <div className="w-8/12 flex gap-10">
-                    <div className=" flex flex-col">
-                      <p className="text-white font-semibold">{concert.date}</p>
-                      <p className="text-zinc-300 font-light">{concert.city}</p>
-                    </div>
+                  {concert.upcoming === true ? (
+                    <div className="w-full flex gap-10">
+                      <div className="w-8/12 flex gap-10">
+                        <div className=" flex flex-col">
+                          <p className="text-white font-semibold">
+                            {concert.date}
+                          </p>
+                          <p className="text-zinc-300 font-light">
+                            {concert.city}
+                          </p>
+                        </div>
 
-                    <div className="w-6/12 flex flex-col">
-                      <p className="text-white font-semibold">{ticket.type}</p>
-                      <p className="text-zinc-300 font-light text-sm">
-                        Price includes Government Tax 15% & Ticketing Admin Fee
-                        5%
-                      </p>
+                        <div className="w-6/12 flex flex-col">
+                          <p className="text-white font-semibold">
+                            {ticket.type}
+                          </p>
+                          <p className="text-zinc-300 font-light text-sm">
+                            Price includes Government Tax 15% & Ticketing Admin
+                            Fee 5%
+                          </p>
+                        </div>
+                      </div>
+                      <div className="w-4/12 flex items-center">
+                        <Link
+                          target="_blank"
+                          className="flex "
+                          href={ticket.ticketLink}
+                        >
+                          <p className="text-white font-semibold text-[20px]">
+                            IDR {ticket.price}
+                          </p>
+                          <BsChevronCompactRight
+                            className="text-white"
+                            size={30}
+                          />
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                  <div className="w-4/12 flex items-center">
-                    <Link
-                      target="_blank"
-                      className="flex "
-                      href={ticket.ticketLink}
-                    >
-                      <p className="text-white font-semibold text-[20px]">
-                        IDR {ticket.price}
-                      </p>
-                      <BsChevronCompactRight className="text-white" size={30} />
-                    </Link>
-                  </div>
+                  ) : null}
                 </div>
               );
             })}

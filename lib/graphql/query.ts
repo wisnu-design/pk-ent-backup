@@ -31,6 +31,26 @@ export const QUERY = gql`
     }
   }
 `;
+export const BILLBOARD = gql`
+  query billboard {
+    billboard(where: { title: "home" }) {
+      concerts(first: 100) {
+        id
+        thumbnail {
+          url
+        }
+        title
+        slug
+        city
+        eventStage
+        date
+        description
+        upcoming
+        soldOut
+      }
+    }
+  }
+`;
 
 export const CONCERT = gql`
   query concert($slug: String!) {

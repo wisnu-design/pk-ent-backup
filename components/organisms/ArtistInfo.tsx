@@ -43,11 +43,9 @@ const ArtistInfo = ({ concert }: SingleEvent) => {
                 </p>
               </div>
               <div className="text-black mt-3">
-                {concert.soldOut === false ? (
-                  <SoldOut />
-                ) : (
+                {concert.upcoming === true ? (
                   <PlayButton link={concert.tickets[0].ticketLink} />
-                )}
+                ) : null}
               </div>
             </div>
           </div>

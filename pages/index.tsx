@@ -5,25 +5,28 @@ import Billboard from "@/components/organisms/Billboard";
 import MusicEvent from "@/lib/EventsData";
 import EventList from "@/components/organisms/EventList";
 import { api } from "@/lib/graphql/api";
-import { QUERY } from "@/lib/graphql/query";
+import { BILLBOARD, QUERY } from "@/lib/graphql/query";
 import BrandActivation from "@/components/organisms/BrandActivation";
 import Highlight from "@/components/organisms/Highlight";
+import Footer from "@/components/organisms/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export async function getStaticProps() {
   const { concerts, brands }: any = await api.request(QUERY);
+  const { billboard }: any = await api.request(BILLBOARD);
 
   return {
     props: {
       concerts,
       brands,
+      billboard,
     },
     revalidate: 5,
   };
 }
 
-export default function Home({ concerts, brands }: any) {
+export default function Home({ concerts, brands, billboard }: any) {
   return (
     <>
       <Seo
@@ -33,7 +36,7 @@ export default function Home({ concerts, brands }: any) {
       />
       <Header />
 
-      <Billboard data={concerts} />
+      <Billboard data={billboard.concerts} />
 
       <div className="lg:pb-20 pb-10 pt-10">
         <EventList title="Events" data={concerts} />
@@ -44,6 +47,7 @@ export default function Home({ concerts, brands }: any) {
       <div className="pb-40">
         <Highlight />
       </div>
+      <Footer />
     </>
   );
 }

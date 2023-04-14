@@ -26,6 +26,7 @@ import SlugHeading from "@/components/molecules/SlugHeading";
 import Stage, { SingleEvent } from "@/components/organisms/Stage";
 import PlayButton from "@/components/atoms/PlayButton";
 import ArtistInfo from "@/components/organisms/ArtistInfo";
+import Footer from "@/components/organisms/Footer";
 
 export async function getServerSideProps({ params }: any) {
   const slug: string = params.slug;
@@ -87,6 +88,7 @@ const Concert = ({ concert }: SingleEvent) => {
           city: concert.city,
           date: concert.date,
           tickets: concert.tickets,
+          upcoming: concert.upcoming,
         }}
       />
 
@@ -97,8 +99,11 @@ const Concert = ({ concert }: SingleEvent) => {
           date: concert.date,
           city: concert.city,
           tickets: concert.tickets,
+          upcoming: concert.upcoming,
         }}
       />
+
+      <Footer />
     </>
   );
 };
