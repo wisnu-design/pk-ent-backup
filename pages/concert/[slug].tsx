@@ -89,6 +89,7 @@ const Concert = ({ concert }: SingleEvent) => {
           date: concert.date,
           tickets: concert.tickets,
           upcoming: concert.upcoming,
+          soldOut: concert.soldOut,
         }}
       />
 
