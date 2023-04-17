@@ -1,5 +1,11 @@
 import Image from "next/image";
-import React, { Component, useCallback, useEffect, useState } from "react";
+import React, {
+  Component,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { BsChevronDown, BsSearch } from "react-icons/bs";
 
 import { motion } from "framer-motion";
@@ -19,6 +25,8 @@ const Header = (props: Props) => {
 
   const router = useRouter();
 
+  const navRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= TOP_OFFSET) {
@@ -35,6 +43,20 @@ const Header = (props: Props) => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setShowMobileMenu(false);
+      }
+    };
+
+    window.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu((current) => !current);
   }, []);
@@ -47,6 +69,7 @@ const Header = (props: Props) => {
   return (
     <header className="flex w-full z-[100] fixed">
       <motion.nav
+        ref={navRef}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -78,6 +101,12 @@ const Header = (props: Props) => {
             />
           </div>
           <MobileNav visible={showMobileMenu} />
+          {showMobileMenu && (
+            <div
+              className="fixed top-0 left-0 w-full h-full bg-transparent bg-opacity-50 z-[99]"
+              onClick={toggleMobileMenu}
+            />
+          )}
         </div>
 
         <div className="hidden lg:flex lg:flex-row ml-auto gap-7 items-center">

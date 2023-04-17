@@ -62,7 +62,7 @@ const BrandActivation = ({ data, title }: BrandActivationProps) => {
               <BrandCard
                 data={{
                   title: event.title,
-                  slug: event.slug,
+                  slug: `/brand-activation/event/${event.slug}`,
                   thumbnail: event.thumbnail,
                   date: event.date,
                 }}

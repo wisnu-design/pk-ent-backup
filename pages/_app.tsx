@@ -1,10 +1,12 @@
-import "@/styles/globals.css";
-import { AnimatePresence, motion } from "framer-motion";
-import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
+import { AppProps } from "next/app";
+import "../styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Component {...pageProps} />
+    </>
+  );
 }
+
+export default MyApp;

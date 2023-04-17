@@ -9,6 +9,7 @@ import { BILLBOARD, QUERY } from "@/lib/graphql/query";
 import BrandActivation from "@/components/organisms/BrandActivation";
 import Highlight from "@/components/organisms/Highlight";
 import Footer from "@/components/organisms/Footer";
+import Loader from "./concert/loading";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -10,7 +10,7 @@ const MobileNav: React.FC<MobileMenuProps> = ({ visible }) => {
   }
 
   return (
-    <div className="bg-black absolute top-8 right-0 py-5 flex-col border-2 border-gray-800 flex w-[200%]">
+    <div className="bg-black z-[99999999] absolute top-8 right-0 py-5 flex-col border-2 border-gray-800 flex w-[200%]">
       <div className="flex flex-col gap-4">
         <div className="px-3 text-center text-white hover:underline">Home</div>
         <div className="px-3 text-center text-white hover:underline">

@@ -34,3 +34,8 @@ body {
     rgb(var(--background-start-rgb));
     */
 }
+
+.base-page-size {
+  width: 100%;
+  min-height: 100vh;
+}
