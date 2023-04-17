@@ -1,17 +1,20 @@
+import { Brands } from "@/pages/brand-activation/[slug]";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
-interface BrandCardProps {
-  data: Record<string, any>;
-}
+type BrandCard = {
+  data: Brands;
+};
 
-const BrandCard = ({ data }: BrandCardProps) => {
+const BrandCard = ({ data }: BrandCard) => {
   return (
-    <div className="group bg-zinc-900 col-span hover:scale-100 scale-[95%] transition relative h-[12vw]">
-      <Image
-        className="w-full
+    <Link href={data.slug}>
+      <div className="group bg-zinc-900 col-span hover:scale-100 scale-[95%] transition relative h-[12vw]">
+        <Image
+          className="w-full
               cursor-pointer
               object-cover
               transition
@@ -21,20 +24,24 @@ const BrandCard = ({ data }: BrandCardProps) => {
               h-[16vw]
               rounded-t-xl
               "
-        src={data.thumbnail.url}
-        alt="Thumbnail"
-        width={500}
-        height={10}
-      />
-      <div className="bg-zinc-800/50 backdrop-blur-sm w-full lg:h-[6vw] md:h-[5vw] lg:p-3 h-[12vw] p-2 rounded-b-xl shadow-xl overflow-hidden">
-        <p className="text-white font-semibold lg:text-[16px] text-[6px]">
-          {data.title}
-        </p>
-        <p className="text-white font-semibold lg:text-[16px] text-[10px]">
-          {data.date}
-        </p>
+          src={data.thumbnail.url}
+          alt="Thumbnail"
+          width={500}
+          height={10}
+        />
+        <div className="bg-zinc-800/50 backdrop-blur-sm w-full lg:h-[6vw] md:h-[5vw] lg:p-3 h-[12vw] p-2 rounded-b-xl shadow-xl overflow-hidden">
+          <p className="text-white font-semibold lg:text-[16px] text-[6px]">
+            {data.title}
+          </p>
+          <p className=" text-white font-semibold mt-4 text-[10px] lg:text-[14px]">
+            {data.date}
+          </p>
+          <p className=" text-white font-semibold mt-2 text-[12px] lg:text-[16px]">
+            {data.eventStage}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

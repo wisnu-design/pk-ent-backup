@@ -92,3 +92,53 @@ export const SLUGLIST = gql`
     }
   }
 `;
+
+export const CLIENTS = gql`
+  query clients {
+    clients {
+      name
+      slug
+      image {
+        url
+      }
+      brands {
+        id
+        thumbnail {
+          url
+        }
+        title
+        slug
+        city
+        eventStage
+        date
+        description
+        upcoming
+      }
+    }
+  }
+`;
+
+export const CLIENT = gql`
+  query client($slug: String!) {
+    client(where: { slug: $slug }) {
+      name
+      slug
+      image {
+        url
+      }
+      brands {
+        id
+        thumbnail {
+          url
+        }
+        title
+        slug
+        city
+        eventStage
+        date
+        description
+        upcoming
+      }
+    }
+  }
+`;

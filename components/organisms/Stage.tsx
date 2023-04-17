@@ -23,6 +23,10 @@ export type SingleEvent = {
   concert: EventData;
 };
 
+export type Events = {
+  concerts: EventData[];
+};
+
 const Stage = ({ concert }: SingleEvent) => {
   if (isEmpty(concert)) {
     return null;

@@ -2,7 +2,7 @@ import React from "react";
 import PlayButton from "../atoms/PlayButton";
 import Image from "next/image";
 
-interface EventData {
+export interface EventData {
   title: string;
   description?: string;
   thumbnail: any;

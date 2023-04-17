@@ -59,7 +59,14 @@ const BrandActivation = ({ data, title }: BrandActivationProps) => {
         >
           {data.map((event, index) => (
             <SwiperSlide className="" key={index}>
-              <BrandCard data={event} />
+              <BrandCard
+                data={{
+                  title: event.title,
+                  slug: event.slug,
+                  thumbnail: event.thumbnail,
+                  date: event.date,
+                }}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

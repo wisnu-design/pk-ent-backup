@@ -62,6 +62,16 @@ const Navbaritems = () => {
         <CompanyMenuChild visible={showCompanyChild} />
          */}
       </li>
+      <li className="text-white font-medium cursor-pointer transition">
+        <Link className="hover:text-gray-300 " href="/concert">
+          Concert
+        </Link>
+      </li>
+      <li className="text-white font-medium cursor-pointer transition">
+        <Link className="hover:text-gray-300 " href="/brand-activation">
+          Brand Activation
+        </Link>
+      </li>
     </ul>
   );
 };

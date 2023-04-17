@@ -47,7 +47,7 @@ const EventList = ({ data, title }: EventListProps) => {
           </Link>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex gap-3">
           {data.map((event, index) => (
             <EventCard key={index} data={event} />
           ))}
