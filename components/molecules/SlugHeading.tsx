@@ -23,11 +23,24 @@ const SlugHeading = ({ concert }: SingleEvent) => {
   return (
     <>
       <div className="relative h-[56.25vw]">
-        <video
-          className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] rounded-b-[100px]"
-          poster={concert.thumbnail.url}
-          src={concert.video}
-        ></video>
+        {concert.video === null ? (
+          <video
+            className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] rounded-b-[100px]"
+            autoPlay
+            loop
+            muted={false}
+            poster={concert.thumbnail.url}
+          ></video>
+        ) : (
+          <video
+            className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] rounded-b-[100px]"
+            autoPlay
+            loop
+            muted={false}
+            poster={concert.thumbnail.url}
+            src={concert.video.url}
+          ></video>
+        )}
       </div>
     </>
   );

@@ -27,6 +27,9 @@ const BillboardData = ({ concert }: SingleEvent) => {
     <div className="relative h-[56.25vw]">
       <video
         className="w-full h-[56.25vw] object-cover brightness-[30%]"
+        autoPlay
+        loop
+        muted
         poster={concert.thumbnail.url}
         src={concert.video}
       ></video>

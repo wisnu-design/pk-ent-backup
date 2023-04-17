@@ -15,11 +15,11 @@ const ArtistInfo = ({ concert }: SingleEvent) => {
             <div className="w-4/12 h-auto flex justify-center self-end">
               <figure className="w-64 h-64 rounded-full bg-zinc-400/10 backdrop-blur-lg overflow-hidden relative">
                 <Image
-                  src=""
+                  src={concert.thumbnail.url}
                   alt="Profile Band/Artis Picture"
                   width={1000}
                   height={100}
-                  className="w-[150%] absolute bottom-10"
+                  className="w-[100%] h-[100%] object-cover absolute bottom-0"
                 />
               </figure>
             </div>

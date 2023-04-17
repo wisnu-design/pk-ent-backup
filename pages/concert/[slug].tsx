@@ -74,6 +74,7 @@ const Concert = ({ concert }: SingleEvent) => {
               description: concert.description,
               city: concert.city,
               date: concert.date,
+              video: concert.video,
             }}
           />
         </SwiperSlide>

@@ -28,7 +28,7 @@ const Stage = ({ concert }: SingleEvent) => {
     return null;
   }
   return (
-    <div className="px-4 md:px-12 mt-4 space-y-8 max-w-[1600px] mx-auto">
+    <div className="px-4 md:px-12 mt-4 space-y-8 max-w-[1600px] mx-auto pb-10">
       <div>
         <div className="flex justify-between items-center">
           <div className="flex gap-2">
@@ -87,7 +87,7 @@ const Stage = ({ concert }: SingleEvent) => {
                             {ticket.type}
                           </p>
                           <p className="text-zinc-300 font-light text-sm">
-                            Price includes Government Tax 15% & Ticketing Admin
+                            Price exclude Government Tax 15% & Ticketing Admin
                             Fee 5%
                           </p>
                         </div>

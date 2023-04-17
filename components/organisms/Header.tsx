@@ -84,7 +84,6 @@ const Header = (props: Props) => {
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BsSearch className="text-white font-bold" />
           </div>
-          <div className="text-white">Login</div>
         </div>
       </motion.nav>
     </header>

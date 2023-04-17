@@ -9,7 +9,7 @@ interface EventCardProps {
   data: Record<string, any>;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ data }) => {
+const EventCard = ({ data }: EventCardProps) => {
   const router = useRouter();
 
   const handleClick = (e: any) => {

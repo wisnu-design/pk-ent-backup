@@ -39,6 +39,9 @@ export const BILLBOARD = gql`
         thumbnail {
           url
         }
+        video {
+          url
+        }
         title
         slug
         city
@@ -58,6 +61,9 @@ export const CONCERT = gql`
       id
       title
       slug
+      video {
+        url
+      }
       thumbnail {
         url
       }

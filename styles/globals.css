@@ -17,6 +17,11 @@
   }
 }
 
+#eventlist {
+  overflow: visible !important;
+  overflow-y: visible !important;
+}
+
 body {
   @apply bg-zinc-900 h-full overflow-x-hidden;
   /*
