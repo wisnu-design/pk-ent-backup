@@ -5,7 +5,7 @@ import Billboard from "@/components/organisms/Billboard";
 import MusicEvent from "@/lib/EventsData";
 import EventList from "@/components/organisms/EventList";
 import { api } from "@/lib/graphql/api";
-import { BILLBOARD, QUERY } from "@/lib/graphql/query";
+import { BILLBOARD, HOME, QUERY } from "@/lib/graphql/query";
 import BrandActivation from "@/components/organisms/BrandActivation";
 import Highlight from "@/components/organisms/Highlight";
 import Footer from "@/components/organisms/Footer";
@@ -13,8 +13,8 @@ import Loader from "./concert/loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function getStaticProps() {
-  const { concerts, brands }: any = await api.request(QUERY);
+export async function getServerSideProps() {
+  const { concerts, brands }: any = await api.request(HOME);
   const { billboard }: any = await api.request(BILLBOARD);
 
   return {
@@ -23,7 +23,6 @@ export async function getStaticProps() {
       brands,
       billboard,
     },
-    revalidate: 5,
   };
 }
 

@@ -28,7 +28,7 @@ const index = ({ concerts }: Events) => {
         metaKey="Promotor Event"
       />
       <Header />
-      <div className="flex max-w-[1600px] h-screen pt-36 mx-auto gap-4">
+      <div className="flex flex-wrap max-w-[1600px] h-screen pt-36 mx-auto">
         {concerts
           ? concerts.map((concert, index) => {
               return (

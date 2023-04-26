@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 
-export const QUERY = gql`
+export const HOME = gql`
   query Concert {
     concerts(first: 4, orderBy: publishedAt_DESC) {
       id
@@ -31,6 +31,39 @@ export const QUERY = gql`
     }
   }
 `;
+
+export const QUERY = gql`
+  query Concert {
+    concerts(first: 100, orderBy: publishedAt_DESC) {
+      id
+      thumbnail {
+        url
+      }
+      title
+      slug
+      city
+      eventStage
+      date
+      description
+      upcoming
+      soldOut
+    }
+    brands {
+      id
+      thumbnail {
+        url
+      }
+      title
+      slug
+      city
+      eventStage
+      date
+      description
+      upcoming
+    }
+  }
+`;
+
 export const BILLBOARD = gql`
   query billboard {
     billboard(where: { title: "home" }) {

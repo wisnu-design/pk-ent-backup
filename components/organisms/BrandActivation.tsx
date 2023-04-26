@@ -50,15 +50,20 @@ const BrandActivation = ({ data, title }: BrandActivationProps) => {
           </Link>
         </div>
         <Swiper
-          slidesPerView={3}
+          slidesPerView={5}
           autoplay={{
-            delay: 5000,
+            delay: 10000,
           }}
           loop={true}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 1,
+          }}
           className="lg:h-[27vw] h-[40vw]"
         >
           {data.map((event, index) => (
-            <SwiperSlide className="" key={index}>
+            <SwiperSlide className="mr-8" key={index}>
               <BrandCard
                 data={{
                   title: event.title,

@@ -8,6 +8,7 @@ import imgPlaceHolder from "@/public/images/imgPlaceholder.png";
 import Seo from "@/components/Seo";
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
+import BrandCard from "@/components/molecules/BrandCard";
 
 type Clients = {
   clients: ClientData[];
@@ -33,24 +34,43 @@ const index = ({ clients }: Clients) => {
         metaKey="Promotor Event"
       />
       <Header />
-      <div className="flex gap-2 h-screen pt-36">
-        {clients.map((client, index) => {
-          return (
-            <div className="text-white " key={index}>
-              <Link href={`/brand-activation/${client.slug}`}>
-                <Image
-                  src={client.image ? client.image : imgPlaceHolder}
-                  alt={client.name}
-                  width={1000}
-                  height={100}
-                  className="w-60 h-52"
-                />
-                {client.name}
-              </Link>
-            </div>
-          );
-        })}
+      <div className="h-screen">
+        <div className=" flex flex-wrap max-w-[1600px] mx-auto pt-36 overflow-hidden">
+          {clients.map((client, index) => {
+            return (
+              <div className="flex flex-wrap" key={index}>
+                <Link href={`/brand-activation/${client.slug}`}>
+                  <div className="group bg-zinc-900 col-span hover:scale-100 scale-[95%] transition relative w-[380px] rounded-xl">
+                    <Image
+                      className="w-full
+                      bg-white
+                    h-[200px]
+              cursor-pointer
+              object-fit
+              transition
+              duration
+              shadow-xl
+              delay-100
+              rounded-t-xl
+              "
+                      src={client.image.url ? client.image.url : imgPlaceHolder}
+                      alt="Thumbnail"
+                      width={500}
+                      height={10}
+                    />
+                    <div className="bg-zinc-800/50 backdrop-blur-sm w-full lg:h-[4vw] md:h-[5vw] lg:p-3 h-[12vw] p-2 rounded-b-xl flex justify-center items-center shadow-xl overflow-hidden">
+                      <p className="text-white font-semibold lg:text-[24px] uppercase text-[6px]">
+                        {client.name}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
       <Footer />
     </>
   );
