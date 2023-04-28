@@ -7,6 +7,7 @@ export const HOME = gql`
       thumbnail {
         url
       }
+      band
       title
       slug
       city
@@ -171,6 +172,22 @@ export const CLIENT = gql`
         date
         description
         upcoming
+      }
+    }
+  }
+`;
+
+export const BRAND = gql`
+  query brand($slug: String!) {
+    brand(where: { slug: $slug }) {
+      title
+      slug
+      thumbnail {
+        url
+      }
+      description
+      gallery {
+        url
       }
     }
   }

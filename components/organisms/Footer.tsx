@@ -7,12 +7,24 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="w-full h-44 bg-black/30">
-      <div className="flex flex-col items-center justify-start pt-10">
+    <div className="w-full h-full bg-black/30 p-4">
+      <div className="flex flex-col gap-5 items-center justify-start pt-6">
         <figure className="w-[300px] overflow-hidden">
           <Image src={logo} alt="PK Entertainment" width={1000} height={300} />
         </figure>
-        <div></div>
+        <div className="text-white">
+          <ul className="flex lg:flex-row flex-col gap-2 items-center cursor-pointer">
+            <li>About Us</li>
+            <li className="lg:block hidden">|</li>
+            <li>Careers</li>
+            <li className="lg:block hidden">|</li>
+            <li>Partnership</li>
+            <li className="lg:block hidden">|</li>
+            <li>Terms & Conditions</li>
+            <li className="lg:block hidden">|</li>
+            <li>Privacy Policy</li>
+          </ul>
+        </div>
         <div className="flex flex-row text-white gap-10">
           <div>
             <BsTwitter />
@@ -23,6 +35,9 @@ const Footer = (props: Props) => {
           <div>
             <BsInstagram />
           </div>
+        </div>
+        <div>
+          <h3 className="text-white">Copyrights © 2023 PK Entertainment</h3>
         </div>
       </div>
     </div>

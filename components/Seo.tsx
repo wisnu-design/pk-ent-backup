@@ -3,7 +3,7 @@ import React from "react";
 
 interface SEO {
   metaTitle: string;
-  metaDesc: string;
+  metaDesc: any;
   metaKey: string;
 }
 

@@ -35,6 +35,10 @@ export interface Brands {
   city?: string;
 }
 
+export interface Brand {
+  brand: Brands;
+}
+
 export interface ClientData {
   name: string;
   slug: string;
@@ -50,7 +54,7 @@ export type Client = {
 export async function getServerSideProps({ params }: any) {
   const slug: string = params.slug;
   const data: any = await api.request(CLIENT, { slug });
-  const client: string = data.client;
+  const client: any = data.client;
 
   return {
     props: {

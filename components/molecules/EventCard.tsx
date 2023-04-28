@@ -111,9 +111,14 @@ const EventCard = ({ data }: EventCardProps) => {
                 <AiOutlineInfoCircle size={30} />
               </Link>
             </div>
-            <p className="text-white text-[14px] w-[150px] font-bold">
-              {data.title}
-            </p>
+            <div>
+              <p className="text-white text-[18px] w-full font-bold">
+                {data.band}
+              </p>
+              <p className="text-white text-[14px] w-full font-medium">
+                {data.title}
+              </p>
+            </div>
           </div>
 
           <p className=" text-white font-semibold mt-4 text-[10px] lg:text-[14px]">

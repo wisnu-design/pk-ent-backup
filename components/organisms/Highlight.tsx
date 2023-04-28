@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 import { BsChevronCompactRight } from "react-icons/bs";
+import InstagramCard from "../molecules/InstagramCard";
 
 type Props = {};
 
@@ -25,13 +27,13 @@ const Highlight = (props: Props) => {
         </div>
       </div>
 
-      <div className="flex lg:flex-row flex-col bg-white w-full h-[56.25vw]">
-        <div className="flex flex-col w-3/12 h-auto bg-cyan-400">
-          <div className="w-full bg-slate-300">aa</div>
-          <div className="w-full bg-slate-300">aa</div>
-        </div>
-        <div className="flex flex-col w-6/12 bg-cyan-500">aaa</div>
-        <div className="flex flex-col w-3/12 bg-cyan-400">aaa</div>
+      <div className="flex flex-wrap justify-center gap-5 lg:flex-row w-full h-full">
+        <InstagramCard />
+        <InstagramCard />
+        <InstagramCard />
+        <InstagramCard />
+        <InstagramCard />
+        <InstagramCard />
       </div>
     </div>
   );

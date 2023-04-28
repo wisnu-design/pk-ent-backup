@@ -44,18 +44,12 @@ const Navbaritems = () => {
             className={`text-white font-medium mt-[2px] transition `}
           />
         </Link>
-        <ul className="bg-black hidden absolute top-6 z-50 left-0 py-5 flex-col border-2 border-gray-800 group-hover:flex group-hover:flex-col gap-2 w-[150%]">
+        <ul className="bg-black hidden rounded-md absolute top-6 z-50 left-0 py-5 flex-col border-2 border-gray-800 group-hover:flex group-hover:flex-col gap-2 w-[150%]">
           <li className="px-3 text-center text-white hover:underline group-hover:flex">
             <Link href="#">About Us</Link>
           </li>
           <li className="px-3 text-center text-white hover:underline group-hover:flex">
             <Link href="#">Our Team</Link>
-          </li>
-          <li className="px-3 text-center text-white hover:underline group-hover:flex">
-            <Link href="#">Our Brands</Link>
-          </li>
-          <li className="px-3 text-center text-white hover:underline group-hover:flex">
-            <Link href="#">Clients</Link>
           </li>
         </ul>
         {/*
@@ -67,11 +61,13 @@ const Navbaritems = () => {
           Concert
         </Link>
       </li>
+      {/*
       <li className="text-white font-medium cursor-pointer transition">
         <Link className="hover:text-gray-300 " href="/brand-activation">
           Brand Activation
         </Link>
       </li>
+       */}
     </ul>
   );
 };
