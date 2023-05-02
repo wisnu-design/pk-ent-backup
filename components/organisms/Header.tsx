@@ -84,9 +84,7 @@ const Header = (props: Props) => {
           alt="PK Entertainment"
           onClick={handleClick}
         />
-        <div className="lg:flex ml-8 gap-7 hidden">
-          <Navbaritems />
-        </div>
+        <div className="lg:flex ml-8 gap-7 hidden"></div>
         <div className="lg:hidden flex flex-row items-center gap-7 ml-auto cursor-pointer relative">
           <BsSearch className="text-white" />
           <div
@@ -110,6 +108,7 @@ const Header = (props: Props) => {
         </div>
 
         <div className="hidden lg:flex lg:flex-row ml-auto gap-7 items-center">
+          <Navbaritems />
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BsSearch className="text-white font-bold" />
           </div>

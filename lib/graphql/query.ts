@@ -105,6 +105,7 @@ export const CONCERT = gql`
         type
         price
         ticketLink
+        colour
       }
       city
       eventStage

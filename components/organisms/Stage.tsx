@@ -15,6 +15,7 @@ interface EventData {
   city?: string;
   slug?: string;
   stageLayout?: any;
+  color?: any;
   tickets?: any;
   soldOut?: boolean;
 }
@@ -97,19 +98,25 @@ const Stage = ({ concert }: SingleEvent) => {
                         </div>
                       </div>
                       <div className="w-4/12 flex items-center">
-                        <Link
-                          target="_blank"
-                          className="flex "
-                          href={ticket.ticketLink}
+                        <button
+                          className={`bg-[${ticket.colour}] hover:bg-yellow-600 text-white font-semibold py-2 px-4 w-9/12 rounded-full inline-flex items-center`}
                         >
-                          <p className="text-white font-semibold text-[20px]">
-                            IDR {ticket.price}
-                          </p>
-                          <BsChevronCompactRight
-                            className="text-white"
-                            size={30}
-                          />
-                        </Link>
+                          <svg
+                            className="w-6 h-6 mr-2"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M14 2v8a2 2 0 0 1-2 2H4v10h16V12h-8a2 2 0 0 1-2-2V2z" />
+                            <path d="M14 2v8a2 2 0 0 0 2 2h6V2h-8z" />
+                            <line x1="4" y1="22" x2="20" y2="22" />
+                          </svg>
+                          IDR {ticket.price}
+                        </button>
                       </div>
                     </div>
                   ) : null}

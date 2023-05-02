@@ -27,12 +27,18 @@ const Navbaritems = () => {
   }, []);
 
   return (
-    <ul className="flex gap-7">
+    <ul className="flex gap-10 text-[18px]">
       <li className="text-white font-medium cursor-pointer transition">
         <Link className="hover:text-gray-300 " href="/">
           Home
         </Link>
       </li>
+      <li className="text-white font-medium cursor-pointer transition">
+        <Link className="hover:text-gray-300 " href="/">
+          About Us
+        </Link>
+      </li>
+      {/* 
       <li className="text-white font-medium cursor-pointer transition relative group">
         <Link
           className="hover:text-gray-300 flex flex-row gap-2 items-center"
@@ -52,13 +58,23 @@ const Navbaritems = () => {
             <Link href="#">Our Team</Link>
           </li>
         </ul>
-        {/*
+        
         <CompanyMenuChild visible={showCompanyChild} />
-         */}
-      </li>
+        
+      </li>*/}
       <li className="text-white font-medium cursor-pointer transition">
         <Link className="hover:text-gray-300 " href="/concert">
-          Concert
+          Concerts
+        </Link>
+      </li>
+      <li className="text-white font-medium cursor-pointer transition">
+        <Link className="hover:text-gray-300 " href="#">
+          News
+        </Link>
+      </li>
+      <li className="text-white font-medium cursor-pointer transition">
+        <Link className="hover:text-gray-300 " href="#">
+          Contact
         </Link>
       </li>
       {/*

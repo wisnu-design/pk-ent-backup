@@ -15,19 +15,20 @@ const Highlight = (props: Props) => {
           <div className="flex gap-2">
             <div className="w-[1px] h-[25px] md:h-[30px] lg:h-[40px] bg-white/30 backdrop-blur-md"></div>
             <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
-              Highlights
+              Social
             </p>
           </div>
           <Link className="flex gap-2" href="#">
-            <p className="text-white text-sm md:text-md lg:text-lg font-light mb-4">
-              View All
-            </p>
-            <BsChevronCompactRight className="text-white lg:mt-[7px] md:mt-[3px] mt-[3px]" />
+            <p className="text-white text-sm md:text-md lg:text-lg font-light mb-4"></p>
           </Link>
         </div>
       </div>
 
       <div className="flex flex-wrap justify-center gap-5 lg:flex-row w-full h-full">
+        <InstagramCard />
+        <InstagramCard />
+        <InstagramCard />
+        <InstagramCard />
         <InstagramCard />
         <InstagramCard />
         <InstagramCard />
