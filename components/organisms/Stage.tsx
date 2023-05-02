@@ -99,7 +99,7 @@ const Stage = ({ concert }: SingleEvent) => {
                       </div>
                       <div className="w-4/12 flex items-center">
                         <button
-                          className={`bg-[${ticket.colour}] hover:bg-yellow-600 text-white font-semibold py-2 px-4 w-9/12 rounded-full inline-flex items-center`}
+                          className={` hover:bg-yellow-600 text-white font-semibold py-2 px-4 w-9/12 rounded-full inline-flex items-center`}
                         >
                           <svg
                             className="w-6 h-6 mr-2"
