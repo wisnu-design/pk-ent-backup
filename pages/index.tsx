@@ -33,8 +33,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ concerts, brands, billboard, feed }: any) {
-  console.log(feed);
-
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     const options: any = { day: "numeric", month: "long", year: "numeric" };

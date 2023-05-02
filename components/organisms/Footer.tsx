@@ -18,19 +18,22 @@ const Footer = (props: Props) => {
                 alt="PK Entertainment"
                 width={1000}
                 height={10}
+                className="lg:w-full w-6/12 p-2 lg:p-0"
               />
             </figure>
             <div className="text-white pt-5 w-6/12 pl-4 flex flex-col gap-5">
-              <p className="text-white">
+              <p className="text-white lg:text-[14px] text-[10px]">
                 Office 88 Kota Kasablanka 9th Floor Unit G Jl. Casablanca Raya
                 Kav. 88, Jakarta
               </p>
-              <p className="text-white">Phone: (021) 29475573</p>
+              <p className="text-white lg:text-[14px] text-[10px]">
+                Phone: (021) 29475573
+              </p>
             </div>
           </div>
-          <div className="flex flex-col items-center lg:w-4/12 w-full p-6 lg:p-0">
+          <div className="flex flex-col lg:items-center items-start lg:w-6/12 w-full p-6 lg:p-0">
             <div className="text-white font-black uppercase">
-              <h1 className="text-[30px] py-10">Get Connected</h1>
+              <h1 className="lg:text-[30px] lg:py-10 py-5">Get Connected</h1>
             </div>
             <div className="flex ">
               <form className="flex flex-col gap-4" action="#">
@@ -47,7 +50,10 @@ const Footer = (props: Props) => {
                     id="agree"
                     required
                   />
-                  <label htmlFor="agree" className="text-white">
+                  <label
+                    htmlFor="agree"
+                    className="text-white lg:text-[14px] text-[10px]"
+                  >
                     I would like PK Entertainment to send me information about
                     the latest events, information and offers.
                   </label>
@@ -61,7 +67,7 @@ const Footer = (props: Props) => {
               </form>
             </div>
           </div>
-          <div className="flex flex-col gap-4 lg:w-3/42 w-full items-center">
+          <div className="flex flex-col gap-4 lg:w-3/12 w-full items-center">
             <h2 className="text-white text-[20px] font-bold">Follow Us</h2>
             <div className="flex gap-3 items-center cursor-pointer">
               <BsFacebook className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
@@ -76,7 +82,7 @@ const Footer = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="flex gap-2 lg:gap-0 lg:flex-row flex-col-reverse justify-between border-white border-t-2 mt-10 pt-3">
+        <div className="flex gap-2 lg:gap-0 lg:flex-row flex-col-reverse justify-between border-white border-t-2 mt-10 pt-3 p-2 lg:p-0">
           <div>
             <p className="text-white font-light text-[14px]">
               © 2023 PK Entertainment All Rights Reserved

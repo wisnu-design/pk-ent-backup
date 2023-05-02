@@ -40,6 +40,7 @@ export const QUERY = gql`
       thumbnail {
         url
       }
+      band
       title
       slug
       city

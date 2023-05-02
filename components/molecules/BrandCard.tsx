@@ -31,6 +31,9 @@ const BrandCard = ({ data }: BrandCard) => {
         />
         <div className="bg-zinc-800/50 lg:backdrop-blur-lg w-full lg:h-[6vw] md:h-[5vw] lg:p-3 h-full p-2 rounded-b-xl shadow-xl overflow-hidden">
           <p className="text-white font-semibold lg:text-[16px] text-[16px]">
+            {data.band}
+          </p>
+          <p className="text-white font-normal lg:text-[12px] text-[12px]">
             {data.title}
           </p>
           <p className=" text-white font-semibold mt-4 text-[10px] lg:text-[14px]">

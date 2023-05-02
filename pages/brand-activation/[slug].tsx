@@ -25,6 +25,7 @@ import BrandHeading from "@/components/molecules/BrandHeading";
 import Link from "next/link";
 
 export interface Brands {
+  band?: string;
   title: string;
   slug: any;
   thumbnail?: any;

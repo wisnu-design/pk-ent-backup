@@ -11,9 +11,11 @@ import React, { useState } from "react";
 
 const Index = ({ concerts }: Events) => {
   const [upcoming, setUpcoming] = useState(true);
+  const [title, setTitle] = useState("Upcoming Events");
 
-  const toggleUpcoming = (value: any) => {
+  const toggleUpcoming = (value: boolean, text: string) => {
     setUpcoming(value);
+    setTitle(text);
   };
 
   const now = new Date();
@@ -40,9 +42,9 @@ const Index = ({ concerts }: Events) => {
               ? "bg-black/30  text-white font-bold "
               : "bg-white text-black scale-90"
           } px-4 py-2 rounded-l-lg transition-all`}
-          onClick={() => toggleUpcoming(true)}
+          onClick={() => toggleUpcoming(true, "Upcoming Events")}
         >
-          Upcoming Events
+          {title === "Upcoming Events" ? "Upcoming Events" : "Upcoming Events"}
         </button>
         <button
           className={`${
@@ -50,10 +52,13 @@ const Index = ({ concerts }: Events) => {
               ? "bg-white text-black scale-90"
               : "bg-black/30  text-white font-bold "
           } px-4 py-2 rounded-r-lg  transition-all`}
-          onClick={() => toggleUpcoming(false)}
+          onClick={() => toggleUpcoming(false, "Past Events")}
         >
-          Past Events
+          {title === "Upcoming Events" ? "Past Events" : "Past Events"}
         </button>
+      </div>
+      <div className="max-w-[1600px] mx-auto pl-3 text-white font-bold text-3xl pb-3">
+        {title === "Upcoming Events" ? "Upcoming Events" : "Past Events"}
       </div>
       <div className="flex flex-wrap lg:flex-row flex-col max-w-[1600px] lg:h-screen h-full mx-auto pb-10 lg:pb-3">
         {upcoming
@@ -62,6 +67,7 @@ const Index = ({ concerts }: Events) => {
                 <div key={index} className="transition-all">
                   <BrandCard
                     data={{
+                      band: concert.band,
                       title: concert.title,
                       slug: "/concert/" + concert.slug,
                       thumbnail: concert.thumbnail,
