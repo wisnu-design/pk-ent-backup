@@ -33,12 +33,7 @@ const InstagramCard = (props: Props) => {
             src={props.media_url}
           />
         ) : (
-          <Image
-            src={props.media_url}
-            alt="thumbnail"
-            width={1000}
-            height={10}
-          />
+          <img src={props.media_url} alt="thumbnail" width={1000} height={10} />
         )}
       </figure>
       <div className="absolute bg-zinc-800/50 lg:p-4 p-1 top-0 w-full h-full  group-hover:transition-all opacity-0 group-hover:opacity-100 flex  flex-col justify-between items-center backdrop-blur-lg  transition">
