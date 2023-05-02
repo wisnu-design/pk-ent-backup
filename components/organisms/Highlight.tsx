@@ -34,19 +34,7 @@ const Highlight = ({ datas }: Instagram) => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-5 lg:flex-row w-full h-full">
-        {datas.map((data, index) => {
-          return (
-            <div key={index}>
-              <InstagramCard
-                caption={data.caption}
-                date={data.date}
-                media_url={data.media_url}
-              />
-            </div>
-          );
-        })}
-      </div>
+      <div className="flex flex-wrap justify-center gap-5 lg:flex-row w-full h-full"></div>
     </div>
   );
 };
