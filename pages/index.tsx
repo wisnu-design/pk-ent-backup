@@ -18,7 +18,7 @@ const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps() {
   const { concerts, brands }: any = await api.request(HOME);
   const { billboard }: any = await api.request(BILLBOARD);
-  const url = `https://graph.instagram.com/me/media?fields=id,username,caption,like_count,media_url,timestamp,media_type,permalink,thumbnail_url&access_token=IGQVJXWXpsRDJFdHlLUW4teExVdWNqcDh1bnJMZAjQ2cDRWQUdWdlNKaUszclF5UXlfZAThFWjI4X2huRFNVT0xWbXBmZAnRaTksyMGZAkcGpENFg3b1BqUmc0eHJ6UHlpYnB1aTVoMFVMVFBwVUs0STA4LWtPNTcybEhTVm9v`;
+  const url = `https://v1.nocodeapi.com/wisnucurtis/instagram/nRLYVtVrQuBzdZkA`;
   const data = await fetch(url);
   const feed = await data.json();
 

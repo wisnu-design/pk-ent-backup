@@ -33,13 +33,13 @@ const Index = ({ concerts }: Events) => {
         metaKey="Promotor Event"
       />
       <Header />
-      <div className="flex justify-center mb-8 pt-36">
+      <div className="flex justify-center mb-8 lg:pt-36 pt-20 ">
         <button
           className={`${
             upcoming
-              ? "bg-black/30 backdrop-blur-lg text-white"
-              : "bg-white text-black"
-          } px-4 py-2 rounded-l-lg shadow-xl transition-all`}
+              ? "bg-black/30  text-white font-bold "
+              : "bg-white text-black scale-90"
+          } px-4 py-2 rounded-l-lg transition-all`}
           onClick={() => toggleUpcoming(true)}
         >
           Upcoming Events
@@ -47,15 +47,15 @@ const Index = ({ concerts }: Events) => {
         <button
           className={`${
             upcoming
-              ? "bg-white text-black"
-              : "bg-black/30 backdrop-blur-lg text-white"
-          } px-4 py-2 rounded-r-lg shadow-xl transition-all`}
+              ? "bg-white text-black scale-90"
+              : "bg-black/30  text-white font-bold "
+          } px-4 py-2 rounded-r-lg  transition-all`}
           onClick={() => toggleUpcoming(false)}
         >
           Past Events
         </button>
       </div>
-      <div className="flex flex-wrap max-w-[1600px] h-screen mx-auto">
+      <div className="flex flex-wrap lg:flex-row flex-col max-w-[1600px] lg:h-screen h-full mx-auto pb-10 lg:pb-3">
         {upcoming
           ? upcomingEvents.map((concert, index) => {
               return (
