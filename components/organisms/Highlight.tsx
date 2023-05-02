@@ -7,7 +7,17 @@ import InstagramCard from "../molecules/InstagramCard";
 
 type Props = {};
 
-const Highlight = (props: Props) => {
+type data = {
+  caption: any;
+  date: any;
+  media_url: any;
+};
+
+type Instagram = {
+  datas: data[];
+};
+
+const Highlight = ({ datas }: Instagram) => {
   return (
     <div className="px-4 md:px-12 mt-4 space-y-8">
       <div>
@@ -25,16 +35,17 @@ const Highlight = (props: Props) => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-5 lg:flex-row w-full h-full">
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
-        <InstagramCard />
+        {datas.map((data, index) => {
+          return (
+            <div key={index}>
+              <InstagramCard
+                caption={data.caption}
+                date={data.date}
+                media_url={data.media_url}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

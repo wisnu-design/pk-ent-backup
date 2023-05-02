@@ -8,10 +8,10 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="w-full h-full bg-black/30 py-6 px-16">
+    <div className="w-full h-full bg-black/30 lg:py-6 lg:px-16">
       <div className="flex flex-col">
-        <div className="flex flex-row w-full justify-between items-center">
-          <div className="flex flex-col w-6/12">
+        <div className="flex lg:flex-row flex-col w-full justify-between items-center">
+          <div className="flex flex-col lg:w-6/12 w-full">
             <figure className="w-[300px]">
               <Image
                 src={logo}
@@ -28,7 +28,7 @@ const Footer = (props: Props) => {
               <p className="text-white">Phone: (021) 29475573</p>
             </div>
           </div>
-          <div className="flex flex-col items-center w-4/12">
+          <div className="flex flex-col items-center lg:w-4/12 w-full p-6 lg:p-0">
             <div className="text-white font-black uppercase">
               <h1 className="text-[30px] py-10">Get Connected</h1>
             </div>
@@ -61,29 +61,29 @@ const Footer = (props: Props) => {
               </form>
             </div>
           </div>
-          <div className="flex flex-col gap-4 w-3/12 items-center">
+          <div className="flex flex-col gap-4 lg:w-3/42 w-full items-center">
             <h2 className="text-white text-[20px] font-bold">Follow Us</h2>
             <div className="flex gap-3 items-center cursor-pointer">
-              <BsFacebook className="w-[50px] h-[50px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
-              <BsInstagram className="w-[50px] h-[50px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
-              <BsTwitter className="w-[50px] h-[50px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
+              <BsFacebook className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
+              <BsInstagram className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
+              <BsTwitter className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
             </div>
           </div>
-          <div className="flex flex-col gap-4 w-3/12">
+          <div className="flex flex-col gap-4 lg:w-3/12 w-full items-center mt-10 lg:mt-0">
             <h2 className="text-white text-[20px] font-bold">Contact Us</h2>
             <div className="flex gap-3 text-white items-center cursor-pointer">
               <h3>contact@pk-ent.com</h3>
             </div>
           </div>
         </div>
-        <div className="flex flex-row justify-between border-white border-t-2 mt-10 pt-3">
+        <div className="flex gap-2 lg:gap-0 lg:flex-row flex-col-reverse justify-between border-white border-t-2 mt-10 pt-3">
           <div>
             <p className="text-white font-light text-[14px]">
               © 2023 PK Entertainment All Rights Reserved
             </p>
           </div>
           <div>
-            <ul className="flex gap-4 text-white">
+            <ul className="flex lg:gap-4 gap-2 text-white lg:text-[12px] text-[12px]">
               <li>
                 <Link href="#">About Us</Link>
               </li>

@@ -9,6 +9,7 @@ const nextConfig = {
       "media.graphassets.com",
       "apahabar.s3.ap-southeast-1.amazonaws.com",
       "pk-ent.com",
+      "scontent.cdninstagram.com",
     ],
   },
 
@@ -24,11 +25,6 @@ const nextConfig = {
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
-          },
-          {
-            key: "Permissions-Policy",
-            value:
-              "camera=(); battery=(self); geolocation=(); microphone=('https://a-domain.com')",
           },
           {
             key: "Referrer-Policy",
