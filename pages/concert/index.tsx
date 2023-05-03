@@ -83,6 +83,7 @@ const Index = ({ concerts }: Events) => {
                 <div key={index} className="transition-all">
                   <BrandCard
                     data={{
+                      band: concert.band,
                       title: concert.title,
                       slug: "/concert/" + concert.slug,
                       thumbnail: concert.thumbnail,

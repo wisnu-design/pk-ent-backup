@@ -96,6 +96,7 @@ export const CONCERT = gql`
       id
       title
       slug
+      band
       video {
         url
       }
@@ -107,6 +108,15 @@ export const CONCERT = gql`
         price
         ticketLink
         colour
+      }
+      highlightVideo {
+        url
+      }
+      highlightGalleries {
+        url
+      }
+      aboutThisEvent {
+        html
       }
       city
       eventStage

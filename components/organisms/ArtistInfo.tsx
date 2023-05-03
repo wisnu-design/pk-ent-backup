@@ -8,7 +8,7 @@ import SoldOut from "../atoms/SoldOut";
 
 const ArtistInfo = ({ concert }: SingleEvent) => {
   return (
-    <div className=" w-ful lg:pb-96 pb-48 -mt-[30%] relative">
+    <div className=" w-ful lg:pb-96 pb-48 -mt-[20%] relative">
       <div className="hidden lg:block absolute w-full top-0 text-white z-50">
         <div className=" md:w-[80%]  mx-auto h-auto rounded-[50px] overflow-hidden bg-zinc-400/30 backdrop-blur-xl">
           <div className="flex lg:flex-row flex-col gap-6 p-8 w-full items-center">
