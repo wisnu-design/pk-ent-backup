@@ -11,7 +11,7 @@ import React, { useState } from "react";
 
 const Index = ({ concerts }: Events) => {
   const [upcoming, setUpcoming] = useState(true);
-  const [title, setTitle] = useState("Upcoming Events");
+  const [title, setTitle] = useState("Upcoming");
 
   const toggleUpcoming = (value: boolean, text: string) => {
     setUpcoming(value);
@@ -42,9 +42,9 @@ const Index = ({ concerts }: Events) => {
               ? "bg-black/30  text-white font-bold "
               : "bg-white text-black scale-90"
           } px-4 py-2 rounded-l-lg transition-all`}
-          onClick={() => toggleUpcoming(true, "Upcoming Events")}
+          onClick={() => toggleUpcoming(true, "Upcoming")}
         >
-          {title === "Upcoming Events" ? "Upcoming Events" : "Upcoming Events"}
+          {title === "Upcoming" ? "Upcoming" : "Upcoming"}
         </button>
         <button
           className={`${
@@ -52,13 +52,13 @@ const Index = ({ concerts }: Events) => {
               ? "bg-white text-black scale-90"
               : "bg-black/30  text-white font-bold "
           } px-4 py-2 rounded-r-lg  transition-all`}
-          onClick={() => toggleUpcoming(false, "Past Events")}
+          onClick={() => toggleUpcoming(false, "Past")}
         >
-          {title === "Upcoming Events" ? "Past Events" : "Past Events"}
+          {title === "Upcoming" ? "Past concert" : "Past concert"}
         </button>
       </div>
       <div className="max-w-[1600px] mx-auto pl-3 text-white font-bold text-3xl pb-3">
-        {title === "Upcoming Events" ? "Upcoming Events" : "Past Events"}
+        {title === "Upcoming" ? "Upcoming concert" : "Past concert"}
       </div>
       <div className="flex flex-wrap lg:flex-row flex-col max-w-[1600px] lg:h-screen h-full mx-auto pb-10 lg:pb-3">
         {upcoming

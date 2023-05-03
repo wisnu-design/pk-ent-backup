@@ -17,7 +17,7 @@ const MobileNav: React.FC<MobileMenuProps> = ({ visible }) => {
           <Link href="/">Home</Link>
         </div>
         <div className="px-3 text-center text-white hover:underline">
-          About Us
+          <Link href="/about-us">About Us</Link>
         </div>
         <div className="px-3 text-center text-white hover:underline">
           <Link href="/concert/">Concerts</Link>

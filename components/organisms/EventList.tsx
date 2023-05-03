@@ -39,7 +39,7 @@ const EventList = ({ data, title }: EventListProps) => {
               {title}
             </p>
           </div>
-          <Link className="flex gap-2" href="#">
+          <Link className="flex gap-2" href="/concert">
             <p className="text-white text-sm md:text-md lg:text-lg font-light mb-4">
               View All
             </p>

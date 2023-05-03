@@ -40,7 +40,7 @@ const Footer = (props: Props) => {
                 <input
                   type="email"
                   placeholder="Email Address"
-                  className="w-full p-2 rounded-lg"
+                  className="w-full lg:p-2 py-0 text-[10px] lg:text-[16px] rounded-lg"
                 />
                 <div className="flex gap-2 items-start">
                   <input
@@ -59,7 +59,7 @@ const Footer = (props: Props) => {
                   </label>
                 </div>
                 <button
-                  className="bg-zinc-800/80 hover:bg-zinc-700/30 transition-all text-white p-2 rounded-lg"
+                  className="bg-zinc-800/80 hover:bg-zinc-700/30 transition-all text-white lg:p-2 w-[150px] rounded-lg"
                   type="submit"
                 >
                   Subscribe
