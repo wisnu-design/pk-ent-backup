@@ -26,10 +26,10 @@ interface ContactFormElement extends EventTarget {
 }
 
 const index = (props: Props) => {
-  const emailHandler = async (event: FormEvent<HTMLFormElement>) => {
+  const emailHandler = async (event: any) => {
     event.preventDefault();
-    const target = event.target as ContactFormElement;
-    const { name, email, phone, subject, message } = target;
+
+    const { name, email, phone, subject, message } = event.target;
 
     const response = await fetch("/api/contact", {
       method: "POST",
