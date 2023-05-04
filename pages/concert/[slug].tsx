@@ -84,6 +84,7 @@ const Concert = ({ concert }: SingleEvent) => {
       <div className="lg:pt-44 lg:mt-0 -mt-44">
         <ArtistInfo
           concert={{
+            profilePicture: concert.profilePicture,
             title: concert.title,
             thumbnail: concert.thumbnail,
             eventStage: concert.eventStage,

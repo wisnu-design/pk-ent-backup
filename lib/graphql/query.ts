@@ -100,6 +100,9 @@ export const CONCERT = gql`
       video {
         url
       }
+      profilePicture {
+        url
+      }
       thumbnail {
         url
       }

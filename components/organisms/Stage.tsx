@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { BsChevronCompactRight } from "react-icons/bs";
 
 interface EventData {
+  profilePicture?: any;
   band?: string;
   title: string;
   description?: string;
