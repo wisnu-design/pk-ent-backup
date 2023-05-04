@@ -26,10 +26,10 @@ interface ContactFormElement extends EventTarget {
 }
 
 const index = (props: Props) => {
-  const emailHandler = async (event: any) => {
+  const emailHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const { name, email, phone, subject, message } = event.target;
+    const target = event.target as ContactFormElement;
+    const { name, email, phone, subject, message } = target;
 
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -65,6 +65,7 @@ const index = (props: Props) => {
         metaKey="Event Promotor"
       />
       <Header />
+
       <div className="relative h-[40.25vw]">
         <video
           className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
