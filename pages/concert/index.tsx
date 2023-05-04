@@ -35,11 +35,11 @@ const Index = ({ concerts }: Events) => {
         metaKey="Promotor Event"
       />
       <Header />
-      <div className="flex justify-center mb-8 lg:pt-36 pt-20">
+      <div className="flex justify-center pb-3 lg:pt-36 pt-20">
         <button
           className={`${
             upcoming
-              ? "bg-black/30  text-white font-bold "
+              ? "bg-black/30 border-white border-2  text-white font-bold "
               : "bg-white text-black scale-90"
           } px-4 py-2 rounded-l-lg transition-all`}
           onClick={() => toggleUpcoming(true, "Upcoming")}
@@ -50,17 +50,17 @@ const Index = ({ concerts }: Events) => {
           className={`${
             upcoming
               ? "bg-white text-black scale-90"
-              : "bg-black/30  text-white font-bold "
+              : "bg-black/30 border-white border-2  text-white font-bold "
           } px-4 py-2 rounded-r-lg  transition-all`}
           onClick={() => toggleUpcoming(false, "Past")}
         >
           {title === "Upcoming" ? "Past concert" : "Past concert"}
         </button>
       </div>
-      <div className="max-w-[1370px] mx-auto pl-3 text-white font-bold lg:text-3xl text-md pb-3">
+      <div className="max-w-[1370px] mx-auto pl-3 text-center text-white font-bold lg:text-3xl text-md pb-3">
         {title === "Upcoming" ? "Upcoming concert" : "Past concert"}
       </div>
-      <div className="flex flex-wrap lg:flex-row flex-col max-w-[1370px] h-full mx-auto pb-10 lg:pb-32">
+      <div className="flex flex-wrap lg:flex-row flex-col max-w-[1370px] justify-center items-center h-full mx-auto pb-10 lg:pb-32">
         {upcoming
           ? upcomingEvents.map((concert, index) => {
               return (
