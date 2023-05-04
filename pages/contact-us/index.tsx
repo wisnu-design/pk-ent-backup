@@ -124,10 +124,6 @@ const index = (props: Props) => {
                 </div>
 
                 <div className="mt-5 lg:mt-5">
-                  <ReCAPTCHA
-                    sitekey="6Ldw790lAAAAAI0zqqN7LMKnY4YOTMIAqilL45hq"
-                    onChange={onChange}
-                  />
                   <button
                     type="submit"
                     className="bg-zinc-900 px-5 py-2 rounded-xl mt-2 font-medium hover:bg-white hover:text-black transition-all"
