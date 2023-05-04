@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import logo from "@/public/images/logo.png";
+import logo from "@/public/images/pkgroup.png";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ const Footer = (props: Props) => {
       <div className="flex flex-col ">
         <div className="flex lg:flex-row flex-col gap-2 w-full justify-between items-start pt-2">
           <div className="flex flex-col lg:w-3/12 w-full">
-            <figure className="w-[300px]">
+            <figure className="w-[300px] pb-5">
               <Image
                 src={logo}
                 alt="PK Entertainment"
