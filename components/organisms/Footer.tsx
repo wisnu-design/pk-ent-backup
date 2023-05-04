@@ -9,9 +9,9 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <div className="w-full h-full bg-black/30 lg:py-6 lg:px-16">
-      <div className="flex flex-col">
-        <div className="flex lg:flex-row flex-col w-full justify-between items-center">
-          <div className="flex flex-col lg:w-6/12 w-full">
+      <div className="flex flex-col ">
+        <div className="flex lg:flex-row flex-col gap-2 w-full justify-between items-start pt-2">
+          <div className="flex flex-col lg:w-3/12 w-full">
             <figure className="w-[300px]">
               <Image
                 src={logo}
@@ -21,7 +21,7 @@ const Footer = (props: Props) => {
                 className="lg:w-full w-6/12 p-2 lg:p-0"
               />
             </figure>
-            <div className="text-white pt-5 w-6/12 pl-4 flex flex-col gap-5">
+            <div className="text-white w-6/12 pl-4 flex flex-col gap-5">
               <p className="text-white lg:text-[14px] text-[10px]">
                 Office 88 Kota Kasablanka 9th Floor Unit G Jl. Casablanca Raya
                 Kav. 88, Jakarta
@@ -31,10 +31,10 @@ const Footer = (props: Props) => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col lg:items-center items-start lg:w-6/12 w-full p-6 lg:p-0">
-            <div className="text-white font-black uppercase">
-              <h1 className="lg:text-[30px] lg:py-10 py-5">Get Connected</h1>
-            </div>
+          <div className="flex flex-col items-start lg:w-4/12 lg:items-center w-full lg:pt-4 p-4">
+            <h1 className="text-white font-medium text-[20px] pb-2">
+              Get Connected
+            </h1>
             <div className="flex ">
               <form className="flex flex-col gap-4" action="#">
                 <input
@@ -58,54 +58,66 @@ const Footer = (props: Props) => {
                     the latest events, information and offers.
                   </label>
                 </div>
-                <button
-                  className="bg-zinc-800/80 hover:bg-zinc-700/30 transition-all text-white lg:p-2 w-[150px] rounded-lg"
-                  type="submit"
-                >
-                  Subscribe
-                </button>
+                <div className="flex justify-center items-center">
+                  <button
+                    className="bg-zinc-800/80 hover:bg-zinc-700/30 transition-all text-white lg:p-2 w-[150px] rounded-lg"
+                    type="submit"
+                  >
+                    Subscribe
+                  </button>
+                </div>
               </form>
             </div>
           </div>
-          <div className="flex flex-col gap-4 lg:w-3/12 w-full items-center">
-            <h2 className="text-white text-[20px] font-bold">Follow Us</h2>
-            <div className="flex gap-3 items-center cursor-pointer">
-              <BsFacebook className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
-              <BsInstagram className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
-              <BsTwitter className="lg:w-[50px] lg:h-[50px] w-[40px] h-[40px] rounded-full border-white border-2 p-2 text-white hover:bg-white hover:text-black transition-all" />
+          <div className="flex lg:flex-row flex-col lg:w-4/12 gap-3 w-full justify-center items-center h-[200px]">
+            <div className="flex flex-col gap-4 lg:w-12/12 w-full items-center justify-center pt-3">
+              <h2 className="text-white lg:text-[20px] text-[14px] font-bold">
+                Follow Us
+              </h2>
+              <div className="flex gap-3 items-center cursor-pointer">
+                <BsFacebook className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+                <BsInstagram className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+                <BsTwitter className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-4 lg:w-3/12 w-full items-center mt-10 lg:mt-0">
-            <h2 className="text-white text-[20px] font-bold">Contact Us</h2>
-            <div className="flex gap-3 text-white items-center cursor-pointer">
-              <h3>contact@pk-ent.com</h3>
+            <div className="flex flex-col gap-4 lg:w-12/12 w-full items-center justify-center mt-10 lg:mt-0">
+              <h2 className="text-white lg:text-[20px] text-[14px] font-bold">
+                Contact Us
+              </h2>
+              <div className="flex gap-3 text-white items-center cursor-pointer">
+                <h3 className="lg:text-[16px] text-[12px]">
+                  contact@pk-ent.com
+                </h3>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex gap-2 lg:gap-0 lg:flex-row flex-col-reverse justify-between border-white border-t-2 mt-10 pt-3 p-2 lg:p-0">
-          <div>
-            <p className="text-white font-light text-[14px]">
-              © 2023 PK Entertainment All Rights Reserved
-            </p>
-          </div>
-          <div>
-            <ul className="flex lg:gap-4 gap-2 text-white lg:text-[12px] text-[12px]">
-              <li>
-                <Link href="#">About Us</Link>
-              </li>
-              <li>
-                <Link href="#">Careers</Link>
-              </li>
-              <li>
-                <Link href="#">Term & Conditions</Link>
-              </li>
-              <li>
-                <Link href="#">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="#">Contact Us</Link>
-              </li>
-            </ul>
+        <div className="flex gap-2 lg:gap-0  lg:flex-row flex-col-reverse justify-between border-white border-t-2 mt-10 pt-3 p-2 lg:p-0">
+          <div className="flex lg:flex-row flex-col-reverse gap-5 justify-between w-full pt-2">
+            <div>
+              <p className="text-white font-light text-[14px]">
+                © 2023 PK Entertainment All Rights Reserved
+              </p>
+            </div>
+            <div>
+              <ul className="flex lg:gap-4 gap-2 text-white lg:text-[12px] text-[12px]">
+                <li>
+                  <Link href="#">About Us</Link>
+                </li>
+                <li>
+                  <Link href="#">Careers</Link>
+                </li>
+                <li>
+                  <Link href="#">Term & Conditions</Link>
+                </li>
+                <li>
+                  <Link href="#">Privacy Policy</Link>
+                </li>
+                <li>
+                  <Link href="#">Contact Us</Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -88,6 +88,7 @@ const index = (props: Props) => {
           </div>
         </div>
       </div>
+      {/*
       <div className="pb-10 lg:mt-24">
         <div className="max-w-[1600px] flex flex-col items-center mx-auto text-white">
           <div className="flex justify-center pb-10">
@@ -192,6 +193,8 @@ const index = (props: Props) => {
           </div>
         </div>
       </div>
+      */}
+
       <Footer />
     </>
   );

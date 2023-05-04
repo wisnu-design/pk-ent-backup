@@ -10,7 +10,7 @@ import { BsChevronDown, BsSearch } from "react-icons/bs";
 
 import { motion } from "framer-motion";
 
-import logo from "@/public/images/logo.png";
+import logo from "@/public/images/logopk.png";
 import Navbaritems from "../molecules/Navbaritems";
 import MobileNav from "../molecules/MobileNav";
 import { useRouter } from "next/router";
@@ -79,7 +79,7 @@ const Header = (props: Props) => {
         }`}
       >
         <Image
-          className="w-[55%] md:w-[30%] lg:w-[20%] cursor-pointer"
+          className="w-[8%] md:w-[5%] lg:w-[3%] cursor-pointer"
           src={logo}
           alt="PK Entertainment"
           onClick={handleClick}

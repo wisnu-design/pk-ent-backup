@@ -12,11 +12,11 @@ type BrandCard = {
 const BrandCard = ({ data }: BrandCard) => {
   return (
     <Link href={data.slug}>
-      <div className="group bg-zinc-900 col-span hover:scale-100 scale-[95%] transition relative  lg:w-[27vw] w-full rounded-xl">
+      <div className="group bg-zinc-900 col-span hover:scale-100 scale-[95%] transition relative  lg:w-full w-full rounded-xl">
         <Image
           className="w-full
               cursor-pointer
-              
+              object-cover
               transition
               duration
               shadow-xl
@@ -29,7 +29,7 @@ const BrandCard = ({ data }: BrandCard) => {
           width={500}
           height={10}
         />
-        <div className="bg-zinc-800/50 lg:backdrop-blur-lg w-full lg:h-[8vw] md:h-[5vw] lg:p-3 h-full p-2 rounded-b-xl shadow-xl overflow-hidden">
+        <div className="bg-zinc-800/50 lg:backdrop-blur-lg w-full lg:h-[150px] md:h-[5vw] lg:p-3 h-full p-2 rounded-b-xl shadow-xl overflow-hidden">
           <p className="text-white font-semibold lg:text-[18px] text-[16px]">
             {data.band}
           </p>

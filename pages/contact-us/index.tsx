@@ -3,6 +3,7 @@ import Footer from "@/components/organisms/Footer";
 import Header from "@/components/organisms/Header";
 import React from "react";
 import { motion } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
 
 type Props = {};
 
@@ -37,6 +38,9 @@ const index = (props: Props) => {
       alert("Failed to send your message. Please try again.");
     }
   };
+  function onChange(value: any) {
+    console.log("Captcha value:", value);
+  }
 
   return (
     <>
@@ -46,6 +50,12 @@ const index = (props: Props) => {
         metaKey="Event Promotor"
       />
       <Header />
+      <script
+        src="https://www.google.com/recaptcha/api.js"
+        async
+        defer
+      ></script>
+
       <div className="relative h-[40.25vw]">
         <video
           className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
@@ -112,10 +122,15 @@ const index = (props: Props) => {
                     id="message"
                   ></textarea>
                 </div>
-                <div className="mt-5 lg:mt-10">
+
+                <div className="mt-5 lg:mt-5">
+                  <ReCAPTCHA
+                    sitekey="6Ldw790lAAAAAI0zqqN7LMKnY4YOTMIAqilL45hq"
+                    onChange={onChange}
+                  />
                   <button
                     type="submit"
-                    className="bg-zinc-900 px-5 py-2 rounded-xl font-medium hover:bg-white hover:text-black transition-all"
+                    className="bg-zinc-900 px-5 py-2 rounded-xl mt-2 font-medium hover:bg-white hover:text-black transition-all"
                   >
                     Send Message
                   </button>

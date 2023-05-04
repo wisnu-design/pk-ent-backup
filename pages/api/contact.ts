@@ -20,7 +20,7 @@ export default async function handler(
   const recipients = [email, "wisnubl1995@gmail.com"];
 
   const info = await transporter.sendMail({
-    from: `"noreply@pk-ent.com" <${email}>`,
+    from: `"no-reply@pk-ent.com" <${email}>`,
     to: recipients.join(", "),
     subject: subject,
     text: message,
