@@ -6,12 +6,18 @@ import React from "react";
 import about1 from "@/public/images/about1.jpg";
 import about2 from "@/public/images/1.jpg";
 import kenny from "@/public/images/kenny.png";
+import Seo from "@/components/Seo";
 
 type Props = {};
 
 const index = (props: Props) => {
   return (
     <>
+      <Seo
+        metaTitle="PK Entertainment | About Us"
+        metaDesc="PK Entertainment"
+        metaKey="Event Promotor"
+      />
       <Header />
       <div className="relative h-[40.25vw]">
         <video
@@ -54,9 +60,11 @@ const index = (props: Props) => {
               YouTube FanFest Indonesia (2015-2019), Anime Festival Asia, 40+ Go
               Food Festivals!
             </p>
-            <button className="bg-black text-white lg:text-[16px] text-[10px] px-7 py-3 mt-10 rounded-md font-medium hover:bg-white hover:text-black transition-all">
-              Reach out of us!
-            </button>
+            <div>
+              <button className="bg-zinc-800 shadow-2xl text-white lg:text-[16px] text-[10px] px-7 py-3 mt-10 rounded-md font-medium hover:bg-white hover:text-black transition-all">
+                Reach out of us!
+              </button>
+            </div>
           </div>
           <div className="lg:block hidden relative w-6/12 ">
             <div className="w-[400px] h-[400px] rounded-xl overflow-hidden absolute top-10 right-10">

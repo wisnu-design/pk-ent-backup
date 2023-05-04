@@ -35,7 +35,7 @@ const Index = ({ concerts }: Events) => {
         metaKey="Promotor Event"
       />
       <Header />
-      <div className="flex justify-center mb-8 lg:pt-36 pt-20 ">
+      <div className="flex justify-center mb-8 lg:pt-36 pt-20">
         <button
           className={`${
             upcoming
@@ -57,7 +57,7 @@ const Index = ({ concerts }: Events) => {
           {title === "Upcoming" ? "Past concert" : "Past concert"}
         </button>
       </div>
-      <div className="max-w-[1600px] mx-auto pl-3 text-white font-bold text-3xl pb-3">
+      <div className="max-w-[1600px] mx-auto pl-3 text-white font-bold lg:text-3xl text-md pb-3">
         {title === "Upcoming" ? "Upcoming concert" : "Past concert"}
       </div>
       <div className="flex flex-wrap lg:flex-row flex-col max-w-[1600px] lg:h-screen h-full mx-auto pb-10 lg:pb-3">

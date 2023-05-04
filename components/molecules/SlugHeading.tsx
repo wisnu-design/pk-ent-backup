@@ -22,10 +22,10 @@ export type SingleEvent = {
 const SlugHeading = ({ concert }: SingleEvent) => {
   return (
     <>
-      <div className="relative h-[40.25vw]">
+      <div className="relative lg:h-[40.25vw]">
         {concert.video === null ? (
           <video
-            className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] rounded-b-[100px]"
+            className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
             autoPlay
             loop
             muted={false}
@@ -33,7 +33,8 @@ const SlugHeading = ({ concert }: SingleEvent) => {
           ></video>
         ) : (
           <video
-            className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] rounded-b-[100px]"
+            className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
+            id="video"
             autoPlay
             loop
             muted={false}
