@@ -1,17 +1,35 @@
 import Seo from "@/components/Seo";
 import Footer from "@/components/organisms/Footer";
 import Header from "@/components/organisms/Header";
-import React from "react";
+import React, { FormEvent } from "react";
 import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 
 type Props = {};
 
-const index = (props: Props) => {
-  const emailHandler = async (event: any) => {
-    event.preventDefault();
+interface ContactFormElement extends EventTarget {
+  name: {
+    value: string;
+  };
+  email: {
+    value: string;
+  };
+  phone: {
+    value: string;
+  };
+  subject: {
+    value: string;
+  };
+  message: {
+    value: string;
+  };
+}
 
-    const { name, email, phone, subject, message } = event.target;
+const index = (props: Props) => {
+  const emailHandler = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const target = event.target as ContactFormElement;
+    const { name, email, phone, subject, message } = target;
 
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -38,9 +56,6 @@ const index = (props: Props) => {
       alert("Failed to send your message. Please try again.");
     }
   };
-  function onChange(value: any) {
-    console.log("Captcha value:", value);
-  }
 
   return (
     <>
@@ -50,12 +65,6 @@ const index = (props: Props) => {
         metaKey="Event Promotor"
       />
       <Header />
-      <script
-        src="https://www.google.com/recaptcha/api.js"
-        async
-        defer
-      ></script>
-
       <div className="relative h-[40.25vw]">
         <video
           className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
