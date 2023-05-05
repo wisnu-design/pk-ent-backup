@@ -68,7 +68,7 @@ const Navbaritems = () => {
         </Link>
       </li>
       <li className="text-white font-medium cursor-pointer transition">
-        <Link className="hover:text-gray-300 " href="#">
+        <Link className="hover:text-gray-300 " href="/news">
           News
         </Link>
       </li>
