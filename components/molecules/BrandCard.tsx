@@ -12,11 +12,10 @@ type BrandCard = {
 const BrandCard = ({ data }: BrandCard) => {
   return (
     <Link href={data.slug}>
-      <div className="group bg-zinc-900 col-span hover:scale-100 scale-[95%] transition relative  lg:w-full w-full rounded-xl">
+      <div className="group bg-zinc-900 col-span hover:scale-100 scale-[95%] transition relative  lg:w-[600px] w-full rounded-xl">
         <Image
           className="w-full
               cursor-pointer
-              object-cover
               transition
               duration
               shadow-xl
@@ -30,16 +29,16 @@ const BrandCard = ({ data }: BrandCard) => {
           height={10}
         />
         <div className="bg-zinc-800/50 lg:backdrop-blur-lg w-full lg:h-[150px] md:h-[5vw] lg:p-3 h-full p-2 rounded-b-xl shadow-xl overflow-hidden">
-          <p className="text-white font-semibold lg:text-[18px] text-[16px]">
+          <p className="text-white font-semibold lg:text-[20px] text-[16px]">
             {data.band}
           </p>
-          <p className="text-white font-normal lg:text-[14px] text-[12px]">
+          <p className="text-white font-normal lg:text-[16px] text-[12px]">
             {data.title}
           </p>
-          <p className=" text-white font-semibold mt-4 text-[10px] lg:text-[14px]">
+          <p className=" text-white font-semibold mt-4 text-[10px] lg:text-[16px]">
             {data.date}
           </p>
-          <p className=" text-white font-semibold mt-2 text-[12px] lg:text-[16px]">
+          <p className=" text-white font-semibold  text-[12px] lg:text-[16px]">
             {data.eventStage}
           </p>
         </div>
