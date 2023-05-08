@@ -38,27 +38,35 @@ const index = (props: Props) => {
               brand activation and creative agency was established in 2015.
             </h2>
             <p className="lg:text-[16px] text-[9px] mt-10">
-              We are a combination of visionaries, strategists, and creators who
-              come together to curate and present top notch quality events. Our
-              unconventional thinking process engages with clients and their
-              audience; ensuring that we meet all their requirements while
-              maintaining their brand identity. We are an extension of your
-              marketing team and we aim to create a memorable experience for
-              your audience.
+              PK Entertainment, Indonesia’s leading concert promoter and event,
+              brand activation and creative agency was established in 2015.
+              <br />
+              <br /> We are a combination of visionaries, strategists, and
+              creators who come together to curate and present top notch quality
+              events. Our unconventional thinking process engages with clients
+              and their audience; ensuring that we meet all their requirements
+              at the highest standards while maintaining their brand identity.
               <br />
               <br />
-              With a collective experience of over 10 years, we have an
-              impressive portfolio of handling some of the biggest concerts in
-              Jakarta including Celine Dion, Ed Sheeran, Backstreet Boys, Shawn
-              Mendes, Lany, Keshi and Westlife making us one of the biggest
-              music promoters in Indonesia.
+              We are an extension of your dream team and we aim to create a
+              memorable experience for everyone.
               <br />
-              <br /> As an events, brand and creative agency; we have the
-              experience of working together with multinational companies such
-              as Google, Facebook, Instagram, YouTube, and Gojek delivering over
-              200 offline events in the past 6 years. We also co-produced
-              YouTube FanFest Indonesia (2015-2019), Anime Festival Asia, 40+ Go
-              Food Festivals!
+              <br />
+              As an events, brand and creative agency; we have the experience of
+              working together with multinational companies such as Google,
+              Facebook, Instagram, YouTube, Netflix, Spotify, GoTo and many more
+              delivering over 300 plus events in the past 8 years.
+              <br />
+              <br />
+              Celebrating our 8th Anniversary this year, we have an impressive
+              portfolio of handling the biggest concerts in Jakarta including
+              Celine Dion, Ed Sheeran, Backstreet Boys, Shawn Mendes, Lany,
+              Keshi and Westlife, Calum Scott and many more.
+              <br />
+              <br />
+              It is going to be a bigger 2023 as we are ready to promote Fujii
+              Kaze, Radwimps, Coldplay and few more concerts this year targeting
+              more than 100,000 audiences!
             </p>
             <div>
               <button className="bg-zinc-800 shadow-2xl text-white lg:text-[16px] text-[10px] px-7 py-3 mt-10 rounded-md font-medium hover:bg-white hover:text-black transition-all">
