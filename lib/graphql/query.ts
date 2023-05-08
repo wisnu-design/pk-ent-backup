@@ -116,7 +116,7 @@ export const CONCERT = gql`
       highlightVideo {
         url
       }
-      highlightGalleries {
+      highlightGalleries(first: 100) {
         url
       }
       aboutThisEvent {
@@ -205,6 +205,19 @@ export const BRAND = gql`
       gallery {
         url
       }
+    }
+  }
+`;
+
+export const NEWS = gql`
+  query news {
+    news {
+      title
+      description
+      image {
+        url
+      }
+      featured
     }
   }
 `;

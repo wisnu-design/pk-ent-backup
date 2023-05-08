@@ -5,10 +5,33 @@ import React from "react";
 import { motion } from "framer-motion";
 import imgPlaceholder from "@/public/images/imgPlaceholder.png";
 import Image from "next/image";
+import { api } from "@/lib/graphql/api";
+import { NEWS } from "@/lib/graphql/query";
 
-type Props = {};
+type New = {
+  title: string;
+  slug: string;
+  description: string;
+  image: any;
+  featured: boolean;
+};
 
-const index = (props: Props) => {
+type News = {
+  news: New[];
+  description?: any;
+};
+
+export async function getStaticProps() {
+  const { news }: any = await api.request(NEWS);
+  return {
+    props: {
+      news,
+    },
+    revalidate: 10,
+  };
+}
+
+const index = ({ news }: News) => {
   return (
     <div>
       <Seo
@@ -29,8 +52,76 @@ const index = (props: Props) => {
             className="bg-black w-[200px] h-[5px] -mt-4 lg:block hidden"
           ></motion.div>
         </div>
+
         <div className="w-full flex flex-col mt-5">
-          <div className="w-full bg-zinc-800/50 rounded-xl overflow-hidden backdrop-blur-lg flex lg:flex-row flex-col-reverse">
+          <div className="lg:flex flex-wrap flex-row w-full mt-5 gap-3">
+            {news.map((v, i: number) => {
+              return (
+                <div
+                  key={i}
+                  className={
+                    v.featured === true
+                      ? "w-full bg-zinc-800/50  rounded-xl overflow-hidden backdrop-blur-lg lg:flex lg:flex-row-reverse"
+                      : "bg-zinc-800/50 backdrop-blur-lg hidden lg:flex flex-col p-8 w-3/12 h-[500px] rounded-xl"
+                  }
+                >
+                  <div
+                    className={v.featured === true ? "lg:w-6/12 w-full" : ""}
+                  >
+                    <Image
+                      className="w-full"
+                      src={v.image.url}
+                      alt="placeholder"
+                      width={1000}
+                      height={10}
+                    />
+                  </div>
+                  <div
+                    className={
+                      v.featured === true
+                        ? "lg:w-6/12 w-full flex flex-col gap-5 p-8 text-white"
+                        : "text-white flex flex-col justify-between h-full"
+                    }
+                  >
+                    <div className="flex flex-col gap-5">
+                      <h1
+                        className={
+                          v.featured === true
+                            ? "font-medium text-[36px] leading-none"
+                            : "font-medium text-[22px] mt-2 leading-none"
+                        }
+                      >
+                        {v.title}
+                      </h1>
+                      <p className="text-[14px]">
+                        {v.featured === true
+                          ? v.description.slice(0, 700)
+                          : v.description.slice(0, 300)}{" "}
+                        ...
+                      </p>
+                    </div>
+                    <div>
+                      <button className="bg-zinc-900 px-5 py-2 rounded-lg font-medium hover:bg-white hover:text-black transition-all">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default index;
+
+/*
+"bg-zinc-800/50 backdrop-blur-lg flex flex-col p-8 w-3/12 h-[500px] rounded-xl"
+        <div className="w-full bg-zinc-800/50 rounded-xl overflow-hidden backdrop-blur-lg flex lg:flex-row flex-col-reverse">
             <div className="lg:w-6/12 w-full flex flex-col gap-5 p-8 text-white">
               <h1 className="font-medium text-[36px] leading-none">
                 This is Title For Every News That Can Be Seen
@@ -63,137 +154,4 @@ const index = (props: Props) => {
               />
             </div>
           </div>
-          <div className="lg:flex hidden flex-row w-full mt-5 gap-3">
-            <div className="bg-zinc-800/50 backdrop-blur-lg flex flex-col p-8 w-3/12 h-[600px] rounded-xl">
-              <div>
-                <Image
-                  src={imgPlaceholder}
-                  alt="placeholder"
-                  width={1000}
-                  height={10}
-                />
-              </div>
-              <div className="text-white flex flex-col justify-between h-full">
-                <div className="flex flex-col gap-5">
-                  <h1 className="font-medium text-[22px] mt-2 leading-none">
-                    This is Title For Every News That Can Be Seen
-                  </h1>
-                  <p className="text-[14px]">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industrys
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged.
-                  </p>
-                </div>
-                <div>
-                  <button className="bg-zinc-900 px-5 py-2 rounded-lg font-medium hover:bg-white hover:text-black transition-all">
-                    Read More
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="bg-zinc-800/50 backdrop-blur-lg flex flex-col p-8 w-3/12 h-[600px] rounded-xl">
-              <div>
-                <Image
-                  src={imgPlaceholder}
-                  alt="placeholder"
-                  width={1000}
-                  height={10}
-                />
-              </div>
-              <div className="text-white flex flex-col justify-between h-full">
-                <div className="flex flex-col gap-5">
-                  <h1 className="font-medium text-[22px] mt-2 leading-none">
-                    This is Title For Every News That Can Be Seen
-                  </h1>
-                  <p className="text-[14px]">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industrys
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged.
-                  </p>
-                </div>
-                <div>
-                  <button className="bg-zinc-900 px-5 py-2 rounded-lg font-medium hover:bg-white hover:text-black transition-all">
-                    Read More
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="bg-zinc-800/50 backdrop-blur-lg flex flex-col p-8 w-3/12 h-[600px] rounded-xl">
-              <div>
-                <Image
-                  src={imgPlaceholder}
-                  alt="placeholder"
-                  width={1000}
-                  height={10}
-                />
-              </div>
-              <div className="text-white flex flex-col justify-between h-full">
-                <div className="flex flex-col gap-5">
-                  <h1 className="font-medium text-[22px] mt-2 leading-none">
-                    This is Title For Every News That Can Be Seen
-                  </h1>
-                  <p className="text-[14px]">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industrys
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged.
-                  </p>
-                </div>
-                <div>
-                  <button className="bg-zinc-900 px-5 py-2 rounded-lg font-medium hover:bg-white hover:text-black transition-all">
-                    Read More
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="bg-zinc-800/50 backdrop-blur-lg flex flex-col p-8 w-3/12 h-[600px] rounded-xl">
-              <div>
-                <Image
-                  src={imgPlaceholder}
-                  alt="placeholder"
-                  width={1000}
-                  height={10}
-                />
-              </div>
-              <div className="text-white flex flex-col justify-between h-full">
-                <div className="flex flex-col gap-5">
-                  <h1 className="font-medium text-[22px] mt-2 leading-none">
-                    This is Title For Every News That Can Be Seen
-                  </h1>
-                  <p className="text-[14px]">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industrys
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged.
-                  </p>
-                </div>
-                <div>
-                  <button className="bg-zinc-900 px-5 py-2 rounded-lg font-medium hover:bg-white hover:text-black transition-all">
-                    Read More
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
-};
-
-export default index;
+        */

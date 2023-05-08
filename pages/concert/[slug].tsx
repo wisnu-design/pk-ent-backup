@@ -159,9 +159,9 @@ const Concert = ({ concert }: SingleEvent) => {
           </div>
 
           <div className="flex flex-col w-full mt-5 ">
-            <div className="flex w-full h-[37vw] lg:rounded-tl-[100px] lg:rounded-tr-[100px] rounded-md overflow-hidden relative">
+            <div className="flex w-full h-[33vw] lg:rounded-tl-[100px] lg:rounded-tr-[100px] rounded-md overflow-hidden relative">
               <video
-                className="w-full absolute object-cover brightness-50"
+                className="w-full h-full absolute object-cover brightness-50"
                 poster={concert.thumbnail.url}
                 autoPlay
                 muted
@@ -178,7 +178,7 @@ const Concert = ({ concert }: SingleEvent) => {
                     return (
                       <div
                         key={index}
-                        className="lg:w-2/12 w-5/12 lg:h-[250px] h-[100px] rounded-xl overflow-hidden relative"
+                        className="lg:w-[230px] w-5/12 lg:h-[200px] h-[100px] rounded-xl overflow-hidden relative"
                       >
                         <Image
                           className="object-cover w-full h-full absolute bottom-0 hover:scale-110 transition-all"
