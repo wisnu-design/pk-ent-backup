@@ -118,14 +118,17 @@ const Stage = ({ concert }: SingleEvent) => {
                               {ticket.type}
                             </p>
                             <p className="text-zinc-300 font-light">
-                              {concert.date}
+                              {ticket.type === "COMING SOON"
+                                ? "COMING SOON"
+                                : concert.date}
                             </p>
                           </div>
 
                           <div className="w-6/12 lg:flex hidden flex-col">
                             <p className="text-zinc-300 font-light text-sm">
-                              Price exclude Government Tax 15% & Ticketing Admin
-                              Fee 5%
+                              {ticket.type === "COMING SOON"
+                                ? "COMING SOON"
+                                : "Price exclude Government Tax 15% & Ticketing Admin 5%"}
                             </p>
                           </div>
                         </div>
@@ -147,7 +150,9 @@ const Stage = ({ concert }: SingleEvent) => {
                               <path d="M14 2v8a2 2 0 0 0 2 2h6V2h-8z" />
                               <line x1="4" y1="22" x2="20" y2="22" />
                             </svg>
-                            IDR {ticket.price}
+                            {ticket.type === "COMING SOON"
+                              ? ticket.price
+                              : `IDR ${ticket.price}`}
                           </button>
                         </div>
                       </div>
