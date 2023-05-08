@@ -4,6 +4,7 @@ import EventCard from "@/components/molecules/EventCard";
 import Footer from "@/components/organisms/Footer";
 
 import Header from "@/components/organisms/Header";
+import Pagination from "@/components/organisms/Pagination";
 import { Events } from "@/components/organisms/Stage";
 import { api } from "@/lib/graphql/api";
 import { QUERY } from "@/lib/graphql/query";
@@ -12,21 +13,28 @@ import React, { useState } from "react";
 const Index = ({ concerts }: Events) => {
   const [upcoming, setUpcoming] = useState(true);
   const [title, setTitle] = useState("Upcoming");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
   const toggleUpcoming = (value: boolean, text: string) => {
     setUpcoming(value);
     setTitle(text);
+    setCurrentPage(1);
   };
 
   const now = new Date();
+  const events = upcoming
+    ? concerts.filter((concert) => new Date(concert.date) > now)
+    : concerts.filter((concert) => new Date(concert.date) <= now);
 
-  const upcomingEvents = concerts.filter(
-    (concert) => new Date(concert.date) > now
-  );
-  const pastEvents = concerts.filter(
-    (concert) => new Date(concert.date) <= now
-  );
+  const totalItems = events.length;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
 
+  function handlePageChange(pageNumber: number) {
+    setCurrentPage(pageNumber);
+  }
   return (
     <>
       <Seo
@@ -60,40 +68,31 @@ const Index = ({ concerts }: Events) => {
       <div className="max-w-[1370px] mx-auto pl-3 text-center text-white font-bold lg:text-3xl text-md pb-3">
         {title === "Upcoming" ? "Upcoming concert" : "Past concert"}
       </div>
-      <div className="flex flex-wrap lg:flex-row flex-col max-w-[1370px] justify-center items-center h-full mx-auto pb-10 lg:pb-32">
-        {upcoming
-          ? upcomingEvents.map((concert, index) => {
-              return (
-                <div key={index} className="transition-all">
-                  <BrandCard
-                    data={{
-                      band: concert.band,
-                      title: concert.title,
-                      slug: "/concert/" + concert.slug,
-                      thumbnail: concert.thumbnail,
-                      date: concert.date,
-                      eventStage: concert.eventStage,
-                    }}
-                  />
-                </div>
-              );
-            })
-          : pastEvents.map((concert, index) => {
-              return (
-                <div key={index} className="transition-all">
-                  <BrandCard
-                    data={{
-                      band: concert.band,
-                      title: concert.title,
-                      slug: "/concert/" + concert.slug,
-                      thumbnail: concert.thumbnail,
-                      date: concert.date,
-                      eventStage: concert.eventStage,
-                    }}
-                  />
-                </div>
-              );
-            })}
+      <div className="flex flex-wrap lg:flex-row flex-col max-w-[1370px] justify-center items-center h-full mx-auto pb-5 ">
+        {currentItems.map((concert, index) => {
+          return (
+            <div key={index} className="transition-all">
+              <BrandCard
+                data={{
+                  band: concert.band,
+                  title: concert.title,
+                  slug: "/concert/" + concert.slug,
+                  thumbnail: concert.thumbnail,
+                  date: concert.date,
+                  eventStage: concert.eventStage,
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex justify-center pb-10 lg:pb-20">
+        <Pagination
+          currentPage={currentPage}
+          itemsPerPage={itemsPerPage}
+          totalItems={totalItems}
+          onPageChange={handlePageChange}
+        />
       </div>
       <Footer />
     </>

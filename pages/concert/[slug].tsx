@@ -81,6 +81,7 @@ const Concert = ({ concert }: SingleEvent) => {
           />
         </SwiperSlide>
       </Swiper>
+
       <div className="lg:pt-44 lg:mt-0 -mt-44">
         <ArtistInfo
           concert={{
@@ -109,23 +110,40 @@ const Concert = ({ concert }: SingleEvent) => {
             </div>
           </div>
         </div>
-        <div>{concert.band}</div>
-        <div>{concert.title}</div>
-        <div>{concert.eventStage}</div>
-        <div>{concert.date}</div>
+        <div className="flex flex-col w-full">
+          <div className="w-full flex justify-center items-center">
+            <figure className="rounded-full w-[300px] h-[300px] overflow-hidden shadow-xl">
+              <Image
+                className="w-full object-cover h-full"
+                src={concert.profilePicture.url}
+                alt="aa"
+                width={1000}
+                height={100}
+              />
+            </figure>
+          </div>
+          <div className="mt-5">
+            <div className="font-bold text-[20px]">{concert.band}</div>
+            <div className=" font-semibold text-[18px]">{concert.title}</div>
+            <div>{concert.eventStage}</div>
+            <div>{concert.date}</div>
+          </div>
+        </div>
       </div>
 
-      <Stage
-        concert={{
-          title: "Main Stage Layout",
-          aboutThisEvent: concert.aboutThisEvent,
-          stageLayout: concert.stageLayout,
-          date: concert.date,
-          city: concert.city,
-          tickets: concert.tickets,
-          upcoming: concert.upcoming,
-        }}
-      />
+      {concert.upcoming === true ? (
+        <Stage
+          concert={{
+            title: "Main Stage Layout",
+            aboutThisEvent: concert.aboutThisEvent,
+            stageLayout: concert.stageLayout,
+            date: concert.date,
+            city: concert.city,
+            tickets: concert.tickets,
+            upcoming: concert.upcoming,
+          }}
+        />
+      ) : null}
 
       {concert.upcoming !== true ? (
         <div className="max-w-[1600px] mx-auto lg:px-12 px-4 pb-32">
@@ -145,6 +163,7 @@ const Concert = ({ concert }: SingleEvent) => {
               <video
                 className="w-full absolute object-cover brightness-50"
                 poster={concert.thumbnail.url}
+                autoPlay
                 muted
                 controls={true}
                 src={concert.highlightVideo ? concert.highlightVideo.url : null}
