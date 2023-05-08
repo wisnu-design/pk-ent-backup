@@ -68,7 +68,7 @@ const Index = ({ concerts }: Events) => {
       <div className="max-w-[1370px] mx-auto pl-3 text-center text-white font-bold lg:text-3xl text-md pb-3">
         {title === "Upcoming" ? "Upcoming concert" : "Past concert"}
       </div>
-      <div className="flex flex-wrap lg:flex-row flex-col max-w-[1370px] justify-center items-center h-full mx-auto pb-5 ">
+      <div className="flex flex-wrap lg:flex-row flex-col max-w-[1280px]  justify-center items-center h-full mx-auto pb-5 ">
         {currentItems.map((concert, index) => {
           return (
             <div key={index} className="transition-all">

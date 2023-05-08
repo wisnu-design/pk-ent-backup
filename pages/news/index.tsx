@@ -40,7 +40,7 @@ const index = ({ news }: News) => {
         metaKey="event promotor"
       />
       <Header />
-      <div className="max-w-[1600px] mx-auto h-full pt-36 pb-20 lg:px-0 px-3">
+      <div className="max-w-[1380px] mx-auto h-full pt-36 pb-20 lg:px-0 px-3">
         <div className="w-full">
           <h1 className="lg:text-[70px] text-[30px] text-white font-black">
             Latest News

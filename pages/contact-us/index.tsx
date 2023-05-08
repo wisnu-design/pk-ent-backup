@@ -78,7 +78,7 @@ const index = (props: Props) => {
       </div>
       <div className="py-10 mt-10 max-w-[1600px] px-2 lg:px-0 mx-auto">
         <div className="w-full lg:h-screen h-full relative">
-          <div className="bg-zinc-800/60 backdrop-blur-lg lg:w-5/12 w-full h-[90%] lg:absolute block left-[15%] -top-[5%] z-30 rounded-3xl shadow-xl">
+          <div className="bg-zinc-800/60 backdrop-blur-lg lg:w-5/12 w-full h-full lg:absolute block left-[15%] -top-[5%] z-30 rounded-3xl shadow-xl">
             <div className="px-10 lg:pt-56 pt-10 lg:pb-20 pb-5 h-full text-white">
               <div className="font-black lg:text-[70px] text-[30px] lg:absolute block top-[10%] -left-[20%]">
                 <h1 className="">Contact Us</h1>
@@ -96,7 +96,7 @@ const index = (props: Props) => {
                 className="flex h-full flex-col justify-between "
                 onSubmit={emailHandler}
               >
-                <div className="flex flex-col gap-10 text-white">
+                <div className="flex flex-col gap-6 text-white">
                   <input
                     className="bg-transparent border-white border-0 border-b-2 focus:border-0 focus:border-black placeholder:text-white"
                     placeholder="Full Name"
@@ -126,20 +126,19 @@ const index = (props: Props) => {
                     id="subject"
                   />
                   <textarea
-                    className="bg-transparent border-white h-[200px] rounded-lg focus:border-0 focus:border-black placeholder:text-white"
+                    className="bg-transparent border-white h-[180px] rounded-lg focus:border-0 focus:border-black placeholder:text-white"
                     placeholder="Your Message"
                     name="message"
                     id="message"
                   ></textarea>
-                </div>
-
-                <div className="mt-5 lg:mt-5">
-                  <button
-                    type="submit"
-                    className="bg-zinc-900 px-5 py-2 rounded-xl mt-2 font-medium hover:bg-white hover:text-black transition-all"
-                  >
-                    Send Message
-                  </button>
+                  <div className="">
+                    <button
+                      type="submit"
+                      className="bg-zinc-900 px-5 py-2 rounded-xl font-medium hover:bg-white hover:text-black transition-all"
+                    >
+                      Send Message
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
