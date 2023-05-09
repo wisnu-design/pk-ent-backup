@@ -17,7 +17,7 @@ export default async function handler(
     },
   });
 
-  const recipients = [email, "wisnubl1995@gmail.com","contact@pk-ent.com",];
+  const recipients = [email, "contact@pk-ent.com"];
 
   const info = await transporter.sendMail({
     from: `"no-reply@pk-ent.com" <${email}>`,
