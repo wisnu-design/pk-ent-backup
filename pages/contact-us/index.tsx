@@ -103,6 +103,7 @@ const index = (props: Props) => {
                     type="text"
                     name="name"
                     id="name"
+                    required
                   />
                   <input
                     className="bg-transparent border-white border-0 border-b-2 focus:border-0 focus:border-black placeholder:text-white"
@@ -110,6 +111,7 @@ const index = (props: Props) => {
                     type="email"
                     name="email"
                     id="email"
+                    required
                   />
                   <input
                     className="bg-transparent border-white border-0 border-b-2 focus:border-0 focus:border-black placeholder:text-white"
@@ -117,6 +119,7 @@ const index = (props: Props) => {
                     type="text"
                     name="phone"
                     id="phone"
+                    required
                   />
                   <input
                     className="bg-transparent border-white border-0 border-b-2 focus:border-0 focus:border-black placeholder:text-white"
@@ -124,12 +127,14 @@ const index = (props: Props) => {
                     type="text"
                     name="subject"
                     id="subject"
+                    required
                   />
                   <textarea
                     className="bg-transparent border-white h-[180px] rounded-lg focus:border-0 focus:border-black placeholder:text-white"
                     placeholder="Your Message"
                     name="message"
                     id="message"
+                    required
                   ></textarea>
                   <div className="">
                     <button
