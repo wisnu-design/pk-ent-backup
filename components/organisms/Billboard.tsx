@@ -47,7 +47,7 @@ const Billboard = ({ data }: any) => {
                     concert={{
                       title: v.title,
                       thumbnail: v.thumbnail,
-                      description: v.description,
+                      description: v.description.slice(0, 235),
                       slug: v.slug,
                       tickets: v.tickets,
                       video: v.video,
