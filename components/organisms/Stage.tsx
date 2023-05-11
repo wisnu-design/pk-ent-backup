@@ -44,7 +44,7 @@ const Stage = ({ concert }: SingleEvent) => {
     return null;
   }
   return (
-    <div className="px-4 md:px-12 space-y-8 max-w-[1600px] mx-auto pb-36">
+    <div className="px-4 md:px-12 pt-16 max-w-[1600px] mx-auto pb-36">
       <div>
         <div className="flex justify-between items-center">
           <div className="flex gap-2">
@@ -111,8 +111,8 @@ const Stage = ({ concert }: SingleEvent) => {
                     className="flex w-full flex-row items-start justify-between "
                   >
                     {concert.upcoming === true ? (
-                      <div className="w-full flex gap-10">
-                        <div className="lg:w-8/12 w-7/12 flex gap-10">
+                      <div className="w-full justify-between flex gap-10">
+                        <div className="lg:w-6/12 w-7/12 flex gap-10">
                           <div className=" flex flex-col">
                             <p className="text-white font-semibold">
                               {ticket.type}
@@ -123,16 +123,8 @@ const Stage = ({ concert }: SingleEvent) => {
                                 : concert.date}
                             </p>
                           </div>
-
-                          <div className="w-6/12 lg:flex hidden flex-col">
-                            <p className="text-zinc-300 font-light text-sm">
-                              {ticket.type === "COMING SOON"
-                                ? "COMING SOON"
-                                : "Price exclude Government Tax 15% & Ticketing Admin 5%"}
-                            </p>
-                          </div>
                         </div>
-                        <div className="lg:w-4/12 w-full flex items-center">
+                        <div className="lg:w-6/12 w-full flex justify-center items-center">
                           <button
                             className={` hover:bg-yellow-600 text-white lg:text-[14px] text-[14px] font-semibold py-2 px-4 lg:w-9/12 w-full lg:rounded-full rounded-md inline-flex items-center`}
                           >
