@@ -7,18 +7,25 @@ import imgPlaceholder from "@/public/images/imgPlaceholder.png";
 import Image from "next/image";
 import { api } from "@/lib/graphql/api";
 import { NEWS } from "@/lib/graphql/query";
+import Link from "next/link";
 
-type New = {
+export type New = {
   title: string;
   slug: string;
   description: string;
   image: any;
   featured: boolean;
+  video?: any;
+  article?: any;
 };
 
-type News = {
+export type News = {
   news: New[];
   description?: any;
+};
+
+export type NewSingle = {
+  newSingle: New;
 };
 
 export async function getStaticProps() {
@@ -62,19 +69,21 @@ const index = ({ news }: News) => {
                   className={
                     v.featured === true
                       ? "w-full bg-zinc-800/50  rounded-xl overflow-hidden backdrop-blur-lg lg:flex lg:flex-row-reverse"
-                      : "bg-zinc-800/50 backdrop-blur-lg hidden lg:flex flex-col p-8 w-3/12 h-[500px] rounded-xl"
+                      : "bg-zinc-800/50 backdrop-blur-lg hidden lg:flex flex-col p-8 w-3/12 h-[400px] rounded-xl"
                   }
                 >
                   <div
                     className={v.featured === true ? "lg:w-6/12 w-full" : ""}
                   >
-                    <Image
-                      className="w-full"
-                      src={v.image.url}
-                      alt="placeholder"
-                      width={1000}
-                      height={10}
-                    />
+                    <Link href={/news/ + v.slug}>
+                      <Image
+                        className="w-full"
+                        src={v.image.url}
+                        alt="placeholder"
+                        width={1000}
+                        height={10}
+                      />
+                    </Link>
                   </div>
                   <div
                     className={
@@ -84,26 +93,30 @@ const index = ({ news }: News) => {
                     }
                   >
                     <div className="flex flex-col gap-5">
-                      <h1
-                        className={
-                          v.featured === true
-                            ? "font-medium text-[36px] leading-none"
-                            : "font-medium text-[22px] mt-2 leading-none"
-                        }
-                      >
-                        {v.title}
-                      </h1>
-                      <p className="text-[14px]">
+                      <Link href={/news/ + v.slug}>
+                        <h1
+                          className={
+                            v.featured === true
+                              ? "font-medium text-[36px] leading-none"
+                              : "font-medium text-[18px] mt-3 leading-none"
+                          }
+                        >
+                          {v.title}
+                        </h1>
+                      </Link>
+                      <div className="text-[14px]">
                         {v.featured === true
-                          ? v.description.slice(0, 700)
-                          : v.description.slice(0, 300)}{" "}
+                          ? v.article.text.slice(0, 300)
+                          : v.article.text.slice(0, 100)}{" "}
                         ...
-                      </p>
+                      </div>
                     </div>
                     <div>
-                      <button className="bg-zinc-900 px-5 py-2 rounded-lg font-medium hover:bg-white hover:text-black transition-all">
-                        Read More
-                      </button>
+                      <Link href={/news/ + v.slug}>
+                        <button className="bg-zinc-900 px-5 py-2 rounded-lg font-medium hover:bg-white hover:text-black transition-all">
+                          Read More
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

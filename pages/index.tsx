@@ -2,16 +2,10 @@ import { Inter } from "next/font/google";
 import Seo from "@/components/Seo";
 import Header from "@/components/organisms/Header";
 import Billboard from "@/components/organisms/Billboard";
-import MusicEvent from "@/lib/EventsData";
 import EventList from "@/components/organisms/EventList";
 import { api } from "@/lib/graphql/api";
 import { BILLBOARD, HOME, QUERY } from "@/lib/graphql/query";
-import BrandActivation from "@/components/organisms/BrandActivation";
-import Highlight from "@/components/organisms/Highlight";
 import Footer from "@/components/organisms/Footer";
-import Loader from "./concert/loading";
-import Link from "next/link";
-import InstagramCard from "@/components/molecules/InstagramCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,7 +54,7 @@ export default function Home({ concerts, brands, billboard, feed }: any) {
       </div>
       */}
       <div className="lg:pb-40 pb-20">
-{/* 
+        {/* 
         <div className="px-4 md:px-12 mt-4">
           <div>
             <div className="flex justify-between items-center">

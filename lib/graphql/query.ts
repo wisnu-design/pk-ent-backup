@@ -211,13 +211,36 @@ export const BRAND = gql`
 
 export const NEWS = gql`
   query news {
-    news {
+    news(first: 100, orderBy: createdAt_DESC) {
+      title
+      slug
+      description
+      image {
+        url
+      }
+      featured
+      article {
+        html
+        text
+      }
+    }
+  }
+`;
+
+export const NEW = gql`
+  query new($slug: String!) {
+    new(where: { slug: $slug }) {
       title
       description
       image {
         url
       }
       featured
+      video
+      article {
+        html
+        text
+      }
     }
   }
 `;
