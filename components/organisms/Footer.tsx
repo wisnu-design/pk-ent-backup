@@ -21,7 +21,7 @@ const Footer = (props: Props) => {
                 className="lg:w-full w-6/12 p-2 lg:p-0"
               />
             </figure>
-            <div className="text-white w-6/12 pl-4 flex flex-col gap-5">
+            <div className="text-white w-8/12 pl-4 flex flex-col gap-5">
               <p className="text-white lg:text-[14px] text-[10px]">
                 Office 88 Kota Kasablanka 9th Floor Unit G Jl. Casablanca Raya
                 Kav. 88, Jakarta
@@ -102,10 +102,7 @@ const Footer = (props: Props) => {
             <div>
               <ul className="flex lg:gap-4 gap-2 text-white lg:text-[12px] text-[12px]">
                 <li>
-                  <Link href="#">About Us</Link>
-                </li>
-                <li>
-                  <Link href="#">Careers</Link>
+                  <Link href="/about-us">About Us</Link>
                 </li>
                 <li>
                   <Link href="#">Term & Conditions</Link>
@@ -114,7 +111,7 @@ const Footer = (props: Props) => {
                   <Link href="#">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href="#">Contact Us</Link>
+                  <Link href="/contact-us">Contact Us</Link>
                 </li>
               </ul>
             </div>

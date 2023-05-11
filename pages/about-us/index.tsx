@@ -29,7 +29,7 @@ const index = (props: Props) => {
           src="https://media.graphassets.com/Y3HaLw52TAOaRXKxr0AE?_gl=1*18gd3zw*_ga*MTA5ODQ3Mjk3MS4xNjc2MDA4MjY5*_ga_G6FYGSYGZ4*MTY4MzA5ODU1Ni41MS4xLjE2ODMwOTk3NDcuMjIuMC4w"
         ></video>
       </div>
-      <div className="lg:mt-10 mt-20 h-full pb-10 max-w-[1370px] mx-auto">
+      <div className="lg:mt-10 mt-20 h-full pb-10 max-w-[1370px] mx-auto px-5">
         <div className="max-w-[1600px] flex w-full gap-3 mx-auto text-white lg:p-0 p-5">
           <div className="flex flex-col lg:w-6/12">
             <h1 className="lg:text-[40px] font-bold">About Us</h1>
@@ -84,7 +84,7 @@ const index = (props: Props) => {
                 height={10}
               />
             </div>
-            <div className="w-[350px] h-[350px] absolute overflow-hidden rounded-xl bottom-10 left-36 border-white border-4">
+            <div className="w-[350px] h-[350px] absolute overflow-hidden rounded-xl bottom-36 left-36 border-white border-4">
               <Image
                 className="object-cover w-full h-full"
                 src={about1}

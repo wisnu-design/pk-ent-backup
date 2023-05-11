@@ -79,8 +79,8 @@ const index = (props: Props) => {
       <div className="py-10 mt-10 max-w-[1600px] px-2 lg:px-0 mx-auto">
         <div className="w-full lg:h-screen h-full relative">
           <div className="bg-zinc-800/60 backdrop-blur-lg lg:w-5/12 w-full h-full lg:absolute block left-[15%] -top-[5%] z-30 rounded-3xl shadow-xl">
-            <div className="px-10 lg:pt-56 pt-10 lg:pb-20 pb-5 h-full text-white">
-              <div className="font-black lg:text-[70px] text-[30px] lg:absolute block top-[10%] -left-[20%]">
+            <div className="px-10 lg:pt-36 pt-10 lg:pb-20 pb-5 h-full text-white">
+              <div className="font-black lg:text-[70px] text-[30px] lg:absolute block top-[5%] -left-[20%]">
                 <h1 className="">Contact Us</h1>
                 <motion.div
                   initial={{ scaleX: 0 }}
@@ -130,7 +130,7 @@ const index = (props: Props) => {
                     required
                   />
                   <textarea
-                    className="bg-transparent border-white h-[180px] rounded-lg focus:border-0 focus:border-black placeholder:text-white"
+                    className="bg-transparent border-white h-full rounded-lg focus:border-0 focus:border-black placeholder:text-white"
                     placeholder="Your Message"
                     name="message"
                     id="message"

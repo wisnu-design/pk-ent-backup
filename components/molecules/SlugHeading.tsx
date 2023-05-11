@@ -22,7 +22,7 @@ export type SingleEvent = {
 const SlugHeading = ({ concert }: SingleEvent) => {
   return (
     <>
-      <div className="relative lg:h-[40.25vw]">
+      <div className="relative lg:h-[45.25vw]">
         {concert.video === null ? (
           <video
             className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
