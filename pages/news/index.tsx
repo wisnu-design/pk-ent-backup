@@ -8,6 +8,7 @@ import Image from "next/image";
 import { api } from "@/lib/graphql/api";
 import { NEWS } from "@/lib/graphql/query";
 import Link from "next/link";
+import SecondHeader from "@/components/organisms/SecondHeader";
 
 export type New = {
   title: string;
@@ -46,7 +47,7 @@ const index = ({ news }: News) => {
         metaDesc="PK Entertainment News"
         metaKey="event promotor"
       />
-      <Header />
+      <SecondHeader />
       <div className="max-w-[1380px] mx-auto h-full pt-36 pb-20 lg:px-0 px-3">
         <div className="w-full">
           <h1 className="lg:text-[70px] text-[30px] text-white font-black">

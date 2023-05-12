@@ -5,6 +5,7 @@ import Footer from "@/components/organisms/Footer";
 
 import Header from "@/components/organisms/Header";
 import Pagination from "@/components/organisms/Pagination";
+import SecondHeader from "@/components/organisms/SecondHeader";
 import { Events } from "@/components/organisms/Stage";
 import { api } from "@/lib/graphql/api";
 import { QUERY } from "@/lib/graphql/query";
@@ -42,7 +43,7 @@ const Index = ({ concerts }: Events) => {
         metaDesc="Concerts of PK Entertainment"
         metaKey="Promotor Event"
       />
-      <Header />
+      <SecondHeader />
       <div className="flex justify-center pb-3 lg:pt-36 pt-20">
         <button
           className={`${

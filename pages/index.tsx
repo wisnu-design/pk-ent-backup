@@ -55,6 +55,7 @@ export default function Home({ concerts, brands, billboard, feed }: any) {
         <BrandActivation title="Brand Activation" data={brands} />
       </div>
       */}
+      {/*
       <div className="lg:pb-40 pb-20">
         <div className="px-4 md:px-12 mt-4">
           <div>
@@ -89,6 +90,7 @@ export default function Home({ concerts, brands, billboard, feed }: any) {
           </div>
         </div>
       </div>
+       */}
       <Footer />
     </>
   );
