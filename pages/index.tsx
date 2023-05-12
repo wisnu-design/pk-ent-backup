@@ -6,13 +6,15 @@ import EventList from "@/components/organisms/EventList";
 import { api } from "@/lib/graphql/api";
 import { BILLBOARD, HOME, QUERY } from "@/lib/graphql/query";
 import Footer from "@/components/organisms/Footer";
+import InstagramCard from "@/components/molecules/InstagramCard";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export async function getServerSideProps() {
   const { concerts, brands }: any = await api.request(HOME);
   const { billboard }: any = await api.request(BILLBOARD);
-  const url = `https://graph.instagram.com/me/media?fields=id,username,caption,media_url,timestamp,media_type,permalink,thumbnail_url&access_token=IGQVJWWU02TmpvYzRKSmRmSXRBSVhtanlFWXoxVi1ObzhsRERqeDZAWcXBlaHhMM25RX0lOaE9PYk51cmxvYlBwbzF2Ti0xVlFVMU1mUWYyT1VuTDhybUtWMWVaUFIyYVZAJUXBsQ3MwZA21iUm8tU2cyQQZDZD`;
+  const url = `https://graph.instagram.com/me/media?fields=id,username,caption,media_url,timestamp,media_type,permalink,thumbnail_url&access_token=IGQVJWdFpBV0lVRjZApTDBPM1hmNFpXeDBOR0cwakFXb05sRENtOFc3cE1yS3ZAnSlhtZAnBjRGpUU2l2OENoVHpXN1hjLWVQT0cxYW1YSEhEUlI5V2J6ODNmUGtBRG9KOHZAVYnVuU3Y3bFJPamgxU0syMQZDZD`;
   const data = await fetch(url);
   const feed = await data.json();
 
@@ -54,7 +56,6 @@ export default function Home({ concerts, brands, billboard, feed }: any) {
       </div>
       */}
       <div className="lg:pb-40 pb-20">
-        {/* 
         <div className="px-4 md:px-12 mt-4">
           <div>
             <div className="flex justify-between items-center">
@@ -87,7 +88,6 @@ export default function Home({ concerts, brands, billboard, feed }: any) {
             })}
           </div>
         </div>
-*/}
       </div>
       <Footer />
     </>
