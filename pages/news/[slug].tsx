@@ -8,8 +8,6 @@ import { NewSingle } from ".";
 import Link from "next/link";
 import Seo from "@/components/Seo";
 
-type Props = {};
-
 export async function getServerSideProps({ params }: any) {
   const slug: string = params.slug;
   const data: any = await api.request(NEW, { slug });
@@ -24,8 +22,8 @@ export async function getServerSideProps({ params }: any) {
 
 const News = ({ newSingle }: NewSingle) => {
   const rich = newSingle.article.html;
-
   const replaced = rich.replace(/\|/g, " <br />");
+
   return (
     <>
       <Seo
