@@ -236,7 +236,8 @@ export const NEW = gql`
         url
       }
       featured
-      video
+      video1
+      video2
       article {
         html
         text

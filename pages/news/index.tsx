@@ -16,7 +16,8 @@ export type New = {
   description: string;
   image: any;
   featured: boolean;
-  video?: any;
+  video1: any;
+  video2: any;
   article?: any;
 };
 

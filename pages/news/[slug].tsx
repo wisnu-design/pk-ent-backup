@@ -23,6 +23,7 @@ export async function getServerSideProps({ params }: any) {
 const News = ({ newSingle }: NewSingle) => {
   const rich = newSingle.article.html;
   const replaced = rich.replace(/\|/g, " <br />");
+  console.log(newSingle.video1);
 
   return (
     <>
@@ -68,7 +69,18 @@ const News = ({ newSingle }: NewSingle) => {
           <div className="flex justify-center items-center">
             <h3 className="font-black text-4xl">Video</h3>
           </div>
-          <div className="flex gap-5 mt-5 max-w-[1380px]"></div>
+          <div className="flex lg:flex-row flex-col gap-5 mt-5 justify-center items-center max-w-[1380px]">
+            <div className="w-6/12 flex items-center justify-center">
+              <span
+                dangerouslySetInnerHTML={{ __html: newSingle.video1 }}
+              ></span>
+            </div>
+            <div className="w-6/12 flex items-center justify-center">
+              <span
+                dangerouslySetInnerHTML={{ __html: newSingle.video2 }}
+              ></span>
+            </div>
+          </div>
         </div>
       </div>
 
