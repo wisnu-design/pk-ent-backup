@@ -10,6 +10,7 @@ const nextConfig = {
       "apahabar.s3.ap-southeast-1.amazonaws.com",
       "pk-ent.com",
       "scontent.cdninstagram.com",
+      "https://robohash.org/",
     ],
   },
 

@@ -47,7 +47,10 @@ const ArtistInfo = ({ concert }: SingleEvent) => {
                   concert.soldOut === true ? (
                     <SoldOut />
                   ) : !concert.tickets ? null : (
-                    <PlayButton link="/" />
+                    <PlayButton
+                      target={"_blank"}
+                      link={concert.tickets[0].ticketLink}
+                    />
                   )
                 ) : null}
 
