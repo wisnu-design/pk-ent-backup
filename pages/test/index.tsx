@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 type Props = {};
 
-const index = () => {
+const Index = () => {
   const [userData, setUserData] = useState<any>(null);
   const router = useRouter();
   const fetching = async () => {
@@ -27,19 +27,15 @@ const index = () => {
   }, []);
 
   return (
-    <Layout >
+    <Layout>
       <div className="text-white">{userData ? userData.username : null}</div>
       <div>
         {userData ? userData.firstName + ` ` + userData.lastName : null}
       </div>
-      <div>
-        <img src={userData ? userData.image : null} alt="image" />
-      </div>
-
-      url/book = books
-      url/kategory = kategory
+      <div></div>
+      url/book = books url/kategory = kategory
     </Layout>
   );
 };
 
-export default index;
+export default Index;
