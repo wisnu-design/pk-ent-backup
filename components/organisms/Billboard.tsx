@@ -50,7 +50,6 @@ const Billboard = ({ data }: any) => {
                       description: v.description.slice(0, 235),
                       slug: v.slug,
                       tickets: v.tickets,
-                      video: v.video,
                     }}
                   />
                 </SwiperSlide>

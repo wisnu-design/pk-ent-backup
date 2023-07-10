@@ -14,22 +14,17 @@ const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps() {
   const { concerts, brands }: any = await api.request(HOME);
   const { billboard }: any = await api.request(BILLBOARD);
-  const url = `https://graph.instagram.com/me/media?fields=id,username,caption,media_url,timestamp,media_type,permalink,thumbnail_url&access_token=IGQVJWdFpBV0lVRjZApTDBPM1hmNFpXeDBOR0cwakFXb05sRENtOFc3cE1yS3ZAnSlhtZAnBjRGpUU2l2OENoVHpXN1hjLWVQT0cxYW1YSEhEUlI5V2J6ODNmUGtBRG9KOHZAVYnVuU3Y3bFJPamgxU0syMQZDZD`;
-  const data = await fetch(url);
-  const feed = await data.json();
 
   return {
     props: {
       concerts,
       brands,
       billboard,
-      feed,
     },
   };
 }
 
 export default function Home({ concerts, brands, billboard, feed }: any) {
-  
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     const options: any = { day: "numeric", month: "long", year: "numeric" };
