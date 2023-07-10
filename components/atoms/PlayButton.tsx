@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { SingleEvent } from "../organisms/Stage";
 
-const PlayButton = ({ link }: any) => {
+const PlayButton = ({ link, target }: any) => {
   const router = useRouter();
 
   return (
-    <Link href={link}>
+    <Link target={target} href={link}>
       <button
         className="
         bg-white 

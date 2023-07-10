@@ -1,28 +1,40 @@
+import Layout from "@/components/tempalte/Layout";
+import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 type Props = {};
 
 const Index = () => {
-  const [data, setData] = useState<any>([]);
-
+  const [userData, setUserData] = useState<any>(null);
+  const router = useRouter();
   const fetching = async () => {
-    const url = "http://localhost:8080/user";
-    const response = await fetch(url);
-    const data = await response.json();
-    setData(data);
+    const loggedin = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+    // if (!token) {
+    //   router.push("/403");
+    //   return;
+    // }
+    const URL = `https://dummyjson.com/users/${loggedin}`;
+    const data = await fetch(URL);
+    const user = await data.json();
+
+    setUserData(user);
   };
 
   useEffect(() => {
     fetching();
   }, []);
 
-  console.log(data);
   return (
-    <div>
-      {data.map((v: any) => {
-        return <div key={v.id}>{v.name}</div>;
-      })}
-    </div>
+    <Layout>
+      <div className="text-white">{userData ? userData.username : null}</div>
+      <div>
+        {userData ? userData.firstName + ` ` + userData.lastName : null}
+      </div>
+      <div></div>
+      url/book = books url/kategory = kategory
+    </Layout>
   );
 };
 
