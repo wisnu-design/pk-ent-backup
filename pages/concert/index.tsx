@@ -25,8 +25,8 @@ const Index = ({ concerts }: Events) => {
 
   const now = new Date();
   const events = upcoming
-    ? concerts.filter((concert) => new Date(concert.date) > now)
-    : concerts.filter((concert) => new Date(concert.date) <= now);
+    ? concerts.filter((concert) => new Date(concert.eventDate) > now)
+    : concerts.filter((concert) => new Date(concert.eventDate) <= now);
 
   const totalItems = events.length;
   const indexOfLastItem = currentPage * itemsPerPage;
