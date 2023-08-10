@@ -23,7 +23,7 @@ interface EventData {
   highlightVideo?: any;
   highlightGalleries?: any;
   aboutThisEvent?: any;
-  eventDate: any;
+  eventDate?: any;
 }
 
 export type SingleEvent = {
