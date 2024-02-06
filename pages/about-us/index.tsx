@@ -7,6 +7,7 @@ import about1 from "@/public/images/about1.jpg";
 import about2 from "@/public/images/1.jpg";
 import kenny from "@/public/images/kenny.png";
 import Seo from "@/components/Seo";
+import Link from "next/link";
 
 type Props = {};
 
@@ -38,40 +39,42 @@ const index = (props: Props) => {
               brand activation and creative agency was established in 2015.
             </h2>
             <p className="lg:text-[16px] text-[9px] mt-10">
-              PK Entertainment, Indonesia’s leading concert promoter and event,
-              brand activation and creative agency was established in 2015.
+              As a combination of visionaries, strategists, and creators, we
+              come together to curate and present top notch quality events. Our
+              unconventional thinking process engages with clients and their
+              audience; ensuring that we meet all their requirements at the
+              highest standards while maintaining their brand identity.
               <br />
-              <br /> We are a combination of visionaries, strategists, and
-              creators who come together to curate and present top notch quality
-              events. Our unconventional thinking process engages with clients
-              and their audience; ensuring that we meet all their requirements
-              at the highest standards while maintaining their brand identity.
-              <br />
-              <br />
-              We are an extension of your dream team and we aim to create a
-              memorable experience for everyone.
+              <br /> We are an extension of your dream team and we aim to create
+              a memorable experience for everyone.
               <br />
               <br />
-              As an events, brand and creative agency; we have the experience of
+              As an event, brand and creative agency; we have the experience of
               working together with multinational companies such as Google,
               Facebook, Instagram, YouTube, Netflix, Spotify, GoTo and many more
               delivering over 300 plus events in the past 8 years.
               <br />
               <br />
-              Celebrating our 8th Anniversary this year, we have an impressive
-              portfolio of handling the biggest concerts in Jakarta including
-              Celine Dion, Ed Sheeran, Backstreet Boys, Shawn Mendes, Lany,
-              Keshi and Westlife, Calum Scott and many more.
+              We have an impressive portfolio of handling the biggest concerts
+              in Jakarta including Coldplay, Celine Dion, Ed Sheeran, Backstreet
+              Boys, Shawn Mendes, Lany, YOASOBI, Keshi, Westlife, Calum Scott,
+              ONE OK ROCK, RADWIMPS, Fujii Kaze, Charlie Puth and many more.
               <br />
               <br />
-              It is going to be a bigger 2023 as we are ready to promote Fujii
-              Kaze, Radwimps, Coldplay and few more concerts this year targeting
-              more than 100,000 audiences!
+              It is going to be a bigger 2024 as we are ready to promote Ed
+              Sheeran, Ado, Eve, Tom Jones, AFA and few more concerts this year
+              targeting more than 100,000 audiences!
+              <br />
+              <br />
+              For more information about us please visit www.pk-ent.com or visit
+              our Instagram @pkentertainment.id.
             </p>
             <div>
-              <button className="bg-zinc-800 shadow-2xl text-white lg:text-[16px] text-[10px] px-7 py-3 mt-10 rounded-md font-medium hover:bg-white hover:text-black transition-all">
-                Reach out of us!
-              </button>
+              <Link href={"/contact-us"}>
+                <button className="bg-zinc-800 shadow-2xl text-white lg:text-[16px] text-[10px] px-7 py-3 mt-10 rounded-md font-medium hover:bg-white hover:text-black transition-all">
+                  Reach out of us!
+                </button>
+              </Link>
             </div>
           </div>
           <div className="lg:block hidden relative w-6/12 ">

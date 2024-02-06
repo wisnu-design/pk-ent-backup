@@ -17,6 +17,7 @@ interface EventData {
   city?: string;
   slug?: string;
   stageLayout?: any;
+  isFestival?: boolean;
   color?: any;
   tickets?: any;
   soldOut?: boolean;

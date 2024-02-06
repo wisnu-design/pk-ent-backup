@@ -28,6 +28,7 @@ import PlayButton from "@/components/atoms/PlayButton";
 import ArtistInfo from "@/components/organisms/ArtistInfo";
 import Footer from "@/components/organisms/Footer";
 import Image from "next/image";
+import SoldOut from "@/components/atoms/SoldOut";
 
 export async function getServerSideProps({ params }: any) {
   const slug: string = params.slug;
@@ -127,6 +128,35 @@ const Concert = ({ concert }: SingleEvent) => {
             <div className=" font-semibold text-[18px]">{concert.title}</div>
             <div>{concert.eventStage}</div>
             <div>{concert.date}</div>
+            <div className="mt-5">{concert.description}</div>
+            <div className="text-black mt-3">
+              {concert.upcoming === true ? (
+                concert.soldOut === true ? (
+                  <SoldOut />
+                ) : !concert.tickets ? null : concert.isFestival == true ? (
+                  <PlayButton
+                    target={"_blank"}
+                    link={concert.tickets[0].ticketLink}
+                    text={"More Info"}
+                  />
+                ) : (
+                  <PlayButton
+                    target={"_blank"}
+                    link={concert.tickets[0].ticketLink}
+                  />
+                )
+              ) : null}
+
+              {/*concert.upcoming === true  //jika Upcoming true
+                  ? 
+                    concert.soldOut === true //true Upcoming state
+                    ? <SoldOut /> 
+                    : <PlayButton /> 
+
+                  : concert.soldOut === true  //false upcoming state
+                    ? "nih" 
+                    : concert.soldOut === false ? "iya" : null */}
+            </div>
           </div>
         </div>
       </div>

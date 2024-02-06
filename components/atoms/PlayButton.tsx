@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { SingleEvent } from "../organisms/Stage";
 
-const PlayButton = ({ link, target }: any) => {
+const PlayButton = ({ link, target, text }: any) => {
   const router = useRouter();
 
   return (
@@ -28,7 +28,7 @@ const PlayButton = ({ link, target }: any) => {
         "
       >
         <BsFillTicketPerforatedFill className="mt-[1px]" />
-        Buy Ticket
+        {text ? text : "Buy Ticket"}
       </button>
     </Link>
   );

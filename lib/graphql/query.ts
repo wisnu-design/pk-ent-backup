@@ -122,6 +122,7 @@ export const CONCERT = gql`
       aboutThisEvent {
         html
       }
+      isFestival
       city
       eventStage
       date
