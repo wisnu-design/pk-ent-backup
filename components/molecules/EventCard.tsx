@@ -18,7 +18,7 @@ const EventCard = ({ data }: EventCardProps) => {
   };
 
   return (
-    <div className="group bg-zinc-900 col-span relative h-[12vw]">
+    <div className="group bg-zinc-900 col-span relative h-[50px] w-[400px]">
       <Image
         className="w-full
           cursor-pointer
