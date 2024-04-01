@@ -61,8 +61,8 @@ const index = (props: Props) => {
               ONE OK ROCK, RADWIMPS, Fujii Kaze, Charlie Puth and many more.
               <br />
               <br />
-              It is going to be a bigger 2024 as we are ready to promote Ed
-              Sheeran, Ado, Eve, Tom Jones, AFA and few more concerts this year
+              It is going to be a bigger 2024 as we are ready to promote AFA,
+              Radwimps, Eve, Baby Monster, LANY and many more concerts this year
               targeting more than 100,000 audiences!
               <br />
               <br />
