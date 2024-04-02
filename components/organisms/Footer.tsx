@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import logo from "@/public/images/pkgroup.png";
-import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsTwitter, BsYoutube } from "react-icons/bs";
 import Link from "next/link";
 
 type Props = {};
@@ -75,9 +75,29 @@ const Footer = (props: Props) => {
                 Follow Us
               </h2>
               <div className="flex gap-3 items-center cursor-pointer">
-                <BsFacebook className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
-                <BsInstagram className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
-                <BsTwitter className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+                <Link
+                  target="_blank"
+                  href={"https://www.facebook.com/PKentertainment.id/"}
+                >
+                  <BsFacebook className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+                </Link>
+                <Link
+                  target="_blank"
+                  href={"https://www.instagram.com/pkentertainment.id/"}
+                >
+                  <BsInstagram className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+                </Link>
+                <Link target="_blank" href={"https://twitter.com/PKEnt_ID"}>
+                  <BsTwitter className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+                </Link>
+                <Link
+                  target="_blank"
+                  href={
+                    "https://www.youtube.com/channel/UCXvkwg_M5V3TFqdEvfLlnZw"
+                  }
+                >
+                  <BsYoutube className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
+                </Link>
               </div>
             </div>
             <div className="flex flex-col gap-4 lg:w-12/12 w-full items-center justify-center mt-10 lg:mt-0">
