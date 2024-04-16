@@ -27,7 +27,7 @@ const index = (props: Props) => {
           loop
           muted={true}
           poster=""
-          src="https://media.graphassets.com/Y3HaLw52TAOaRXKxr0AE?_gl=1*18gd3zw*_ga*MTA5ODQ3Mjk3MS4xNjc2MDA4MjY5*_ga_G6FYGSYGZ4*MTY4MzA5ODU1Ni41MS4xLjE2ODMwOTk3NDcuMjIuMC4w"
+          src="https://media.graphassets.com/lqhbsRM1TX2UXHNTECnC"
         ></video>
       </div>
       <div className="lg:mt-10 mt-20 h-full pb-10 max-w-[1370px] mx-auto px-5">
