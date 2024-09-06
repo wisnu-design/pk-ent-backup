@@ -72,7 +72,7 @@ const index = (props: Props) => {
             <div>
               <Link href={"/contact-us"}>
                 <button className="bg-zinc-800 shadow-2xl text-white lg:text-[16px] text-[10px] px-7 py-3 mt-10 rounded-md font-medium hover:bg-white hover:text-black transition-all">
-                  Reach out of us!
+                  Contact Us
                 </button>
               </Link>
             </div>
