@@ -45,7 +45,7 @@ const index = (props: Props) => {
               PK Entertainment
               <br />
               <br /> Since 2015, PK Entertainment has been at the forefront of
-              Indonesia’s concert scene. We’ve delivered unforgettable
+              Indonesia&apos;s concert scene. We&apos;ve delivered unforgettable
               experiences with over 25 world-class performances such as Bruno
               Mars, Coldplay, Celine Dion, Ed Sheeran, Backstreet Boys, Shawn
               Mendes, LANY, Keshi, Westlife, Calum Scott, Charlie Puth and Tom
@@ -67,9 +67,10 @@ const index = (props: Props) => {
               <br />
               <br />
               PK Music is redefining the live music experience in Indonesia.
-              With a sold-out Sheila on 7 tour as our launchpad, we’re committed
-              to bringing the best of Indonesian music to fans nationwide. Our
-              journey has just begun, and we can’t wait to share what’s next.
+              With a sold-out Sheila on 7 tour as our launchpad, we&apos;re
+              committed to bringing the best of Indonesian music to fans
+              nationwide. Our journey has just begun, and we can&apos;t wait to
+              share what&apos;s next.
               <br />
               <br />
               Instagram:
