@@ -4,7 +4,7 @@ import Header from "@/components/organisms/Header";
 import React, { FormEvent } from "react";
 import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
-import poster from "@/public/images/poster.jpg";
+import poster from "@/public/images/aboutus.jpg";
 import Image from "next/image";
 
 type Props = {};
