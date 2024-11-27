@@ -36,10 +36,11 @@ const index = (props: Props) => {
             <h1 className="lg:text-[40px] font-bold">About Us</h1>
             <h2 className="lg:text-[24px] text-[12px] font-semibold ">
               With nearly a decade of expertise, PK Entertainment Group is a
-              driving force in Indonesia's entertainment landscape. Our diverse
-              offerings, including PK Entertainment for international music
-              tours, PK Music for local artists, and PK Events for comprehensive
-              event solutions, have reached audiences across the nation.
+              driving force in Indonesia&apos;s entertainment landscape. Our
+              diverse offerings, including PK Entertainment for international
+              music tours, PK Music for local artists, and PK Events for
+              comprehensive event solutions, have reached audiences across the
+              nation.
             </h2>
             <p className="lg:text-[16px] text-[9px] mt-10">
               PK Entertainment
