@@ -5,6 +5,7 @@ import React from "react";
 
 import about1 from "@/public/images/about1.jpg";
 import about2 from "@/public/images/1.jpg";
+import poster from "@/public/images/poster.jpg";
 import kenny from "@/public/images/kenny.png";
 import Seo from "@/components/Seo";
 import Link from "next/link";
@@ -21,14 +22,11 @@ const index = (props: Props) => {
       />
       <Header />
       <div className="relative h-[40.25vw]">
-        <video
+        <Image
           className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
-          autoPlay
-          loop
-          muted={true}
-          poster=""
-          src="https://media.graphassets.com/lqhbsRM1TX2UXHNTECnC"
-        ></video>
+          src={poster}
+          alt="poster"
+        />
       </div>
       <div className="lg:mt-10 mt-20 h-full pb-10 max-w-[1370px] mx-auto px-5">
         <div className="max-w-[1600px] flex w-full gap-3 mx-auto text-white lg:p-0 p-5">
