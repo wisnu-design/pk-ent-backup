@@ -77,7 +77,7 @@ const SecondHeader = (props: Props) => {
         className={`px-4 md:px-16 py-1 flex flex-row items-center transition duration-500 w-full bg-black bg-opacity-90`}
       >
         <Image
-          className="w-[8%] md:w-[5%] lg:w-[3%] cursor-pointer"
+          className="w-[30%] md:w-[35%] lg:w-[13%] cursor-pointer"
           src={logo}
           alt="PK Entertainment"
           onClick={handleClick}
