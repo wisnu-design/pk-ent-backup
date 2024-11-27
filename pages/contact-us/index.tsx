@@ -4,6 +4,8 @@ import Header from "@/components/organisms/Header";
 import React, { FormEvent } from "react";
 import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
+import poster from "@/public/images/poster.jpg";
+import Image from "next/image";
 
 type Props = {};
 
@@ -67,14 +69,11 @@ const index = (props: Props) => {
       <Header />
 
       <div className="relative h-[40.25vw]">
-        <video
+        <Image
           className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
-          autoPlay
-          loop
-          muted={true}
-          poster=""
-          src="https://media.graphassets.com/Y3HaLw52TAOaRXKxr0AE?_gl=1*18gd3zw*_ga*MTA5ODQ3Mjk3MS4xNjc2MDA4MjY5*_ga_G6FYGSYGZ4*MTY4MzA5ODU1Ni41MS4xLjE2ODMwOTk3NDcuMjIuMC4w"
-        ></video>
+          src={poster}
+          alt="poster"
+        />
       </div>
       <div className="py-10 mt-10 max-w-[1600px] px-2 lg:px-0 mx-auto">
         <div className="w-full lg:h-screen h-full relative">

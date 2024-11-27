@@ -35,39 +35,65 @@ const index = (props: Props) => {
           <div className="flex flex-col lg:w-6/12">
             <h1 className="lg:text-[40px] font-bold">About Us</h1>
             <h2 className="lg:text-[24px] text-[12px] font-semibold ">
-              PK Entertainment, Indonesia’s leading concert promoter and event,
-              brand activation and creative agency was established in 2015.
+              With nearly a decade of expertise, PK Entertainment Group is a
+              driving force in Indonesia's entertainment landscape. Our diverse
+              offerings, including PK Entertainment for international music
+              tours, PK Music for local artists, and PK Events for comprehensive
+              event solutions, have reached audiences across the nation.
             </h2>
             <p className="lg:text-[16px] text-[9px] mt-10">
-              As a combination of visionaries, strategists, and creators, we
-              come together to curate and present top notch quality events. Our
-              unconventional thinking process engages with clients and their
-              audience; ensuring that we meet all their requirements at the
-              highest standards while maintaining their brand identity.
+              PK Entertainment
               <br />
-              <br /> We are an extension of your dream team and we aim to create
-              a memorable experience for everyone.
-              <br />
-              <br />
-              As an event, brand and creative agency; we have the experience of
-              working together with multinational companies such as Google,
-              Facebook, Instagram, YouTube, Netflix, Spotify, GoTo and many more
-              delivering over 300 plus events in the past 8 years.
-              <br />
-              <br />
-              We have an impressive portfolio of handling the biggest concerts
-              in Jakarta including Coldplay, Celine Dion, Ed Sheeran, Backstreet
-              Boys, Shawn Mendes, Lany, YOASOBI, Keshi, Westlife, Calum Scott,
-              ONE OK ROCK, RADWIMPS, Fujii Kaze, Charlie Puth and many more.
+              <br /> Since 2015, PK Entertainment has been at the forefront of
+              Indonesia’s concert scene. We’ve delivered unforgettable
+              experiences with over 25 world-class performances such as Bruno
+              Mars, Coldplay, Celine Dion, Ed Sheeran, Backstreet Boys, Shawn
+              Mendes, LANY, Keshi, Westlife, Calum Scott, Charlie Puth and Tom
+              Jones. Beyond international stars, we also boast a strong track
+              record of showcasing leading Japanese and Korean musicians,
+              including ONE OK ROCK, RADWIMPS, Fujii Kaze, ADO, Eve and
+              BABYMONSTER. Get ready to be part of something extraordinary as we
+              reach a monumental milestone of entertaining 1 million fans
+              nationwide.
               <br />
               <br />
-              It is going to be a bigger 2024 as we are ready to promote AFA,
-              Radwimps, Eve, Baby Monster, LANY and many more concerts this year
-              targeting more than 100,000 audiences!
+              Instagram:
+              <Link href={"https://www.instagram.com/pkentertainment.id/"}>
+                @pkentertainment.id
+              </Link>
               <br />
               <br />
-              For more information about us please visit www.pk-ent.com or visit
-              our Instagram @pkentertainment.id.
+              PK Music
+              <br />
+              <br />
+              PK Music is redefining the live music experience in Indonesia.
+              With a sold-out Sheila on 7 tour as our launchpad, we’re committed
+              to bringing the best of Indonesian music to fans nationwide. Our
+              journey has just begun, and we can’t wait to share what’s next.
+              <br />
+              <br />
+              Instagram:
+              <Link href={"https://www.instagram.com/pkmusic.id/"}>
+                @pkmusic.id
+              </Link>
+              <br />
+              <br />
+              PK Events
+              <br />
+              <br />
+              Since 2015, PK Events has been crafting more than 300
+              extraordinary events across Indonesia. Our expertise spans
+              summits, CxO dinners, festivals, awards shows, and roadshows. With
+              a proven track record and a clientele that includes industry
+              leaders like Google, YouTube, WhatsApp, Instagram, Meta,
+              Bytedance, Spotify, GoTo and Netflix, we are your trusted partner
+              for creating unforgettable experiences.
+              <br />
+              <br />
+              Instagram:
+              <Link href={"https://www.instagram.com/pkevents.id/"}>
+                @pkevents.id
+              </Link>
             </p>
             <div>
               <Link href={"/contact-us"}>
@@ -78,7 +104,7 @@ const index = (props: Props) => {
             </div>
           </div>
           <div className="lg:block hidden relative w-6/12 ">
-            <div className="w-[400px] h-[400px] rounded-xl overflow-hidden absolute top-10 right-10">
+            <div className="w-[400px] h-[400px] rounded-xl overflow-hidden absolute top-52 right-10">
               <Image
                 className="w-full h-full object-cover"
                 src={about2}
@@ -87,7 +113,7 @@ const index = (props: Props) => {
                 height={10}
               />
             </div>
-            <div className="w-[350px] h-[350px] absolute overflow-hidden rounded-xl bottom-36 left-36 border-white border-4">
+            <div className="w-[350px] h-[350px] absolute overflow-hidden rounded-xl bottom-56 left-36 border-white border-4">
               <Image
                 className="object-cover w-full h-full"
                 src={about1}
