@@ -79,7 +79,7 @@ const Header = (props: Props) => {
         }`}
       >
         <Image
-          className="w-[8%] md:w-[5%] lg:w-[3%] cursor-pointer"
+          className="w-[30%] md:w-[35%] lg:w-[17%] cursor-pointer"
           src={logo}
           alt="PK Entertainment"
           onClick={handleClick}
