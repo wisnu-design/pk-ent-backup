@@ -5,7 +5,7 @@ import React from "react";
 
 import about1 from "@/public/images/about1.jpg";
 import about2 from "@/public/images/1.jpg";
-import poster from "@/public/images/poster.jpg";
+import poster from "@/public/images/aboutus.jpg";
 import kenny from "@/public/images/kenny.png";
 import Seo from "@/components/Seo";
 import Link from "next/link";

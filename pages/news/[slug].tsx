@@ -22,8 +22,14 @@ export async function getServerSideProps({ params }: any) {
 
 const News = ({ newSingle }: NewSingle) => {
   const rich = newSingle.article.html;
-  const replaced = rich.replace(/\|/g, " <br />");
+  const replaced = rich.replace(/\|/g, " <br /> <br />");
   console.log(newSingle.video1);
+
+  function replaceBrWithNewline(htmlString: any) {
+    // Ganti semua <br> atau <br /> dengan karakter newline (\n)
+    let updatedString = htmlString.replace(/\|/g, "<br />");
+    return updatedString;
+  }
 
   return (
     <>
@@ -61,7 +67,7 @@ const News = ({ newSingle }: NewSingle) => {
         <div className="mt-5">
           <span
             dangerouslySetInnerHTML={{
-              __html: replaced,
+              __html: replaceBrWithNewline(newSingle.article.html),
             }}
           ></span>
         </div>
