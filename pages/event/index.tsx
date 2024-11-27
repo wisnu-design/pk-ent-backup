@@ -8,7 +8,11 @@ type Props = {};
 const index = (props: Props) => {
   return (
     <>
-      <Seo />
+      <Seo
+        metaTitle="PK Entertainment | About Us"
+        metaDesc="PK Entertainment"
+        metaKey="Event Promotor"
+      />
       <Header />
       <div className="h-screen text-white flex justify-center items-center">
         Coming Soon
