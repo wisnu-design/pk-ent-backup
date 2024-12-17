@@ -1,12 +1,12 @@
 import { Inter } from "next/font/google";
+import { useState, useEffect } from "react";
 import Seo from "@/components/Seo";
 import Header from "@/components/organisms/Header";
 import Billboard from "@/components/organisms/Billboard";
 import EventList from "@/components/organisms/EventList";
 import { api } from "@/lib/graphql/api";
-import { BILLBOARD, HOME, QUERY } from "@/lib/graphql/query";
+import { BILLBOARD, HOME } from "@/lib/graphql/query";
 import Footer from "@/components/organisms/Footer";
-import InstagramCard from "@/components/molecules/InstagramCard";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +24,17 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({ concerts, brands, billboard, feed }: any) {
+export default function Home({ concerts, brands, billboard }: any) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    setIsModalOpen(true); // Modal muncul saat halaman diload
+  }, []);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     const options: any = { day: "numeric", month: "long", year: "numeric" };
@@ -45,49 +55,32 @@ export default function Home({ concerts, brands, billboard, feed }: any) {
       <div className="lg:pb-20 pb-10 lg:pt-10 pt-1">
         <EventList title="Events" data={concerts} />
       </div>
-      {/*
-      
-      <div className="lg:pb-20 md:pb-0 pb-0 ">
-        <BrandActivation title="Brand Activation" data={brands} />
-      </div>
-      */}
-      {/*
-      <div className="lg:pb-40 pb-20">
-        <div className="px-4 md:px-12 mt-4">
-          <div>
-            <div className="flex justify-between items-center">
-              <div className="flex gap-2">
-                <div className="w-[1px] h-[25px] md:h-[30px] lg:h-[40px] bg-white/30 backdrop-blur-md"></div>
-                <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
-                  Social
-                </p>
-              </div>
-              <Link className="flex gap-2" href="#">
-                <p className="text-white text-sm md:text-md lg:text-lg font-light mb-4"></p>
-              </Link>
-            </div>
-          </div>
 
-          <div className="flex flex-wrap justify-center gap-5 lg:flex-row w-full h-full">
-            {feed.data.slice(0, 15).map((v: any, index: number) => {
-              return (
-                <div key={index}>
-                  <InstagramCard
-                    caption={v.caption}
-                    date={formatDate(v.timestamp)}
-                    media_url={v.media_url}
-                    media_type={v.media_type}
-                    thumbnail_url={v.thumbnail_url}
-                    permalink={v.permalink}
-                  />
-                </div>
-              );
-            })}
+      <Footer />
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="p-6 rounded-lg  w-6/12 relative">
+            <div className="mb-4">
+              <video controls autoPlay muted loop className="w-full rounded-lg">
+                <source src="/images/vid.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <button
+              onClick={closeModal}
+              className="px-3 py-1 font-bold  text-white rounded hover:bg-slate-600/30 transition-all duration-200 absolute top-0 right-0"
+            >
+              X
+            </button>
+            <Link href={"/campaign"}>
+              <button className="px-4 py-2 font-medium bg-white  text-black hover:text-white rounded hover:bg-slate-600/30 transition-all ">
+                Join Now!
+              </button>
+            </Link>
           </div>
         </div>
-      </div>
-       */}
-      <Footer />
+      )}
     </>
   );
 }
