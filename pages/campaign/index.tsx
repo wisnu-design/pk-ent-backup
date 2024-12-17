@@ -52,6 +52,7 @@ const Index = () => {
     city: `Di kota apa`,
     date: "Tanggal Berapa",
     tickets: [{ ticketLink: "asdasdasd" }],
+    isFestival: false,
     upcoming: true,
     soldOut: false,
     vide: {
