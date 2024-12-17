@@ -48,6 +48,7 @@ const Index = () => {
     title: "Testing Title",
     eventStage: "Ini Jika ada stage nya dimana",
     description: `Ini Adalah Contoh Deskripsi`,
+    band: "Isi Bebas",
     city: `Di kota apa`,
     date: "Tanggal Berapa",
     tickets: [{ ticketLink: "asdasdasd" }],
