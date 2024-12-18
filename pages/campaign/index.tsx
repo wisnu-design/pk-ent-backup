@@ -53,7 +53,7 @@ const Index = () => {
     band: " ",
     city: ` `,
     date: "17 Desember 2024 - 17 Januari 2025",
-    tickets: [{ ticketLink: "https://instagram.com" }],
+    tickets: [{ ticketLink: "https://www.instagram.com/p/DDrgmJ4ymsg/?img_index=1" }],
     isFestival: false,
     upcoming: true,
     soldOut: false,
@@ -140,7 +140,7 @@ const Index = () => {
                       concert.soldOut === true ? (
                         <div></div>
                       ) : !concert.tickets ? null : (
-                        <Link target="_blank" href="blabla">
+                        <Link target="_blank" href="https://www.instagram.com/p/DDrgmJ4ymsg/?img_index=1">
                           <button
                             className="
                       bg-white 
@@ -160,7 +160,7 @@ const Index = () => {
                       "
                           >
                             <BsFillTicketPerforatedFill className="mt-[1px]" />
-                            Join Now
+                            Learn More
                           </button>
                         </Link>
                       )
@@ -218,7 +218,7 @@ const Index = () => {
                       concert.soldOut === true ? (
                         <div></div>
                       ) : !concert.tickets ? null : (
-                        <Link target="_blank" href="blabla">
+                        <Link target="_blank" href="https://www.instagram.com/p/DDrgmJ4ymsg/?img_index=1">
                           <button
                             className="
                       bg-white 
@@ -238,7 +238,7 @@ const Index = () => {
                       "
                           >
                             <BsFillTicketPerforatedFill className="mt-[1px]" />
-                            Join Now
+                            Learn More
                           </button>
                         </Link>
                       )
