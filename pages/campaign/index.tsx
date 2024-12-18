@@ -30,6 +30,7 @@ import Footer from "@/components/organisms/Footer";
 import Image from "next/image";
 import SoldOut from "@/components/atoms/SoldOut";
 import image1 from "@/public/images/image1.jpg";
+import profile from "@/public/images/profile.jpg";
 import image2 from "@/public/images/image2.jpg";
 import image3 from "@/public/images/image3.jpg";
 import image4 from "@/public/images/image4.jpg";
@@ -44,14 +45,17 @@ const Index = () => {
   const [mainImage, setMainImage] = useState(images[0]);
 
   const concert = {
-    profilePicture: { url: image1 },
-    title: "Testing Title",
-    eventStage: "Ini Jika ada stage nya dimana",
-    description: `Ini Adalah Contoh Deskripsi`,
-    band: "Isi Bebas",
-    city: `Di kota apa`,
-    date: "Tanggal Berapa",
-    tickets: [{ ticketLink: "asdasdasd" }],
+    profilePicture: { url: profile },
+    title: "#SetahunTanpaWar",
+    eventStage: " ",
+    description: `Kita mau ucapin terima kasih nih untuk segala dukungan dan saran kalian kepada kami selama ini! Kita akan terus berusaha untuk berikan yang terbaik kedepannya❤❤❤
+
+Yuk ikut giveaway kita dan dapatkan kesempatan spesial akses #SetahunTanpaWar dan voucher 1 juta buat beli tiket konser PK Entertainment dan TEM Presents sepanjang tahun 2025. Jangan sampai ketinggalan ya!! Goodluck🍀✨
+`,
+    band: " ",
+    city: ` `,
+    date: "17 Desember 2024 - 17 Januari 2025",
+    tickets: [{ ticketLink: "https://instagram.com" }],
     isFestival: false,
     upcoming: true,
     soldOut: false,
