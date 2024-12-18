@@ -48,10 +48,8 @@ const Index = () => {
     profilePicture: { url: profile },
     title: "#SetahunTanpaWar",
     eventStage: " ",
-    description: `Kita mau ucapin terima kasih nih untuk segala dukungan dan saran kalian kepada kami selama ini! Kita akan terus berusaha untuk berikan yang terbaik kedepannya❤❤❤
-
-Yuk ikut giveaway kita dan dapatkan kesempatan spesial akses #SetahunTanpaWar dan voucher 1 juta buat beli tiket konser PK Entertainment dan TEM Presents sepanjang tahun 2025. Jangan sampai ketinggalan ya!! Goodluck🍀✨
-`,
+    description: `Kita mau ucapin terima kasih nih untuk segala dukungan dan saran kalian kepada kami selama ini! Kita akan terus berusaha untuk berikan yang terbaik kedepannya❤❤❤`,
+    description1:`Yuk ikut giveaway kita dan dapatkan kesempatan spesial akses #SetahunTanpaWar dan voucher 1 juta buat beli tiket konser PK Entertainment dan TEM Presents sepanjang tahun 2025. Jangan sampai ketinggalan ya!! Goodluck🍀✨`,
     band: " ",
     city: ` `,
     date: "17 Desember 2024 - 17 Januari 2025",
@@ -126,14 +124,15 @@ Yuk ikut giveaway kita dan dapatkan kesempatan spesial akses #SetahunTanpaWar da
                     <p>{concert.date}</p>
                   </div>
                   <div>
-                    <p className="font-medium text-xl">
-                      {concert.eventStage} <span className="font-light">|</span>{" "}
-                      {concert.city}
-                    </p>
+                  
                   </div>
                   <div>
                     <p className="font-normal text-zinc-300">
                       {concert.description}
+                    </p>
+                    <br />
+                    <p className="font-normal text-zinc-300">
+                      {concert.description1}
                     </p>
                   </div>
                   <div className="text-black mt-3">
@@ -213,24 +212,48 @@ Yuk ikut giveaway kita dan dapatkan kesempatan spesial akses #SetahunTanpaWar da
             <div>{concert.eventStage}</div>
             <div>{concert.date}</div>
             <div className="mt-5">{concert.description}</div>
+            <div className="mt-5">{concert.description1}</div>
             <div className="text-black mt-3">
-              {concert.upcoming === true ? (
-                concert.soldOut === true ? (
-                  <SoldOut />
-                ) : !concert.tickets ? null : concert.isFestival == true ? (
-                  <PlayButton
-                    target={"_blank"}
-                    link={concert.tickets[0].ticketLink}
-                    text={"More Info"}
-                  />
-                ) : (
-                  <PlayButton
-                    target={"_blank"}
-                    link={concert.tickets[0].ticketLink}
-                  />
-                )
-              ) : null}
-            </div>
+                    {concert.upcoming === true ? (
+                      concert.soldOut === true ? (
+                        <div></div>
+                      ) : !concert.tickets ? null : (
+                        <Link target="_blank" href="blabla">
+                          <button
+                            className="
+                      bg-white 
+                      rounded-md 
+                      py-1 md:py-2 
+                      px-2 md:px-4
+                      w-auto 
+                      text-xs lg:text-lg 
+                      font-semibold
+                      flex
+                      flex-row
+                      items-center
+                      hover:bg-neutral-300
+                      transition
+                      gap-2
+                      backdrop-blur-sm
+                      "
+                          >
+                            <BsFillTicketPerforatedFill className="mt-[1px]" />
+                            Join Now
+                          </button>
+                        </Link>
+                      )
+                    ) : null}
+
+                    {/*concert.upcoming === true  //jika Upcoming true
+                  ? 
+                    concert.soldOut === true //true Upcoming state
+                    ? <SoldOut /> 
+                    : <PlayButton /> 
+
+                  : concert.soldOut === true  //false upcoming state
+                    ? "nih" 
+                    : concert.soldOut === false ? "iya" : null */}
+                  </div>
           </div>
         </div>
       </div>
