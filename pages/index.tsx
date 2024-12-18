@@ -60,7 +60,7 @@ export default function Home({ concerts, brands, billboard }: any) {
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="p-6 rounded-lg  w-6/12 relative">
+          <div className="p-6 rounded-lg w-full lg:w-6/12 relative">
             <div className="mb-4">
               <video controls autoPlay muted loop className="w-full rounded-lg">
                 <source src="/images/vid.mp4" type="video/mp4" />
