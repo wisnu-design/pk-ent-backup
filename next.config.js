@@ -11,6 +11,7 @@ const nextConfig = {
       "pk-ent.com",
       "scontent.cdninstagram.com",
       "https://robohash.org/",
+      "ap-southeast-2.graphassets.com"
     ],
   },
 
