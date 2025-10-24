@@ -49,7 +49,7 @@ interface IndexPageProps {
 }
 
 
-const index = ({events}:IndexPageProps) => {
+const Index = ({events}:IndexPageProps) => {
 
   const [orderedConcerts, setOrderedConcerts] = useState(events);
   const activeConcert = orderedConcerts[0];
@@ -242,4 +242,4 @@ const handleCardClick = (clickedIndex: number) => {
   )
 }
 
-export default index
+export default Index

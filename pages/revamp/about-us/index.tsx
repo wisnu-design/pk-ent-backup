@@ -15,7 +15,7 @@ import Image from 'next/image';
 
 type Props = {};
 
-const index = (props: Props) => {
+const Index = (props: Props) => {
 const [expandedId, setExpandedId] = useState<number | null>(null);
 const isAnyExpanded = expandedId !== null;
 const sectionRef = useRef(null);
@@ -144,4 +144,4 @@ useLayoutEffect(() => {
  );
 };
 
-export default index;
+export default Index;

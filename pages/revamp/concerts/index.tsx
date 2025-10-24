@@ -41,7 +41,7 @@ export async function getServerSideProps() {
 }
 
 
-const index = ({concerts}:any) => {
+const Index = ({concerts}:any) => {
 
   const realConcerts: Concert[] = useMemo(() => mapGraphQLToConcerts(concerts), [concerts]);
   const [filterMode, setFilterMode] = useState<'Upcoming' | 'Past'>('Upcoming');
@@ -236,4 +236,4 @@ const handleCardClick = (clickedIndex: number) => {
   )
 }
 
-export default index
+export default Index
