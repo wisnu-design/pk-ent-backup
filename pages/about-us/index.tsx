@@ -71,7 +71,7 @@ const Index = (props: Props) => {
                 className='lg:w-4/12 w-6/12'
               />
               <p className='text-white lg:w-6/12 w-10/12 text-center'>
-                With nearly a decade of expertise, PK Entertainment Group is a driving force in Indonesia's entertainment landscape. Our diverse offerings, including PK Entertainment for international music tours, PK Music for local artists, and PK Events for comprehensive event solutions, have reached audiences across the nation.
+                With nearly a decade of expertise, PK Entertainment Group is a driving force in Indonesia&apos;s entertainment landscape. Our diverse offerings, including PK Entertainment for international music tours, PK Music for local artists, and PK Events for comprehensive event solutions, have reached audiences across the nation.
               </p>
 
             </div>

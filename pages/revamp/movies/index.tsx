@@ -25,7 +25,7 @@ const textVariants = {
 
 type Props = {}
 
-const index = (props: Props) => {
+const Index = (props: Props) => {
 
   const [orderedConcerts, setOrderedConcerts] = useState(initialConcerts);
   const activeConcert = orderedConcerts[0];
@@ -174,4 +174,4 @@ const handleCardClick = (clickedIndex: number) => {
   )
 }
 
-export default index
+export default Index
