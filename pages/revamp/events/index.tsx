@@ -155,7 +155,7 @@ const handleCardClick = (clickedIndex: number) => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute z-10 top-1/2 -translate-y-1/2 left-8 md:left-24 w-full max-w-md md:max-w-lg text-white">
+        <div className="absolute z-10 top-[30%] lg:top-1/2 -translate-y-1/2 left-8 md:left-24 w-10/12 lg:w-full max-w-md text-white">
           <AnimatePresence mode="wait">
             <motion.h1
               key={!activeConcert ? "" : activeConcert.id}
@@ -183,10 +183,9 @@ const handleCardClick = (clickedIndex: number) => {
           <AnimatePresence mode="wait">
             <Link 
               href={`/revamp/events/${!activeConcert ? "" : activeConcert.slug}`} 
-              key={!activeConcert ? "" : activeConcert.id + '-buttonlink'} // Beri key unik untuk AnimatePresence
+              key={!activeConcert ? "" : activeConcert.id + '-buttonlink'} 
             >
               <motion.button
-                // Terapkan variants yang sama dengan teks agar animasinya serasi
                 variants={textVariants} 
                 initial="initial"
                 animate="animate"

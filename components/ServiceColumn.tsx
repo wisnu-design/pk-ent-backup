@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Service } from '@/lib/data/data'; 
 import Image from 'next/image';
@@ -30,21 +30,21 @@ const bgImageVariants: Variants = {
 };
 
 const hoverBgVariants: Variants = {
-  light: { opacity: 0, scale: 1.1 },
-  hover: { opacity: 1, scale: 1 },
-  expanded: { opacity: 0, scale: 1.1, transition: { duration: 0.3 } }, 
-  hidden: { opacity: 0 },
+   light: { opacity: 0, scale: 1.1 },
+   hover: { opacity: 1, scale: 1 },
+   expanded: { opacity: 0, scale: 1.1, transition: { duration: 0.3 } }, 
+   hidden: { opacity: 0 },
 };
 
 const expandedBgVariants: Variants = {
-  light: { opacity: 0, scale: 1.1 },
-  hover: { opacity: 0, scale: 1.1 }, 
-  expanded: { 
-    opacity: 1, 
-    scale: 1.5, 
-    transition: { duration: 0.5, ease: 'easeInOut', delay: 0.3 }
-  },
-  hidden: { opacity: 0 },
+   light: { opacity: 0, scale: 1.1 },
+   hover: { opacity: 0, scale: 1.1 }, 
+   expanded: { 
+     opacity: 1, 
+     scale: 1.5, 
+     transition: { duration: 0.5, ease: 'easeInOut', delay: 0.3 }
+   },
+   hidden: { opacity: 0 },
 };
 
 const bgOverlayVariants: Variants = {
@@ -57,7 +57,11 @@ const bgOverlayVariants: Variants = {
 
 const defaultContentVariants: Variants = {
   light: { opacity: 1, transition: { staggerChildren: 0.1 }, y:0 },
-  hover: { opacity: 1, y: '30vh' },
+  hover: (isMobile) => ({
+    opacity: 1,
+    y: isMobile ? 0 : '30vh', 
+    transition: { staggerChildren: 0.1 } 
+  }),
   expanded: { opacity: 0, y: 50, transition: { duration: 0.3 } },
   hidden: { opacity: 0, transition: { duration: 0.3 } },
 };
@@ -75,18 +79,18 @@ const expandedContentVariants: Variants = {
 };
 
 const columnWrapperVariants: Variants = {
-  light: { 
+   light: { 
     flex: 1,  
     position: 'relative', 
     inset: 'auto',        
     zIndex: 1,           
     transition: { duration: 0.5, ease: 'easeInOut' } 
   },
-  hover: { 
+   hover: { 
     flex: 1.2, 
     transition: { duration: 0.4, ease: 'easeOut' } 
   },
-  expanded: { 
+   expanded: { 
     flex: 1, 
     width: '100%',
     position: 'fixed',
@@ -94,7 +98,7 @@ const columnWrapperVariants: Variants = {
     zIndex: 40,     
     transition: { duration: 0.05, ease: 'easeInOut', delay: 0.2 } 
   },
-  hidden: { 
+   hidden: { 
     flex: 0, 
     opacity: 0, 
     position: 'relative',
@@ -116,6 +120,9 @@ const ServiceColumn: React.FC<ServiceColumnProps> = ({ service, expandedId, setE
   const { id, title, logo, logoDark, bgImage, description, expandedLogo, expandedDescription, serviceUrl, expandedBackground } = service;
   const currentImage = numberImageMap[id as NumberId];
 
+  const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   const isExpanded = expandedId === id;
   const isAnyExpanded = expandedId !== null;
   
@@ -126,6 +133,13 @@ const ServiceColumn: React.FC<ServiceColumnProps> = ({ service, expandedId, setE
     animateState = "hidden";
   }
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    };
+    checkMobile(); 
+  }, []);
+
   return (
     <motion.div
       animate={animateState}
@@ -135,17 +149,17 @@ const ServiceColumn: React.FC<ServiceColumnProps> = ({ service, expandedId, setE
       className="relative flex-1 p-8 md:p-12 flex flex-col justify-center items-center h-screen overflow-hidden cursor-pointer"
     >
       <motion.div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: `url(${bgImage.src})` }}
-        variants={hoverBgVariants} 
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      />
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{ backgroundImage: `url(${bgImage.src})` }}
+          variants={hoverBgVariants} 
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        />
 
       <motion.div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: `url(${expandedBackground.src})` }}
-        variants={expandedBgVariants} 
-      />
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{ backgroundImage: `url(${expandedBackground.src})` }}
+          variants={expandedBgVariants} 
+        />
       <motion.div
         className="absolute inset-0 z-1"
         style={{ backgroundImage: `url(${bgWhite.src})` }}
@@ -156,6 +170,7 @@ const ServiceColumn: React.FC<ServiceColumnProps> = ({ service, expandedId, setE
      <motion.div
      initial={{ opacity: 0, y: 20 }} 
         variants={defaultContentVariants}
+        custom={isMobile}
         className="relative z-10 w-full h-full flex flex-col items-center justify-center" 
         >
         <div className='relative w-full'>
@@ -201,28 +216,27 @@ const ServiceColumn: React.FC<ServiceColumnProps> = ({ service, expandedId, setE
       <motion.div
         variants={expandedContentVariants}
         initial={{ opacity: 0, y: 20 }}
-        className="absolute inset-0 z-20 w-full h-full flex flex-col justify-center items-center p-8 md:p-12 text-white"
+        className="absolute inset-0 z-20 -mt-10 lg:mt-0 w-full h-full flex flex-col justify-center items-center p-2 md:p-12 text-white"
       >
         <motion.button
-          className="absolute top-[18%] left-20 z-30 text-white"
+          className="absolute top-[18%] left-7 lg:left-20 z-30 text-white"
           onClick={() => setExpandedId(null)} 
           whileHover={{ scale: 1.2 }}
           transition={{ duration: 0.5 }}
         >
             <div className='flex gap-2 items-center'>
-
-            <HiArrowLeft size={20} />
-          <h1>Back</h1>
+              <HiArrowLeft size={20} />
+              <h1>Back</h1>
             </div>
         </motion.button>
         <motion.div 
-          className="relative w-48 h-24 lg:w-64 lg:h-32"
+          className="relative w-48 h-24 lg:w-64 lg:h-32 mt-20"
           variants={{ expanded: { opacity: 1, y: 0 }, light: { opacity: 0, y: 20 }, hover: { opacity: 0, y: 20 }, hidden: { opacity: 0, y: 20 } }}
         >
-          <Image src={logo} alt={title} fill style={{ objectFit: 'contain' }} />
+          <Image src={logo} alt={title} fill className='llg:scale-0 scale-150' style={{ objectFit: 'contain' }} />
         </motion.div>
        <motion.div
-          className="text-sm lg:text-sm text-center mt-6"
+          className="text-sm lg:text-sm text-center mt-10"
           variants={{ expanded: { opacity: 1, y: 0 }, light: { opacity: 0, y: 20 }, hover: { opacity: 0, y: 20 }, hidden: { opacity: 0, y: 20 } }}
             
           dangerouslySetInnerHTML={{ __html: expandedDescription }}

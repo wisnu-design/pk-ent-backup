@@ -17,6 +17,7 @@ import { isConcertUpcoming } from '@/lib/helper/utils';
 import Link from 'next/link';
 import { HiArrowLeft } from 'react-icons/hi';
 import { useRouter } from 'next/router';
+import MobileConcertCarousel from '@/components/MobileCOncertCarousel';
 
 
 
@@ -49,6 +50,8 @@ const Index = ({concerts}:any) => {
     realConcerts.filter(c => isConcertUpcoming(c.dateConcert))
   );
   const activeConcert = orderedConcerts.length > 0 ? orderedConcerts[0] : null;
+
+  const [isMobile, setIsMobile] = useState(false);
 
 
   const [scrollWidth, setScrollWidth] = useState(0);
@@ -98,6 +101,15 @@ const handleCardClick = (clickedIndex: number) => {
     );
   };
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile); 
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const router = useRouter()
   return (
     <>
@@ -119,14 +131,20 @@ const handleCardClick = (clickedIndex: number) => {
               src={!activeConcert ? "" : activeConcert.bgImage}
               alt={!activeConcert ? "" : activeConcert.title}
               layout="fill"
-              objectFit="cover"
+              objectFit='cover'
               priority 
+              className='w-full'
             />
             <div className="absolute inset-0 bg-black/60 z-1" />
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute z-10 top-1/2 -translate-y-1/2 left-8 md:left-24 w-full max-w-md md:max-w-lg text-white">
+        <div className={`absolute inset-0 z-10  lg:w-6/12 lg:p-8 flex flex-col  ${
+          isMobile
+            ? 'flex-col justify-start mt-16 p-3 text-center w-12/12' // Mobile: Kolom, konten di bawah
+            : 'justify-center'         // Desktop: Tetap seperti sebelumnya
+          } text-white overflow-hidden`
+        }>
           <AnimatePresence mode="wait">
             <motion.h1
               key={!activeConcert ? "" : activeConcert.id}
@@ -134,7 +152,7 @@ const handleCardClick = (clickedIndex: number) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="text-5xl md:text-7xl font-bold"
+              className="text-3xl md:text-7xl font-bold"
             >
               {!activeConcert ? "" : activeConcert.title}
             </motion.h1>
@@ -146,7 +164,7 @@ const handleCardClick = (clickedIndex: number) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="mt-4 text-base md:text-lg"
+              className={`mt-4 text-base md:text-lg ${isMobile ? 'hidden' : ''}`}
             >
               {!activeConcert ? "" : activeConcert.description}
             </motion.p>
@@ -154,7 +172,8 @@ const handleCardClick = (clickedIndex: number) => {
           <AnimatePresence mode="wait">
             <Link 
               href={`/concert/${!activeConcert ? "" : activeConcert.slug}`} 
-              key={!activeConcert ? "" : activeConcert.id + '-buttonlink'} // Beri key unik untuk AnimatePresence
+              key={!activeConcert ? "" : activeConcert.id + '-buttonlink'} 
+              className={`${isMobile ? 'hidden' : ''}`}
             >
               <motion.button
                 // Terapkan variants yang sama dengan teks agar animasinya serasi
@@ -167,28 +186,35 @@ const handleCardClick = (clickedIndex: number) => {
                 View more
               </motion.button>
             </Link>
-            <div className="relative z-10 w-full h-full text-white ">
-                                    <motion.button
-                                onClick={() => router.back()} // Fungsi untuk kembali
-                                className="flex items-center ml-2 mt-4 gap-2 text-white/80 hover:text-white transition-colors mb-4" // Styling
-                                initial={{ opacity: 0, x: -20 }} // Animasi masuk (opsional)
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                              >
-                                <HiArrowLeft size={18} />
-                                <span>Back</span>
-                              </motion.button>
-                              </div>
+            <div className={`"relative z-10 w-full text-white " ${isMobile ? 'hidden' : ''}`}>
+                <motion.button
+                  onClick={() => router.back()} // Fungsi untuk kembali
+                  className="flex items-center ml-2 mt-4 gap-2 text-white/80 hover:text-white transition-colors mb-4" // Styling
+                  initial={{ opacity: 0, x: -20 }} // Animasi masuk (opsional)
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <HiArrowLeft size={18} />
+                  <span>Back</span>
+                </motion.button>
+            </div>
           </AnimatePresence>
         </div>
 
+        {isMobile ?
+         <MobileConcertCarousel
+              concerts={orderedConcerts}
+              onCardClick={handleCardClick} // Kirim handler reorder ke child
+              filterMode={filterMode}         // <-- Kirim state filter
+              onFilterChange={handleFilterChange}
+           />
+        :
+        
         <motion.div
         ref={carouselWrapperRef} 
-        className="absolute z-20 bottom-10 right-0 w-full md:w-3/5 lg:w-1/2 p-4 overflow-x-hidden overflow-y-visible"
+        className="absolute z-20 bottom-10 right-0 w-full  lg:block hidden md:w-3/5 lg:w-1/2 p-4 overflow-x-visible overflow-y-visible"
         >
-
-
-          <div className="flex gap-4 mb-12 ml-16">
+          <div className="flex gap-4 mb-12">
             <button
               onClick={() => handleFilterChange('Upcoming')}
               className={`w-2/12 py-1 rounded-full text-sm font-medium transition-colors ${
@@ -210,25 +236,27 @@ const handleCardClick = (clickedIndex: number) => {
               Past
             </button>
           </div>
-          <motion.div
-            ref={carouselInnerRef} 
-            className="flex gap-10 w-max"
-            drag="x"
-            dragConstraints={{ right: 0, left: -scrollWidth }}
-            dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
-            animate={dragControls} 
-          >
+          <motion.div
+               ref={carouselInnerRef} 
+               className="flex gap-10 w-max"
+               drag="x"
+               dragConstraints={{ right: 0, left: -scrollWidth }}
+               dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
+               animate={dragControls} 
+             >
            
-            {orderedConcerts.map((concert, index) => (
-              <ConcertCard
-                key={concert.id} 
-                concert={concert}
-                isActive={index === 0} 
-                onClick={() => handleCardClick(index)} 
-              />
-            ))}
-          </motion.div>
-        </motion.div>
+               {orderedConcerts.map((concert, index) => (
+                  <ConcertCard
+                    key={concert.id} 
+                    concert={concert}
+                    isActive={index === 0} 
+                    onClick={() => handleCardClick(index)} 
+                  />
+               ))}
+          </motion.div>
+        </motion.div>
+        }
+
 
       </main>
       <Footer />

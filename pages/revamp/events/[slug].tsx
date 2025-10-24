@@ -129,18 +129,18 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
         {/* Wrapper Konten */}
         <div className="relative z-10 w-full h-full text-white p-8 md:p-12 lg:p-24">
             <motion.button
-        onClick={() => router.back()} // Fungsi untuk kembali
-        className="flex items-center -mt-4 gap-2 text-white/80 hover:text-white transition-colors mb-4" // Styling
-        initial={{ opacity: 0, x: -20 }} // Animasi masuk (opsional)
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <HiArrowLeft size={18} />
-        <span>Back</span>
-      </motion.button>
+              onClick={() => router.back()} // Fungsi untuk kembali
+              className="flex items-center -mt-4 gap-2 text-white/80 hover:text-white transition-colors mb-4" // Styling
+              initial={{ opacity: 0, x: -20 }} // Animasi masuk (opsional)
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <HiArrowLeft size={18} />
+              <span>Back</span>
+             </motion.button>
 
           {/* === Teks (Kiri Atas & Kanan Bawah) === */}
-          <div className="absolute top-[20%] left-10 md:left-24 max-w-xs z-20">
+          <div className="absolute lg:top-[20%] lg:left-10 md:left-24 w-10/12 z-20">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={activeBrand.id} // Ganti key saat brand berubah
@@ -149,10 +149,27 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="text-md font-bold"
+                className="text-md font-bold lg:block hidden"
               >
                 {activeBrand.title}
               </motion.h1>
+            </AnimatePresence>
+
+            {/* Mobile */}
+             <AnimatePresence mode="wait">
+              <div className='w-full text-center'>
+              <motion.h1
+                key={activeBrand.id} // Ganti key saat brand berubah
+                variants={slideUp}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="text-3xl font-bold lg:hidden block"
+              >
+                {activeBrand.title}
+              </motion.h1>
+              </div>
             </AnimatePresence>
           </div>
 
@@ -185,8 +202,8 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
             </AnimatePresence>
           </div>
 
-          {/* === Galeri Gambar (Layout GRID) === */}
-          <div className="absolute inset-0 grid grid-cols-12 grid-rows-6 gap-4 p-8 md:p-12 lg:p-24 pointer-events-none"> 
+          {/* === Galeri Gambar (Layout GRID) Desktop === */}
+          <div className="absolute inset-0 lg:grid grid-cols-12 grid-rows-6 gap-4 p-8 md:p-12 lg:p-24 pointer-events-none  hidden"> 
             
             {/* SLOT 1 (Slide Left) */}
             <div className="col-span-4  row-span-3 col-start-1 row-start-2 overflow-hidden rounded-lg pointer-events-auto">
@@ -284,6 +301,62 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
             </div>
             
           </div> {/* Akhir Grid Container */}
+
+          {/* Gallery Gambar Mobile */}
+          <div className='relative h-full'>
+            {/* gallery 1 */}
+             <div className="absolute inset-0 lg:hidden left-5 w-10/12 p-8 md:p-12 lg:p-24 block h-[60%] mt-[7em] rounded-xl overflow-hidden ">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeBrand.id + '-img1'}
+                    variants={slideLeft} 
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.6, ease: 'easeInOut' }}
+                  >
+                    {gallery[3] && (
+                      <Image src={gallery[3].url} alt="Gallery 1" layout="fill" objectFit="cover" />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+             </div>
+             {/* gallery 2 */}
+             <div className="absolute inset-0 lg:hidden p-8 md:p-12 lg:p-24 top-5 block h-[55%] mt-[7em] rounded-xl overflow-hidden ">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeBrand.id + '-img1'}
+                    variants={slideLeft} 
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.6, ease: 'easeInOut' }}
+                  >
+                    {gallery[1] && (
+                      <Image src={gallery[1].url} alt="Gallery 1" layout="fill" objectFit="cover" />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+             </div>
+             {/* gallery 3 */}
+             <div className="absolute inset-0 -left-5 lg:hidden w-[110%] p-8 md:p-12 lg:p-28 top-24 block h-[30%] mt-[7em] rounded-xl overflow-hidden ">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeBrand.id + '-img1'}
+                    variants={slideLeft} 
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.6, ease: 'easeInOut' }}
+                  >
+                    {gallery[2] && (
+                      <Image src={gallery[2].url} alt="Gallery 1" layout="fill" objectFit="cover" />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+             </div>
+          </div>
+          
           
         </div> {/* Akhir Wrapper Konten */}
       </main>

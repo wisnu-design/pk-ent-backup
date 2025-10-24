@@ -91,7 +91,6 @@ const EventCard: React.FC<EventCardProp> = ({ concert, isActive, onClick }) => {
 
       {/* Teks */}
       <div className="absolute z-10 p-3 top-0 flex flex-col w-full justify-between h-full text-white">
-         {/* ... (styling teks Anda) ... */}
          <div className="w-fit">
             <span className=" px-2 py-1 rounded text-xs font-semibold w-fit text-black bg-white/70"> {/* Background agar terbaca */}
              PK Events
