@@ -13,6 +13,7 @@ import ConcertCard from '@/components/ConcertCard';
 import FilmCard from '@/components/FilmCard';
 import { useRouter } from 'next/router';
 import { HiArrowLeft } from 'react-icons/hi';
+import Link from 'next/link';
 
 
 
@@ -125,23 +126,34 @@ const handleCardClick = (clickedIndex: number) => {
               {activeConcert.description}
             </motion.p>
           </AnimatePresence>
-          <motion.button
-            className="mt-8 px-6 py-2 border border-white rounded-full text-sm font-medium transition-colors hover:bg-white hover:text-black"
-          >
-            View more
-          </motion.button>
-          <div className="relative z-10 w-full h-full text-white ">
-                                  <motion.button
-                              onClick={() => router.back()} // Fungsi untuk kembali
-                              className="flex items-center ml-2 mt-4 gap-2 text-white/80 hover:text-white transition-colors mb-4" // Styling
-                              initial={{ opacity: 0, x: -20 }} // Animasi masuk (opsional)
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.5, delay: 0.2 }}
-                            >
-                              <HiArrowLeft size={18} />
-                              <span>Back</span>
-                            </motion.button>
-                            </div>
+          <AnimatePresence mode="wait">
+            <Link 
+              href={`/movies/agen62`} 
+              key={!activeConcert ? "" : activeConcert.id + '-buttonlink'} 
+            >
+              <motion.button
+                variants={textVariants} 
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="mt-8 px-6 py-2 border border-white rounded-full text-sm font-medium transition-colors hover:bg-white hover:text-black"
+              >
+                View more
+              </motion.button>
+            </Link>
+            <div className="relative z-10 w-full h-full text-white ">
+                                    <motion.button
+                                onClick={() => router.back()} // Fungsi untuk kembali
+                                className="flex items-center ml-2 mt-4 gap-2 text-white/80 hover:text-white transition-colors mb-4" // Styling
+                                initial={{ opacity: 0, x: -20 }} // Animasi masuk (opsional)
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                              >
+                                <HiArrowLeft size={18} />
+                                <span>Back</span>
+                              </motion.button>
+            </div>
+          </AnimatePresence>
         </div>
 
         <motion.div

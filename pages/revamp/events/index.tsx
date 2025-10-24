@@ -206,7 +206,7 @@ const handleCardClick = (clickedIndex: number) => {
                                 <HiArrowLeft size={18} />
                                 <span>Back</span>
                               </motion.button>
-                              </div>
+            </div>
           </AnimatePresence>
         </div>
 
