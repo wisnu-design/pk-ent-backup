@@ -75,7 +75,7 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
       setActiveBrandIndex(prevIndex => {
         return (prevIndex + 1) % client.brands.length;
       });
-    }, 6000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [client.brands.length]);
 
@@ -140,7 +140,7 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
              </motion.button>
 
           {/* === Teks (Kiri Atas & Kanan Bawah) === */}
-          <div className="absolute lg:top-[20%] lg:left-10 md:left-24 w-10/12 z-20">
+          <div className="absolute lg:top-[18%] lg:left-23 md:left-24 w-10/12 z-20">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={activeBrand.id} // Ganti key saat brand berubah
@@ -149,7 +149,7 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="text-md font-bold lg:block hidden"
+                className="lg:text-xl text-md font-bold lg:block hidden"
               >
                 {activeBrand.title}
               </motion.h1>
@@ -315,8 +315,8 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
                     exit="exit"
                     transition={{ duration: 0.6, ease: 'easeInOut' }}
                   >
-                    {gallery[3] && (
-                      <Image src={gallery[3].url} alt="Gallery 1" layout="fill" objectFit="cover" />
+                    {gallery[2] && (
+                      <Image src={gallery[2].url} alt="Gallery 1" layout="fill" objectFit="cover" />
                     )}
                   </motion.div>
                 </AnimatePresence>
@@ -332,8 +332,8 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
                     exit="exit"
                     transition={{ duration: 0.6, ease: 'easeInOut' }}
                   >
-                    {gallery[1] && (
-                      <Image src={gallery[1].url} alt="Gallery 1" layout="fill" objectFit="cover" />
+                    {gallery[0] && (
+                      <Image src={gallery[0].url} alt="Gallery 1" layout="fill" objectFit="cover" />
                     )}
                   </motion.div>
                 </AnimatePresence>
@@ -349,8 +349,8 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
                     exit="exit"
                     transition={{ duration: 0.6, ease: 'easeInOut' }}
                   >
-                    {gallery[2] && (
-                      <Image src={gallery[2].url} alt="Gallery 1" layout="fill" objectFit="cover" />
+                    {gallery[1] && (
+                      <Image src={gallery[1].url} alt="Gallery 1" layout="fill" objectFit="cover" />
                     )}
                   </motion.div>
                 </AnimatePresence>

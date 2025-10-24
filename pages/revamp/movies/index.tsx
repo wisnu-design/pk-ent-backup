@@ -101,7 +101,7 @@ const handleCardClick = (clickedIndex: number) => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute z-10 top-1/2 -translate-y-1/2 left-8 md:left-24 w-full max-w-md md:max-w-lg text-white">
+        <div className="absolute z-10 top-[30%] lg:top-1/2 -translate-y-1/2 left-8 md:left-24 w-10/12 lg:w-full max-w-lg text-white">
           <AnimatePresence mode="wait">
             <motion.h1
               key={activeConcert.id}
