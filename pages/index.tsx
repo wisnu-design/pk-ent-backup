@@ -28,7 +28,7 @@ export default function Home({ concerts, brands, billboard }: any) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    setIsModalOpen(true); // Modal muncul saat halaman diload
+    setIsModalOpen(false); // Modal muncul saat halaman diload
   }, []);
 
   const closeModal = () => {
