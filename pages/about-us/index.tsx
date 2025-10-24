@@ -1,238 +1,123 @@
-import Footer from "@/components/organisms/Footer";
-import Header from "@/components/organisms/Header";
-import Image from "next/image";
-import React from "react";
+"use client";
 
-import about1 from "@/public/images/about1.jpg";
-import about2 from "@/public/images/1.jpg";
-import poster from "@/public/images/poster.jpg";
-import kenny from "@/public/images/kenny.png";
-import Seo from "@/components/Seo";
-import Link from "next/link";
+import React, { useRef, useState, useLayoutEffect } from 'react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'; 
+
+import Footer from '@/components/organisms/Footer';
+import Header from '@/components/organisms/Header';
+import Seo from '@/components/Seo';
+import ServiceColumn from '@/components/ServiceColumn';
+import { services } from '@/lib/data/data';
+import logo from '@/public/revamp/images/pkgrouplogo@4x.png'
+
+
+import bgWhite from '@/public/revamp/images/bg-white@4x.png';
+import Image from 'next/image';
 
 type Props = {};
 
 const index = (props: Props) => {
+ const [expandedId, setExpandedId] = useState<number | null>(null);
+ const isAnyExpanded = expandedId !== null;
+ const sectionRef = useRef(null);
+
+ const { scrollYProgress } = useScroll({
+   target: sectionRef, 
+   offset: ["start end", "end start"] 
+ });
+
+ const parallaxY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+
+ const scrollPositionRef = useRef(0);
+
+ const handleSetExpandedId = (id: number | null) => {
+    if (id !== null) {
+      scrollPositionRef.current = window.scrollY;
+    }
+    setExpandedId(id);
+ };
+
+ useLayoutEffect(() => {
+    if (expandedId === null) {
+      setTimeout(() => {
+        window.scrollTo(0, scrollPositionRef.current);
+      }, 0);
+    }
+ }, [expandedId]);
+
   return (
     <>
       <Seo
-        metaTitle="PK Entertainment | About Us"
+        metaTitle="PK Entertainment"
         metaDesc="PK Entertainment"
         metaKey="Event Promotor"
       />
-      <Header />
-      <div className="relative h-[40.25vw]">
-        <Image
-          className="w-full h-[56.25vw] md:h-[40vw] lg:h-[40vw] object-cover brightness-[30%] lg:rounded-b-[100px]"
-          src={poster}
-          alt="poster"
-        />
-      </div>
-      <div className="lg:mt-10 mt-20 h-full pb-10 max-w-[1370px] mx-auto px-5">
-        <div className="max-w-[1600px] flex w-full gap-3 mx-auto text-white lg:p-0 p-5">
-          <div className="flex flex-col lg:w-6/12">
-            <h1 className="lg:text-[40px] font-bold">About Us</h1>
-            <h2 className="lg:text-[24px] text-[12px] font-semibold ">
-              With nearly a decade of expertise, PK Entertainment Group is a
-              driving force in Indonesia&apos;s entertainment landscape. Our
-              diverse offerings, including PK Entertainment for international
-              music tours, PK Music for local artists, and PK Events for
-              comprehensive event solutions, have reached audiences across the
-              nation.
-            </h2>
-            <p className="lg:text-[16px] text-[9px] mt-10">
-              PK Entertainment
-              <br />
-              <br /> Since 2015, PK Entertainment has been at the forefront of
-              Indonesia&apos;s concert scene. We&apos;ve delivered unforgettable
-              experiences with over 25 world-class performances such as Bruno
-              Mars, Coldplay, Celine Dion, Ed Sheeran, Backstreet Boys, Shawn
-              Mendes, LANY, Keshi, Westlife, Calum Scott, Charlie Puth and Tom
-              Jones. Beyond international stars, we also boast a strong track
-              record of showcasing leading Japanese and Korean musicians,
-              including ONE OK ROCK, RADWIMPS, Fujii Kaze, ADO, Eve and
-              BABYMONSTER. Get ready to be part of something extraordinary as we
-              reach a monumental milestone of entertaining 1 million fans
-              nationwide.
-              <br />
-              <br />
-              Instagram:
-              <Link href={"https://www.instagram.com/pkentertainment.id/"}>
-                @pkentertainment.id
-              </Link>
-              <br />
-              <br />
-              PK Music
-              <br />
-              <br />
-              PK Music is redefining the live music experience in Indonesia.
-              With a sold-out Sheila on 7 tour as our launchpad, we&apos;re
-              committed to bringing the best of Indonesian music to fans
-              nationwide. Our journey has just begun, and we can&apos;t wait to
-              share what&apos;s next.
-              <br />
-              <br />
-              Instagram:
-              <Link href={"https://www.instagram.com/pkmusic.id/"}>
-                @pkmusic.id
-              </Link>
-              <br />
-              <br />
-              PK Events
-              <br />
-              <br />
-              Since 2015, PK Events has been crafting more than 300
-              extraordinary events across Indonesia. Our expertise spans
-              summits, CxO dinners, festivals, awards shows, and roadshows. With
-              a proven track record and a clientele that includes industry
-              leaders like Google, YouTube, WhatsApp, Instagram, Meta,
-              Bytedance, Spotify, GoTo and Netflix, we are your trusted partner
-              for creating unforgettable experiences.
-              <br />
-              <br />
-              Instagram:
-              <Link href={"https://www.instagram.com/pkevents.id/"}>
-                @pkevents.id
-              </Link>
-            </p>
-            <div>
-              <Link href={"/contact-us"}>
-                <button className="bg-zinc-800 shadow-2xl text-white lg:text-[16px] text-[10px] px-7 py-3 mt-10 rounded-md font-medium hover:bg-white hover:text-black transition-all">
-                  Contact Us
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className="lg:block hidden relative w-6/12 ">
-            <div className="w-[400px] h-[400px] rounded-xl overflow-hidden absolute top-52 right-10">
+      <div className={`relative h-screen top-0  z-10 ${isAnyExpanded ? 'hidden' : ''}`}>
+        <Header />
+        <div className="relative h-[100vh]">
+          <video
+            className="w-full h-[100vh] md:h-[40vw] lg:h-[100vh] object-cover brightness-[30%] lg:rounded-b-[100px]"
+            autoPlay
+            loop
+            muted={true}
+            poster=""
+            src="https://media.graphassets.com/R6KxXgbhRoOqnwYDqLss"
+          ></video>
+          <div className='absolute top-[20%] w-full'>
+            <div className='lg:p-8 p-1 flex flex-col w-full justify-center items-center'>
               <Image
-                className="w-full h-full object-cover"
-                src={about2}
-                alt="#"
-                width={1000}
-                height={10}
+                src={logo}
+                alt='logo'
+                className='lg:w-4/12 w-6/12'
               />
-            </div>
-            <div className="w-[350px] h-[350px] absolute overflow-hidden rounded-xl bottom-56 left-36 border-white border-4">
-              <Image
-                className="object-cover w-full h-full"
-                src={about1}
-                alt="#"
-                width={1000}
-                height={10}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      {/*
-      <div className="pb-10 lg:mt-24">
-        <div className="max-w-[1600px] flex flex-col items-center mx-auto text-white">
-          <div className="flex justify-center pb-10">
-            <h1 className="lg:text-[40px] font-bold">Our Team</h1>
-          </div>
-          <div className="w-full flex justify-center items-center flex-wrap gap-5">
-            <div className="group lg:w-[350px] lg:h-[500px] w-[100px] h-[150px] rounded-xl overflow-hidden">
-              <figure className="w-full lg:h-[400px] h-[100px] overflow-hidden">
-                <Image
-                  className="w-full brightness-75 group-hover:brightness-100 rounded-sm lg:h-full lg:object-cover group-hover:scale-110 transition-all"
-                  src={kenny}
-                  alt=""
-                  width={1000}
-                  height={10}
-                />
-              </figure>
-              <div className="text-white bg-zinc-900 lg:group-hover:translate-y-[-30px] group-hover:translate-y-[-10px] rounded-sm transition-all p-2">
-                <h3 className="font-bold lg:text-[32px] text-[10px]">
-                  Kenny Harjani
-                </h3>
-                <p className="font-medium lg:text-[16px] text-[6px]">
-                  Founder & CFO
-                </p>
-              </div>
-            </div>
-            <div className="group lg:w-[350px] lg:h-[500px] w-[100px] h-[150px] rounded-xl overflow-hidden">
-              <figure className="w-full lg:h-[400px] h-[100px] overflow-hidden">
-                <Image
-                  className="w-full brightness-75 group-hover:brightness-100 rounded-sm lg:h-full lg:object-cover group-hover:scale-110 transition-all"
-                  src={kenny}
-                  alt=""
-                  width={1000}
-                  height={10}
-                />
-              </figure>
-              <div className="text-white bg-zinc-900 lg:group-hover:translate-y-[-30px] group-hover:translate-y-[-10px] rounded-sm transition-all p-2">
-                <h3 className="font-bold lg:text-[32px] text-[10px]">
-                  Kenny Harjani
-                </h3>
-                <p className="font-medium lg:text-[16px] text-[6px]">
-                  Founder & CFO
-                </p>
-              </div>
-            </div>
-            <div className="group lg:w-[350px] lg:h-[500px] w-[100px] h-[150px] rounded-xl overflow-hidden">
-              <figure className="w-full lg:h-[400px] h-[100px] overflow-hidden">
-                <Image
-                  className="w-full brightness-75 group-hover:brightness-100 rounded-sm lg:h-full lg:object-cover group-hover:scale-110 transition-all"
-                  src={kenny}
-                  alt=""
-                  width={1000}
-                  height={10}
-                />
-              </figure>
-              <div className="text-white bg-zinc-900 lg:group-hover:translate-y-[-30px] group-hover:translate-y-[-10px] rounded-sm transition-all p-2">
-                <h3 className="font-bold lg:text-[32px] text-[10px]">
-                  Kenny Harjani
-                </h3>
-                <p className="font-medium lg:text-[16px] text-[6px]">
-                  Founder & CFO
-                </p>
-              </div>
-            </div>
-            <div className="group lg:w-[350px] lg:h-[500px] w-[100px] h-[150px] rounded-xl overflow-hidden">
-              <figure className="w-full lg:h-[400px] h-[100px] overflow-hidden">
-                <Image
-                  className="w-full brightness-75 group-hover:brightness-100 rounded-sm lg:h-full lg:object-cover group-hover:scale-110 transition-all"
-                  src={kenny}
-                  alt=""
-                  width={1000}
-                  height={10}
-                />
-              </figure>
-              <div className="text-white bg-zinc-900 lg:group-hover:translate-y-[-30px] group-hover:translate-y-[-10px] rounded-sm transition-all p-2">
-                <h3 className="font-bold lg:text-[32px] text-[10px]">
-                  Kenny Harjani
-                </h3>
-                <p className="font-medium lg:text-[16px] text-[6px]">
-                  Founder & CFO
-                </p>
-              </div>
-            </div>
-            <div className="group lg:w-[350px] lg:h-[500px] w-[100px] h-[150px] rounded-xl overflow-hidden">
-              <figure className="w-full lg:h-[400px] h-[100px] overflow-hidden">
-                <Image
-                  className="w-full brightness-75 group-hover:brightness-100 rounded-sm lg:h-full lg:object-cover group-hover:scale-110 transition-all"
-                  src={kenny}
-                  alt=""
-                  width={1000}
-                  height={10}
-                />
-              </figure>
-              <div className="text-white bg-zinc-900 lg:group-hover:translate-y-[-30px] group-hover:translate-y-[-10px] rounded-sm transition-all p-2">
-                <h3 className="font-bold lg:text-[32px] text-[10px]">
-                  Kenny Harjani
-                </h3>
-                <p className="font-medium lg:text-[16px] text-[6px]">
-                  Founder & CFO
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      */}
+              <p className='text-white lg:w-6/12 w-10/12 text-center'>
+                With nearly a decade of expertise, PK Entertainment Group is a driving force in Indonesia's entertainment landscape. Our diverse offerings, including PK Entertainment for international music tours, PK Music for local artists, and PK Events for comprehensive event solutions, have reached audiences across the nation.
+              </p>
 
-      <Footer />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <section 
+        ref={sectionRef} 
+          className={`relative w-full min-h-screen ${
+             isAnyExpanded 
+               ? 'fixed inset-0 z-50' 
+               : 'top-0 sticky z-20' 
+          } overflow-hidden`}
+        style={{
+          backgroundImage: `url(${bgWhite.src})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${bgWhite.src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            y: parallaxY 
+          }}
+        />
+        <motion.div
+        layout
+          className="relative z-30 flex flex-col md:flex-row w-full min-h-screen"
+        >
+          {services.map((service) => (
+            <ServiceColumn 
+              key={service.id} 
+              service={service} 
+              expandedId={expandedId}
+              setExpandedId={handleSetExpandedId}
+            />
+          ))}
+        </motion.div>
+      </section>
+
     </>
   );
 };

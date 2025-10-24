@@ -8,7 +8,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="w-full h-full bg-black/30 lg:py-6 lg:px-16">
+    <div className="w-full h-full bg-black lg:py-6 lg:px-16">
       <div className="flex flex-col ">
         <div className="flex lg:flex-row flex-col gap-2 w-full justify-between items-start pt-2">
           <div className="flex flex-col lg:w-3/12 w-full">
@@ -31,86 +31,7 @@ const Footer = (props: Props) => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col items-start lg:w-4/12 lg:items-center w-full lg:pt-4 p-4">
-            <h1 className="text-white font-medium text-[20px] pb-2">
-              Get Connected
-            </h1>
-            <div className="flex ">
-              <form className="flex flex-col gap-4" action="#">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="w-full lg:p-2 py-0 text-[10px] lg:text-[16px] rounded-lg"
-                />
-                <div className="flex gap-2 items-start">
-                  <input
-                    type="checkbox"
-                    name="agree"
-                    className="mt-1"
-                    id="agree"
-                    required
-                  />
-                  <label
-                    htmlFor="agree"
-                    className="text-white lg:text-[14px] text-[10px]"
-                  >
-                    I would like PK Entertainment to send me information about
-                    the latest events, information and offers.
-                  </label>
-                </div>
-                <div className="flex justify-center items-center">
-                  <button
-                    className="bg-zinc-800/80 hover:bg-zinc-700/30 transition-all text-white lg:p-2 w-[150px] rounded-lg"
-                    type="submit"
-                  >
-                    Subscribe
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="flex lg:flex-row flex-col lg:w-4/12 gap-3 w-full justify-center items-center h-[200px]">
-            <div className="flex flex-col gap-4 lg:w-12/12 w-full items-center justify-center pt-3">
-              <h2 className="text-white lg:text-[20px] text-[14px] font-bold">
-                Follow Us
-              </h2>
-              <div className="flex gap-3 items-center cursor-pointer">
-                <Link
-                  target="_blank"
-                  href={"https://www.facebook.com/PKentertainment.id/"}
-                >
-                  <BsFacebook className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
-                </Link>
-                <Link
-                  target="_blank"
-                  href={"https://www.instagram.com/pkentertainment.id/"}
-                >
-                  <BsInstagram className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
-                </Link>
-                <Link target="_blank" href={"https://twitter.com/PKEnt_ID"}>
-                  <BsTwitter className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
-                </Link>
-                <Link
-                  target="_blank"
-                  href={
-                    "https://www.youtube.com/channel/UCXvkwg_M5V3TFqdEvfLlnZw"
-                  }
-                >
-                  <BsYoutube className="lg:w-[35px] lg:h-[35px] w-[25px] h-[25px] rounded-full border-white border-[1px] p-2 text-white hover:bg-white hover:text-black transition-all" />
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4 lg:w-12/12 w-full items-center justify-center mt-10 lg:mt-0">
-              <h2 className="text-white lg:text-[20px] text-[14px] font-bold">
-                Contact Us
-              </h2>
-              <div className="flex gap-3 text-white items-center cursor-pointer">
-                <h3 className="lg:text-[16px] text-[12px]">
-                  contact@pk-ent.com
-                </h3>
-              </div>
-            </div>
-          </div>
+          
         </div>
         <div className="flex gap-2 lg:gap-0  lg:flex-row flex-col-reverse justify-between border-white border-t-2 mt-10 pt-3 p-2 lg:p-0">
           <div className="flex lg:flex-row flex-col-reverse gap-5 justify-between w-full pt-2">

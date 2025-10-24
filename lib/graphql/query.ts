@@ -157,6 +157,9 @@ export const CLIENTS = gql`
         thumbnail {
           url
         }
+        gallery {
+          url
+        }
         title
         slug
         city
@@ -180,6 +183,9 @@ export const CLIENT = gql`
       brands {
         id
         thumbnail {
+          url
+        }
+        gallery {
           url
         }
         title
