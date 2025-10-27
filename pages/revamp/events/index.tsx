@@ -13,7 +13,7 @@ import ConcertCard from '@/components/ConcertCard';
 import { api } from '@/lib/graphql/api';
 import { CLIENTS, QUERY } from '@/lib/graphql/query';
 import { mapGraphQLToConcerts, mapGraphQLToNestedClients } from '@/lib/helper/interfaces';
-import { generateConsistentRandomGradientColors, isConcertUpcoming } from '@/lib/helper/utils';
+import { createExcerpt, generateConsistentRandomGradientColors, isConcertUpcoming } from '@/lib/helper/utils';
 import Link from 'next/link';
 import EventCard from '@/components/EventCard';
 import { Client, Event } from '@/lib/data/events';
@@ -163,7 +163,7 @@ const handleCardClick = (clickedIndex: number) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="text-5xl md:text-7xl font-bold"
+              className="text-5xl md:text-7xl font-bold uppercase"
             >
               {!activeConcert ? "" : activeConcert.title}
             </motion.h1>
@@ -177,7 +177,7 @@ const handleCardClick = (clickedIndex: number) => {
               exit="exit"
               className="mt-4 text-base md:text-lg"
             >
-              {displayDescription}
+              {createExcerpt(displayDescription)}
             </motion.p>
           </AnimatePresence>
           <AnimatePresence mode="wait">

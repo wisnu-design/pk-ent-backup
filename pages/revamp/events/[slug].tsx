@@ -15,6 +15,7 @@ import { api } from '@/lib/graphql/api';
 import { CLIENT } from '@/lib/graphql/query';
 import { mapGraphQLToNestedClients } from '@/lib/helper/interfaces';
 import { Client } from '@/lib/data/events'; 
+import { createExcerpt } from '@/lib/helper/utils';
 const slideUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -182,9 +183,20 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="text-sm"
+                className="text-sm hidden lg:block"
               >
                 {activeBrand.description}
+              </motion.p>
+              <motion.p
+                key={activeBrand.id + '-desc'}
+                variants={slideUp}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="text-sm lg:hidden block"
+              >
+                {createExcerpt(activeBrand.description)}
               </motion.p>
             </AnimatePresence>
             <AnimatePresence mode="wait">
@@ -282,7 +294,7 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
             </div>
 
             {/* SLOT 5 (Slide Left) */}
-            <div className="col-span-4 row-span-3 col-start-9 row-start-2 overflow-hidden rounded-lg pointer-events-auto">
+            <div className="col-span-4 row-span-3 col-start-9 row-start-1 -mt-12 overflow-hidden rounded-lg pointer-events-auto">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeBrand.id + '-img5'}

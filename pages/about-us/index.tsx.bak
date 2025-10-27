@@ -19,6 +19,12 @@ type Props = {};
 const Index = (props: Props) => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const isAnyExpanded = expandedId !== null;
+  // Hapus sectionRef jika tidak digunakan lagi
+  // const sectionRef = useRef(null);
+
+  // Hapus parallax hooks
+  // const { scrollYProgress } = useScroll(...);
+  // const parallaxY = useTransform(...);
 
   const scrollPositionRef = useRef(0);
 

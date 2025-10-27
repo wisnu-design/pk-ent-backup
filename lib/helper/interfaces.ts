@@ -52,7 +52,7 @@ export const mapGraphQLToNestedClients = (clients: GraphQLClient[]) => {
       return {
         id: brand.id,
         title: brand.title,
-        description: cleanHtmlSpaces(excerpt),
+        description: cleanHtmlSpaces(brand.description),
         slug: brand.slug,
         date: brand.date,
         thumbnail: brand.thumbnail?.url || '',

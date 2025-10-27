@@ -33,11 +33,11 @@ const Navbaritems = () => {
           Home
         </Link>
       </li>
-      <li className="text-white font-medium cursor-pointer transition">
+      {/* <li className="text-white font-medium cursor-pointer transition">
         <Link className="hover:text-gray-300 " href="/about-us">
           About Us
         </Link>
-      </li>
+      </li> */}
       {/* 
       <li className="text-white font-medium cursor-pointer transition relative group">
         <Link
