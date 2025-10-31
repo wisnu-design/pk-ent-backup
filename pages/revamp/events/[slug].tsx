@@ -174,7 +174,7 @@ const ClientSlugPage: NextPage<ClientPageProps> = ({ client }) => {
             </AnimatePresence>
           </div>
 
-          <div className="absolute bottom-10 right-10 md:right-24 max-w-xs z-20">
+          <div className="absolute lg:bottom-10 bottom-3 right-10 md:right-24 max-w-xs z-20">
             <AnimatePresence mode="wait">
               <motion.p
                 key={activeBrand.id + '-desc'}
