@@ -34,13 +34,13 @@ const textVariants = {
 type Props = {}
 
 export async function getServerSideProps() {
-  const { clients }: any = await api.request(CLIENTS);
+   const { clients }: any = await api.request(CLIENTS);
   const events = mapGraphQLToNestedClients(clients);
 
-  return {
-    props: {
-      events, 
-    }
+   return {
+     props: {
+        events, 
+     }
   };
 }
 
@@ -65,14 +65,14 @@ const Index = ({events}:IndexPageProps) => {
     const wrapper = carouselWrapperRef.current;
     const inner = carouselInnerRef.current;
 
-    if (wrapper && inner) {
-      const scrollbarWidth = wrapper.offsetWidth - wrapper.clientWidth;
+     if (wrapper && inner) {
+        const scrollbarWidth = wrapper.offsetWidth - wrapper.clientWidth;
       
       const newScrollWidth = inner.scrollWidth - wrapper.offsetWidth + scrollbarWidth;
   
-      setScrollWidth(newScrollWidth < 0 ? 0 : newScrollWidth);
-    }
-  }, [orderedConcerts]);
+        setScrollWidth(newScrollWidth < 0 ? 0 : newScrollWidth);
+     }
+   }, [orderedConcerts]);
 
 useEffect(() => {
     setActiveBrandIndex(0);
@@ -215,25 +215,25 @@ const handleCardClick = (clickedIndex: number) => {
         className="absolute z-20 bottom-10 right-0 w-full md:w-3/5 lg:w-1/2 p-4 overflow-x-hidden overflow-y-visible"
         >
 
-          <motion.div
+             <motion.div
             ref={carouselInnerRef} 
-            className="flex gap-10 w-max"
-            drag="x"
-            dragConstraints={{ right: 0, left: -scrollWidth }}
-            dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
+               className="flex gap-10 w-max"
+               drag="x"
+               dragConstraints={{ right: 0, left: -scrollWidth }}
+               dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
             animate={dragControls} 
-          >
+             >
            
-            {orderedConcerts.map((concert, index) => (
-              <EventCard
-                key={concert.id} 
-                concert={concert}
-                isActive={index === 0} 
-                onClick={() => handleCardClick(index)} 
-              />
-            ))}
-          </motion.div>
-        </motion.div>
+               {orderedConcerts.map((concert, index) => (
+                  <EventCard
+                    key={concert.id} 
+                    concert={concert}
+                    isActive={index === 0} 
+                    onClick={() => handleCardClick(index)} 
+                  />
+               ))}
+             </motion.div>
+          </motion.div>
 
       </main>
       <Footer />

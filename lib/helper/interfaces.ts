@@ -1,4 +1,5 @@
 import { ClientBrand, GraphQLClient } from "../data/events";
+import { Film, GraphQLMovie } from "../data/film";
 import { cleanHtmlSpaces, createExcerpt } from "./utils";
 
 interface GraphQLConcert {
@@ -69,6 +70,24 @@ export const mapGraphQLToNestedClients = (clients: GraphQLClient[]) => {
       description: cleanHtmlSpaces(defaultDescription), 
       thumbnail: client.image?.url || '', 
       brands: mappedBrands
+    };
+  });
+};
+
+export const mapGraphQLToFilms = (movies: GraphQLMovie[]) => {
+  if (!movies || !Array.isArray(movies)) return [];
+  
+  return movies.map((movie, index) => {
+    
+    return {
+     
+      id: movie.slug,
+      title: movie.movieTitle,
+      description: movie.movieDescription || '',
+      dateFilm: '',  
+      bgImage: movie.moviePosterPortrait?.url || '',
+      thumbnail: movie.moviePosterPortrait?.url || '', 
+      trailerUrl: movie.movieVideoTrailer?.url || '#', 
     };
   });
 };

@@ -252,3 +252,19 @@ export const NEW = gql`
     }
   }
 `;
+
+export const MOVIES = gql`
+query Movies {
+  movies {
+    movieTitle
+    slug
+    movieDescription
+    movieVideoTrailer {
+      url
+    }
+    moviePosterPortrait {
+      url
+    }
+  }
+}
+`

@@ -8,8 +8,21 @@ export interface Film {
       title: string;
       description: string;
       dateFilm: string; 
-      bgImage: StaticImageData;
-      thumbnail: StaticImageData;
+      bgImage: any;
+      thumbnail: any;
+      trailerUrl: string
+}
+
+export interface GraphQLMovie {
+  slug: string
+  movieTitle: string;
+  movieDescription: string;
+  movieVideoTrailer?: {
+    url: string;
+  };
+  moviePosterPortrait?: {
+    url: string;
+  };
 }
 
 export const films: Film[] = [
@@ -20,5 +33,6 @@ export const films: Film[] = [
         dateFilm: '2024-09-13', 
         bgImage: agenBg,
         thumbnail: agenThumb,
+        trailerUrl: ""
     }
 ]

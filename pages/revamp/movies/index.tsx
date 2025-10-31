@@ -2,18 +2,22 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { films as initialConcerts } from '@/lib/data/film';
+import { Film, films as initialConcerts } from '@/lib/data/film';
 import Image from 'next/image';
+import { GetServerSideProps, NextPage } from 'next';
 
 
 import Header from '@/components/organisms/Header';
 import Footer from '@/components/organisms/Footer';
 import Seo from '@/components/Seo';
-import ConcertCard from '@/components/ConcertCard';
 import FilmCard from '@/components/FilmCard';
 import { useRouter } from 'next/router';
 import { HiArrowLeft } from 'react-icons/hi';
 import Link from 'next/link';
+import { mapGraphQLToFilms } from '@/lib/helper/interfaces';
+import { api } from '@/lib/graphql/api';
+import { MOVIES } from '@/lib/graphql/query';
+import { createExcerpt } from '@/lib/helper/utils';
 
 
 
@@ -24,11 +28,29 @@ const textVariants = {
   exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: 'easeIn' } },
 };
 
-type Props = {}
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+    const { movies }: any = await api.request(MOVIES); // Fetch data
+    const films = mapGraphQLToFilms(movies); // Map data
 
-const Index = (props: Props) => {
+    return {
+      props: {
+        films, // Kirim 'films' yang sudah bersih ke komponen
+      }
+    };
+  } catch (error) {
+    console.error("Failed to fetch movies:", error);
+    return { props: { films: [] } }; // Kirim array kosong jika error
+  }
+}
 
-  const [orderedConcerts, setOrderedConcerts] = useState(initialConcerts);
+type Props = {
+  films: Film[];
+}
+
+const Index = ({films}:Props) => {
+
+  const [orderedConcerts, setOrderedConcerts] = useState(films);
   const activeConcert = orderedConcerts[0];
 
   const [scrollWidth, setScrollWidth] = useState(0);
@@ -41,14 +63,14 @@ const Index = (props: Props) => {
     const wrapper = carouselWrapperRef.current;
     const inner = carouselInnerRef.current;
 
-    if (wrapper && inner) {
-      const scrollbarWidth = wrapper.offsetWidth - wrapper.clientWidth;
+     if (wrapper && inner) {
+        const scrollbarWidth = wrapper.offsetWidth - wrapper.clientWidth;
       
       const newScrollWidth = inner.scrollWidth - wrapper.offsetWidth + scrollbarWidth;
   
-      setScrollWidth(newScrollWidth < 0 ? 0 : newScrollWidth);
-    }
-  }, [orderedConcerts]);
+        setScrollWidth(newScrollWidth < 0 ? 0 : newScrollWidth);
+     }
+   }, [orderedConcerts]);
 
 const handleCardClick = (clickedIndex: number) => {
    
@@ -90,12 +112,18 @@ const handleCardClick = (clickedIndex: number) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.0, ease: 'easeInOut' }}
           >
-            <Image
-              src={activeConcert.bgImage}
-              alt={activeConcert.title}
-              layout="fill"
-              objectFit="cover"
-              priority 
+            <video
+  
+              key={activeConcert.trailerUrl} 
+              
+
+              className="absolute inset-0 w-full h-full object-cover z-0"
+              
+              src={activeConcert.trailerUrl} 
+              autoPlay    
+              loop        
+              muted       
+              playsInline  
             />
             <div className="absolute inset-0 bg-black/60 z-1" />
           </motion.div>
@@ -123,12 +151,12 @@ const handleCardClick = (clickedIndex: number) => {
               exit="exit"
               className="mt-4 text-base md:text-lg"
             >
-              {activeConcert.description}
+              {createExcerpt(activeConcert.description)}
             </motion.p>
           </AnimatePresence>
           <AnimatePresence mode="wait">
             <Link 
-              href={`/movies/agen62`} 
+              href={`/revamp/movies/#`} 
               key={!activeConcert ? "" : activeConcert.id + '-buttonlink'} 
             >
               <motion.button
@@ -157,28 +185,28 @@ const handleCardClick = (clickedIndex: number) => {
         </div>
 
         <motion.div
-          ref={carouselWrapperRef} 
-          className="absolute z-20 bottom-10 right-0 w-full md:w-3/5 lg:w-1/2 p-4 overflow-x-hidden overflow-y-visible"
-        >
-          <motion.div
+             ref={carouselWrapperRef} 
+             className="absolute z-20 bottom-10 right-0 w-full md:w-3/5 lg:w-1/2 p-4 overflow-x-visible overflow-y-visible"
+          >
+             <motion.div
             ref={carouselInnerRef} 
-            className="flex gap-10 w-max"
-            drag="x"
-            dragConstraints={{ right: 0, left: -scrollWidth }}
-            dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
+               className="flex gap-10 w-max"
+               drag="x"
+               dragConstraints={{ right: 0, left: -scrollWidth }}
+               dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
             animate={dragControls} 
-          >
+             >
            
-            {orderedConcerts.map((concert, index) => (
-              <FilmCard
-                key={concert.id} 
-                concert={concert}
-                isActive={index === 0} 
-                onClick={() => handleCardClick(index)} 
-              />
-            ))}
-          </motion.div>
-        </motion.div>
+               {orderedConcerts.map((concert, index) => (
+                  <FilmCard
+                    key={concert.id} 
+                    concert={concert}
+                    isActive={index === 0} 
+                    onClick={() => handleCardClick(index)} 
+                  />
+               ))}
+             </motion.div>
+        </motion.div>
 
       </main>
       <Footer />

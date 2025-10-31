@@ -60,17 +60,17 @@ const Index = ({concerts}:any) => {
   const dragControls = useAnimation();
 
   useEffect(() => {
-    const wrapper = carouselWrapperRef.current;
-    const inner = carouselInnerRef.current;
+     const wrapper = carouselWrapperRef.current;
+     const inner = carouselInnerRef.current;
 
-    if (wrapper && inner && inner.scrollWidth > 0) {
-      const scrollbarWidth = wrapper.offsetWidth - wrapper.clientWidth;
-      const newScrollWidth = inner.scrollWidth - wrapper.offsetWidth + scrollbarWidth;
-      setScrollWidth(newScrollWidth < 0 ? 0 : newScrollWidth);
-    } else {
+     if (wrapper && inner && inner.scrollWidth > 0) {
+        const scrollbarWidth = wrapper.offsetWidth - wrapper.clientWidth;
+        const newScrollWidth = inner.scrollWidth - wrapper.offsetWidth + scrollbarWidth;
+        setScrollWidth(newScrollWidth < 0 ? 0 : newScrollWidth);
+     } else {
       setScrollWidth(0); // Set 0 jika tidak ada kartu (list kosong)
     }
-  }, [orderedConcerts]);
+   }, [orderedConcerts]);
 
 const handleFilterChange = (mode: 'Upcoming' | 'Past') => {
     if (mode === filterMode) return; 
