@@ -95,7 +95,7 @@ const FilmDetail: NextPage<FilmDetailPageProps> = ({ film }) => {
         
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
           <div className="absolute bottom-0 left-0 z-20 p-6 md:p-12 lg:p-16 max-w-5xl">
-            <p className="font-semibold tracking-wider text-white/90">{film.eventStage}</p>
+            {/* <p className="font-semibold tracking-wider text-white/90">{film.eventStage}</p> */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-1 drop-shadow-lg">
               {film.title}
             </h1>
