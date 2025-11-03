@@ -1,57 +1,67 @@
+"use client"; 
+
 import Seo from "@/components/Seo";
 import Header from "@/components/organisms/Header";
 import React from "react";
-import { useRouter } from "next/router";
-
-// Komponen-komponen yang tidak digunakan seperti Swiper telah dihapus
-import ArtistInfo from "@/components/organisms/ArtistInfo";
-import Footer from "@/components/organisms/Footer";
+import { GetServerSideProps, NextPage } from 'next'; 
+import { useRouter } from 'next/router'; 
 import Image from "next/image";
+
+
+import Footer from "@/components/organisms/Footer";
 import PlayButton from "@/components/atoms/PlayButton";
 
-// Ganti dengan path gambar yang sebenarnya
-import agen62Banner from "@/public/images/agen62.jpg";
-import agen62Poster from "@/public/images/poster1.jpg";
 
-// Data film di-hardcode di sini
-const hardcodedFilms = [
-  {
-    slug: "agen62",
-    band: "PK Films",
-    title: "Agen +62 - Semua Bisa Jadi Agen",
-    thumbnail: { url: agen62Banner },
-    profilePicture: { url: agen62Poster },
-    eventStage: "In Theaters",
-    description: `Di Indonesia ada banyak agen. Agen pulsa, agen galon, agen koran, agen asuransi, dan juga... agen rahasia. Ini kisah Dito (Keanu) dan Martha (Rieke Diah Pitaloka), dua agen rahasia yang dianggap pecundang. Bersama-sama mereka berusaha memecahkan salah satu kasus tersulit di Indonesia. Penyamaran demi penyamaran mempertemukan mereka kepada Jessica (Cinta Laura), pemilik salon yang ternyata menyimpan rahasia gelap. Melibatkan masa depan satu negara.`,
-    city: "Indonesia",
-    date: "2025-07-03", // Format YYYY-MM-DD untuk perbandingan tanggal yang andal
-    video: "https://www.youtube.com/watch?v=U7D_MyFkUiQ",
-    tickets: [{ ticketLink: "/movies/agen62" }],
-    director: "Dinna Jasanti",
-    genre: "Action, Comedy",
-    cast: [
-      { name: "Keanu", role: "Dito" },
-      { name: "Rieke Diah Pitaloka", role: "Martha" },
-      { name: "Cinta Laura", role: "Jessica" },
-      { name: "Fanny Fadillah", role: "Ucup" },
-    ],
-  },
-];
+import { api } from '@/lib/graphql/api';
+import { Movie as MOVIE_QUERY } from '@/lib/graphql/query'; 
+import { mapGraphQLToFilmDetail } from '@/lib/helper/interfaces'; 
+import { MappedFilm } from '@/lib/helper/interfaces'; 
 
-const FilmDetail = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { slug } = context.params as { slug: string };
+  
+  if (!slug) {
+    return { notFound: true };
+  }
+
+  try {
+    const { movie }: any = await api.request(MOVIE_QUERY, { slug });
+
+    if (!movie) {
+      return { notFound: true };
+    }
+    const film = mapGraphQLToFilmDetail(movie);
+
+    return {
+      props: {
+        film, 
+      },
+    };
+
+  } catch (error) {
+    console.error("Failed to fetch film:", error);
+    return { notFound: true };
+  }
+};
+
+
+interface FilmDetailPageProps {
+  film: MappedFilm; 
+}
+
+
+const FilmDetail: NextPage<FilmDetailPageProps> = ({ film }) => {
   const router = useRouter();
-  const { slug } = router.query;
-  const film = hardcodedFilms.find((f) => f.slug === slug);
-
-  if (!film) {
+  if (router.isFallback) {
     return <div>Loading film...</div>;
   }
 
-  // Karena hari ini 5 Juli 2025, film yang rilis 3 Juli 2025 sudah tayang.
-  // Maka, isUpcoming akan bernilai `false`.
+
+  if (!film) {
+    return <div>Film not found.</div>; 
+  }
+
   const isUpcoming = new Date(film.date) > new Date();
-  
-  // Format tanggal agar lebih mudah dibaca oleh pengguna
   const displayDate = new Date(film.date).toLocaleDateString("id-ID", {
     day: 'numeric', month: 'long', year: 'numeric'
   });
@@ -60,25 +70,29 @@ const FilmDetail = () => {
     <>
       <Seo
         metaTitle={`PK Entertainment | ${film.title}`}
-        metaDesc={`${film.description}`}
+        metaDesc={`${film.description.substring(0, 150)}...`}
         metaKey="Film, Sinema, Nonton"
       />
       <Header />
       
-      {/* Konten utama dibungkus dengan flex-col */}
       <main className="flex flex-col bg-black text-white">
         
-        {/* 1. Banner Utama */}
-        {/* Tinggi tidak lagi menggunakan vh, diganti aspect-ratio */}
         <div className="relative w-full aspect-video">
-          <Image
-            src={film.thumbnail.url}
-            alt={`Banner untuk ${film.title}`}
-            layout="fill"
-            objectFit="cover"
-            priority={true}
-            className="z-0"
-          />
+
+           <video
+  
+              key={film.video} 
+              
+
+              className="w-full h-full object-cover z-1"
+              
+              src={film.video} 
+              autoPlay    
+              loop        
+              muted       
+              playsInline  
+            />
+        
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
           <div className="absolute bottom-0 left-0 z-20 p-6 md:p-12 lg:p-16 max-w-5xl">
             <p className="font-semibold tracking-wider text-white/90">{film.eventStage}</p>
@@ -86,22 +100,14 @@ const FilmDetail = () => {
               {film.title}
             </h1>
             <div className="flex items-center gap-x-4 mt-4 text-md lg:text-lg text-white/80">
-              <span>{displayDate}</span>
+              <span>{film.date}</span>
               <span className="hidden md:block w-2 h-2 rounded-full bg-white/80"></span>
               <span className="hidden md:block">{film.city}</span>
             </div>
           </div>
         </div>
 
-        {/* 2. ArtistInfo (jika masih diperlukan) */}
-        {/* Trik -mt-44 dihapus, komponen ini sekarang berada di bawah banner */}
-        {/*
-          Catatan: Komponen ArtistInfo mungkin menjadi redundan karena informasinya
-          sudah ditampilkan di bagian Movie Details di bawah. Anda bisa menghapusnya jika mau.
-        */}
-       
-
-        {/* 3. Movie Details (Layout digabung dan disederhanakan) */}
+        {/* 2. Movie Details */}
         <div className="w-full max-w-[1280px] mx-auto px-6 lg:px-8 py-10 lg:py-20">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-12">
             
@@ -109,7 +115,7 @@ const FilmDetail = () => {
             <div className="w-full lg:w-1/3 flex-shrink-0">
               <figure className="rounded-lg overflow-hidden shadow-xl mx-auto max-w-sm lg:max-w-none">
                 <Image
-                  src={film.profilePicture.url}
+                  src={film.profilePicture.url} // Data dinamis
                   alt={`Poster ${film.title}`}
                   width={700}
                   height={1050}
@@ -141,7 +147,7 @@ const FilmDetail = () => {
                 </div>
                 <div>
                   <p className="font-bold">Tanggal Tayang</p>
-                  <p className="text-white/80">{displayDate}</p>
+                  <p className="text-white/80">{film.date}</p>
                 </div>
               </div>
               <div>
@@ -151,7 +157,9 @@ const FilmDetail = () => {
                 <ul className="list-disc list-inside md:columns-2 gap-x-6 text-white/80">
                   {film.cast.map((actor, index) => (
                     <li key={index} className="mb-1">
-                      {actor.name} - <span className="italic">{actor.role}</span>
+                      {actor.name}
+                      {/* Tampilkan role HANYA jika tidak kosong */}
+                      {actor.role && <span className="italic"> - {actor.role}</span>}
                     </li>
                   ))}
                 </ul>
@@ -159,7 +167,7 @@ const FilmDetail = () => {
               <div className="pt-4">
                 <PlayButton
                   target={"_blank"}
-                  link={film.video}
+                  link={film.video} // Data dinamis
                   text={"Watch Trailer"}
                 />
               </div>

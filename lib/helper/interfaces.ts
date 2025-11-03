@@ -1,5 +1,5 @@
 import { ClientBrand, GraphQLClient } from "../data/events";
-import { Film, GraphQLMovie } from "../data/film";
+import { Film, GraphQLMovie, GraphQLMovieSingle } from "../data/film";
 import { cleanHtmlSpaces, createExcerpt } from "./utils";
 
 interface GraphQLConcert {
@@ -20,6 +20,23 @@ interface GraphQLConcert {
   bgImage?: { 
     url: string;
   };
+}
+
+export interface MappedFilm {
+  slug: string;
+  band: string;
+  title: string;
+  thumbnail: { url: string };
+  profilePicture: { url: string };
+  eventStage: string;
+  description: string;
+  city: string;
+  date: string;
+  video: string;
+  tickets: { ticketLink: string }[];
+  director: string;
+  genre: string;
+  cast: { name: string; role: string }[];
 }
 
 
@@ -88,6 +105,81 @@ export const mapGraphQLToFilms = (movies: GraphQLMovie[]) => {
       bgImage: movie.moviePosterPortrait?.url || '',
       thumbnail: movie.moviePosterPortrait?.url || '', 
       trailerUrl: movie.movieVideoTrailer?.url || '#', 
+    };
+  });
+};
+
+export const mapGraphQLToFilmDetail = (movie: GraphQLMovieSingle): MappedFilm => {
+
+  const posterUrl = movie.moviePosterPortrait?.url || "";
+  const trailerUrl = movie.movieVideoTrailer?.url || "#";
+
+  const mappedCastList = movie.movieCast.map(actorName => ({
+    name: actorName,
+    role: ""
+  }));
+
+  return {
+   
+    slug: movie.slug,
+    title: movie.movieTitle,
+    description: movie.movieDescription,
+    director: movie.movieDirector,
+    genre: movie.movieGenre,
+    date: movie.releaseDate,
+
+    profilePicture: { url: posterUrl },
+ 
+    video: trailerUrl, 
+    
+
+    thumbnail: { url: posterUrl }, 
+    cast: mappedCastList,
+
+    band: "PK Films",
+    eventStage: "In Theaters",
+    city: "Indonesia",
+    tickets: [{ ticketLink: `/movies/${movie.slug}` }], 
+  };
+};
+
+export interface Music {
+  id: string;
+  dateFilm:string
+  trailerUrl:string
+  title: string;
+  description: string;
+  bgImage: string;     // Untuk background halaman
+  thumbnail: string; // Untuk poster di card
+  slug: string;
+}
+
+// 2. INTERFACE UNTUK DATA MENTAH GQL
+interface GraphQLMusic {
+  musicTitle: string;
+  slug: string;
+  description: string;
+  musicPosterPortrait?: { url: string };
+  gallery: { url: string }; // 'gallery' adalah array
+}
+
+export const mapGraphQLToMusics = (musics: GraphQLMusic[]) => {
+  if (!musics || !Array.isArray(musics)) return [];
+
+  return musics.map((music) => {
+    
+    // Ambil gambar pertama dari galeri sebagai background
+    // Beri fallback ke poster jika galeri kosong
+    const bgUrl = music.gallery?.url || music.musicPosterPortrait?.url || '';
+    const thumbUrl = music.musicPosterPortrait?.url || '';
+
+    return {
+      id: music.slug, // Gunakan slug sebagai ID unik
+      title: music.musicTitle,
+      description: cleanHtmlSpaces(music.description || ''),
+      slug: music.slug,
+      bgImage: bgUrl,
+      thumbnail: thumbUrl,
     };
   });
 };

@@ -156,7 +156,7 @@ const handleCardClick = (clickedIndex: number) => {
           </AnimatePresence>
           <AnimatePresence mode="wait">
             <Link 
-              href={`/revamp/movies/#`} 
+              href={`/movies/${activeConcert.id}`} 
               key={!activeConcert ? "" : activeConcert.id + '-buttonlink'} 
             >
               <motion.button

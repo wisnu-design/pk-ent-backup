@@ -13,6 +13,18 @@ export interface Film {
       trailerUrl: string
 }
 
+export interface GraphQLMovieSingle {
+  movieTitle: string;
+  slug: string;
+  movieGenre: string;
+  movieDirector: string;
+  releaseDate: string; 
+  movieCast: string[]; // Ini adalah array string
+  movieDescription: string;
+  movieVideoTrailer?: { url: string };
+  moviePosterPortrait?: { url: string };
+}
+
 export interface GraphQLMovie {
   slug: string
   movieTitle: string;

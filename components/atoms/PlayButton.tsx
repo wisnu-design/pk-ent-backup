@@ -25,6 +25,7 @@ const PlayButton = ({ link, target, text }: any) => {
         transition
         gap-2
         backdrop-blur-sm
+        text-black
         "
       >
         <BsFillTicketPerforatedFill className="mt-[1px]" />

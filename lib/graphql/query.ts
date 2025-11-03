@@ -268,3 +268,37 @@ query Movies {
   }
 }
 `
+
+export const Movie = gql`
+  query Movie($slug: String!) {
+    movie(where: { slug: $slug }) {
+      movieTitle
+      slug
+      movieGenre
+      movieDirector
+      releaseDate
+      movieCast
+      movieDescription
+      movieVideoTrailer {
+        url
+      }
+      moviePosterPortrait {
+        url
+      }
+    }
+  }
+`;
+
+export const MUSICS = gql`
+query Musics {
+  musics {
+    musicTitle
+    slug
+    description
+    musicPosterPortrait {url}
+    gallery {
+      url
+    }
+  }
+}
+`
