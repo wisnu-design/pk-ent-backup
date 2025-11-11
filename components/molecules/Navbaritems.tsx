@@ -63,20 +63,25 @@ const Navbaritems = () => {
         
       </li>*/}
       <li className="text-white font-medium cursor-pointer transition">
-        <Link className="hover:text-gray-300 " href="/event">
+        <Link className="hover:text-gray-300 " href="/revamp/events">
           Events
         </Link>
       </li>
       <li className="text-white font-medium cursor-pointer transition">
-        <Link className="hover:text-gray-300 " href="/concert">
+        <Link className="hover:text-gray-300 " href="/revamp/concerts">
           Concerts
         </Link>
       </li>
       <li className="text-white font-medium cursor-pointer transition">
+        <Link className="hover:text-gray-300 " href="/revamp/movies">
+          Movies
+        </Link>
+      </li>
+      {/* <li className="text-white font-medium cursor-pointer transition">
         <Link className="hover:text-gray-300 " href="/news">
           News
         </Link>
-      </li>
+      </li> */}
       <li className="text-white font-medium cursor-pointer transition">
         <Link className="hover:text-gray-300 " href="/contact-us">
           Contact
