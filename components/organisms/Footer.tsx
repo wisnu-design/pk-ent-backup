@@ -37,7 +37,7 @@ const Footer = (props: Props) => {
           <div className="flex lg:flex-row flex-col-reverse gap-5 justify-between w-full pt-2">
             <div>
               <p className="text-white font-light text-[14px]">
-                © 2023 PK Entertainment All Rights Reserved
+                © 2025 PK Entertainment All Rights Reserved
               </p>
             </div>
             <div>
